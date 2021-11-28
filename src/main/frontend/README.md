@@ -1,70 +1,87 @@
-# Getting Started with Create React App
+# Clone-Carrot
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 프로젝트 설명
 
-## Available Scripts
+- [당근마켓](https://www.daangn.com/?pid=GoogleSA&c=GoogleKeywordAd&af_channel=Google&af_prt=emnet&af_keywords=&af_adset=Dynamic) Clone 프로젝트
 
-In the project directory, you can run:
+- 역할
+  - Front-end : snowman95
+  - Back-end : wogns1026
 
-### `npm start`
+## 화면
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- /home : 메인 화면
+- /top_trade_posts : 중고거래 인기 매물 목록
+- /trade_post/:id : 중고거래 매물 정보
+- /neighbor_post/:id : 동네 정보
+- /search/:id : 검색 화면 → 검색어와 관련된 매물/동네 정보
+- /full_image/:id : 전체 화면 크기의 이미지
+- /user/:id : 유저 정보
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## 컴포넌트
 
-### `npm test`
+### universal
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- RowContainer (section): row방향 n개 HTML element를 배치
+- ColContainer (section): col방향 n개 HTML element를 배치
 
-### `npm run build`
+### Search
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- LocationFilter (nav) : row방향 지역/동네/동 선택
+- UserFilter (nav) : row방향 지역/동네/동 선택
+- Search (section) : 검색창
+- HotSearchTerms (section) : 인기 검색어 목록
+- RecommandSearchTerms (section) : 추천 검색어 목록
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Poster
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- TradePosterList (section): grid(nx4) 형태의 <span style="color:green">TradePoster</span> 배치
+- TradePoster (article): col방향 제품정보(이미지,제목,가격,위치,관심수)
+- NeighborPosterList (section): col방향 <span style="color:green">NeighborPoster</span> 배치
+- NeighborPoster (article): col방향 동네정보(이미지,내용,위치)
 
-### `npm run eject`
+### PosterDetail
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- ImageSlider (section): 앞/뒤로 이미지를 한 장씩 넘기며 볼 수 있게 배치
+- FullImage (section): 전체 화면 크기로 이미지 보기
+- PosterDescription (section): col방향 게시글정보 (제목,제품분류,게시시간,가격,내용,관심수,조회수)
+- PosterCommment (section): col방향 댓글정보 (Profile,내용,시간,좋아요)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Profile
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- WideProfile (section): row방향 넓은 사용자프로필 (이미지,거주지,매너온도)
+- Profile (section): row방향 사용자프로필 (이미지,거주지,매너온도,재거래희망률)
+- MannerList (section): col방향 사용자 매너칭찬 리스트 별 횟수
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## 기능
 
-## Learn More
+- [ ] **라우터**
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+  - [ ] Header 로고 클릭시 <span style="color:blue">/home</span> 이동
+  - [ ] TradePoster 클릭시 <span style="color:blue">/trade_post/:id</span> 이동
+  - [ ] NeighborPoster 클릭시 <span style="color:blue">/neighbor_post/:id</span> 이동
+  - [ ] HotSearchTerm 클릭시 <span style="color:blue">/search/:id</span> 이동
+  - [ ] RecommandSearchTerm 클릭시 <span style="color:blue">/search/:id</span> 이동
+  - [ ] Search의 검색어 입력후 Enter 혹은 아이콘 클릭시 <span style="color:blue">/search/:id</span> 이동
+  - [ ] FullImage 이미지 클릭시 <span style="color:blue">/full_image/:id</span> 이동
+  - [ ] Search의 검색어 입력후 Enter 혹은 아이콘 클릭시 <span style="color:blue">/search/:id</span> 이동
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- [ ] **이미지**
 
-### Code Splitting
+  - [ ] 슬라이더 : <span style="color:green">ImageSlider</span> 로 이미지를 한 장씩 넘기며 보기
+  - [ ] 전체화면 : 이미지 클릭시 <span style="color:green">FullImage</span> 화면으로 보여주기
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- [ ] **필터**
 
-### Analyzing the Bundle Size
+  - [ ] <span style="color:green">LocationFilter</span> 드랍다운 항목 선택시 필터 데이터 로드
+  - [ ] <span style="color:green">UserFilter</span> 항목 선택시 필터 데이터 로드
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- [ ] **다크모드** : 스위칭버튼으로 테마변경
+- [ ] **인피니트 스크롤** : 스크롤 내릴때 마다 새로운 게시물 정보 불러오기
 
-### Making a Progressive Web App
+### 라이브러리
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- react-route-dom
+- styled-reset
+- styled-components
+- gh-pages
