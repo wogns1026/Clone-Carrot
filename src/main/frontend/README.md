@@ -22,8 +22,9 @@
 
 ### universal
 
-- RowContainer (section): row방향 n개 HTML element를 배치
-- ColContainer (section): col방향 n개 HTML element를 배치
+- ContentContainer (section): 원하는 방향으로 n개 HTML element를 배치
+- Content (div): col방향 n개의 HTML element(text,button,list) 종합 컨텐츠
+- ImageContent (img): 이미지 컨텐츠
 
 ### Search
 
