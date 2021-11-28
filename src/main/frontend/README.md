@@ -10,7 +10,7 @@
 
 ## 화면
 
-- /home : 메인 화면
+- / : 메인 화면
 - /top_trade_posts : 중고거래 인기 매물 목록
 - /trade_post/:id : 중고거래 매물 정보
 - /neighbor_post/:id : 동네 정보
@@ -57,14 +57,13 @@
 
 - [ ] **라우터**
 
-  - [ ] Header 로고 클릭시 <span style="color:blue">/home</span> 이동
+  - [x] Header 로고 클릭시 <span style="color:blue">/</span> 이동
   - [ ] TradePoster 클릭시 <span style="color:blue">/trade_post/:id</span> 이동
   - [ ] NeighborPoster 클릭시 <span style="color:blue">/neighbor_post/:id</span> 이동
   - [ ] HotSearchTerm 클릭시 <span style="color:blue">/search/:id</span> 이동
   - [ ] RecommandSearchTerm 클릭시 <span style="color:blue">/search/:id</span> 이동
-  - [ ] Search의 검색어 입력후 Enter 혹은 아이콘 클릭시 <span style="color:blue">/search/:id</span> 이동
+  - [x] Search의 검색어 입력후 Enter 혹은 아이콘 클릭시 <span style="color:blue">/search/:id</span> 이동
   - [ ] FullImage 이미지 클릭시 <span style="color:blue">/full_image/:id</span> 이동
-  - [ ] Search의 검색어 입력후 Enter 혹은 아이콘 클릭시 <span style="color:blue">/search/:id</span> 이동
 
 - [ ] **이미지**
 
