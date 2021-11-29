@@ -56,7 +56,6 @@ const ItemDescription = styled.div`
   line-height: 20px;
 `;
 const Content = ({ title, description, btn, list }) => {
-  console.log(btn);
   return title ? (
     <Body>
       <Title>{title}</Title>

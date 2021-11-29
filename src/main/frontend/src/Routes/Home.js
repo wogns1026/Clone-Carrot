@@ -1,44 +1,34 @@
-import ContentContainer from "Components/Univeral/ContentContainer";
-import styled from "styled-components";
-import Content from "Components/Univeral/Content.js";
-import ImageContent from "Components/Univeral/ImageContent.js";
-import { data } from "api";
+import styled, { css } from "styled-components";
+import { data, tradePostData } from "api";
+import { useState, useEffect } from "react";
+import TradeBanner from "Components/Banner/TradeBanner";
+import Banner from "Components/Banner/Banner";
 
-const Body = styled.div`
+const CenterAlign = css`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 `;
 
+const Section = styled.section`
+  ${CenterAlign};
+`;
+
 const Home = () => {
+  const [bannerData, setBannerData] = useState([]);
+  const [tradeBannerData, setTradeBannerData] = useState([]);
+
+  useEffect(() => {
+    setBannerData(data);
+    setTradeBannerData(tradePostData);
+  }, []);
+
   return (
-    <Body>
-      {data &&
-        data.map(
-          (
-            { bgColor, direction, title, description, imgSrc, btn, list },
-            index
-          ) => (
-            <ContentContainer
-              key={index}
-              bgColor={bgColor}
-              direction={direction}
-              component={
-                <>
-                  <Content
-                    title={title}
-                    description={description}
-                    btn={btn}
-                    list={list}
-                  />
-                  <ImageContent imgSrc={imgSrc} />
-                </>
-              }
-            ></ContentContainer>
-          )
-        )}
-    </Body>
+    <Section>
+      <Banner bannerData={bannerData} />
+      <TradeBanner tradeBannerData={tradeBannerData} />
+    </Section>
   );
 };
 export default Home;

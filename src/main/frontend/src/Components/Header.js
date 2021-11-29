@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import logo from "images/logo.svg";
 import Search from "./Search";
 
@@ -31,12 +31,10 @@ const LogoLink = styled(Link)`
   align-items: center;
 `;
 const Header = () => {
-  const { pathname } = useLocation();
-
   return (
     <FixedHeader>
       <LogoTitle>
-        <LogoLink to={pathname}>
+        <LogoLink to="/">
           <img src={logo} alt="메인로고" />
         </LogoLink>
         <Search placeholder="동네 이름, 물품명 등을 검색해보세요!" />
