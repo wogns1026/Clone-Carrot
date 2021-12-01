@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import logo from "images/logo.svg";
-import Search from "./Search";
-import ContentContainer from "./Univeral/ContentContainer";
+import Search from "Components/Search/Search";
+import ContentContainer from "../Univeral/ContentContainer";
 
 const FixedHeader = styled.header`
   position: fixed;

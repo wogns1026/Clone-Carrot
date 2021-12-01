@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 import { Redirect } from "react-dom";
 import Home from "Routes/Home";
-import Header from "Components/Header";
+import Header from "./Semantic/Header";
 
 export default () => (
   <HashRouter>
