@@ -3,7 +3,7 @@ import styled from "styled-components";
 const Background = styled.section`
   background-color: ${(props) => props.bgColor};
   width: 100%;
-  height: 760px;
+  height: ${(props) => props.height};
 
   display: flex;
   justify-content: center;
@@ -12,7 +12,6 @@ const Background = styled.section`
 
 const Container = styled.div`
   width: 1024px;
-  height: 760px;
   display: flex;
   flex-direction: ${(props) => props.direction};
 
@@ -23,10 +22,11 @@ const Container = styled.div`
 const ContentContainer = ({
   bgColor = "white",
   direction = "row",
+  height = "760px",
   component,
 }) => {
   return component ? (
-    <Background bgColor={bgColor}>
+    <Background bgColor={bgColor} height={height}>
       <Container direction={direction}>{component}</Container>
     </Background>
   ) : (

@@ -3,7 +3,7 @@ import styled from "styled-components";
 import defaultImg from "images/logo.svg";
 import { Link } from "react-router-dom";
 
-const Container = styled.div`
+const Container = styled.article`
   font-size: 15px;
   display: flex;
   flex-direction: column;

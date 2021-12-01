@@ -2,7 +2,7 @@ import styled, { css } from "styled-components";
 import { data, tradePostData } from "api";
 import { useState, useEffect } from "react";
 import TradeBanner from "Components/Banner/TradeBanner";
-import Banner from "Components/Banner/Banner";
+import MainBanner from "Components/Banner/MainBanner";
 
 const CenterAlign = css`
   display: flex;
@@ -26,7 +26,7 @@ const Home = () => {
 
   return (
     <Section>
-      <Banner bannerData={bannerData} />
+      <MainBanner bannerData={bannerData} />
       <TradeBanner tradeBannerData={tradeBannerData} />
     </Section>
   );
