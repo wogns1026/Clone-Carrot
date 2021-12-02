@@ -15,6 +15,7 @@
 - [ ] /trade_post/:id : 중고거래 매물 정보
 - [ ] /neighbor_post/:id : 동네 정보
 - [ ] /search/:id : 검색 화면 → 검색어와 관련된 매물/동네 정보
+- [ ] /top_search_terms : 인기 검색어
 - [ ] /full_image/:id : 전체 화면 크기의 이미지
 - [ ] /user/:id : 유저 정보
 
@@ -29,6 +30,7 @@
 
 - [x] MainBanner (section) : 메인 화면 일반배너
 - [x] TradeBanner (section) : 메인 화면 중고거래 인기매물 배너
+- [ ] TopSearchTermsBanner (section) : 메인 화면 중고거래 인기검색어 배너
 
 ### universal
 
