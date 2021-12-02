@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import ContentContainer from "./Univeral/ContentContainer";
+import ContentContainer from "../Univeral/ContentContainer";
 
 const Container = styled.footer`
   height: 550px;

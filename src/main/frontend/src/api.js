@@ -9,7 +9,7 @@ import main3 from "images/main3.png";
 import main4 from "images/main4.png";
 import icon from "images/search_icon.svg";
 
-export const data = [
+export const getBannerData = () => [
   {
     bgColor: "#FBF7F3",
     direction: "row",
@@ -69,7 +69,7 @@ export const data = [
   },
 ];
 
-export const tradePostData = [
+export const getTradePostData = () => [
   {
     id: 1,
     imgSrc:
@@ -142,4 +142,17 @@ export const tradePostData = [
     location: "광주 북구 연제동",
     interest: 6,
   },
+];
+
+export const getTopSearchData = () => [
+  [{ text: "자전거" }],
+  [{ text: "캠핑" }],
+  [{ text: "패딩" }],
+  [{ text: "의자" }],
+  [{ text: "냉장고" }],
+  [{ text: "노트북" }],
+  [{ text: "이어폰" }],
+  [{ text: "난로" }],
+  [{ text: "컴퓨터" }],
+  [{ text: "아이패드" }],
 ];
