@@ -156,3 +156,23 @@ export const getTopSearchData = () => [
   [{ text: "컴퓨터" }],
   [{ text: "아이패드" }],
 ];
+
+export const getFooterData = () => [
+  [
+    { text: "믿을 수 있는 중고거래", path: "/" },
+    { text: "자주 묻는 질문", path: "/" },
+  ],
+  [
+    { text: "광고주센터", path: "/" },
+    { text: "동네가게", path: "/" },
+  ],
+  [
+    { text: "회사 소개", path: "/" },
+    { text: "채용", path: "/" },
+  ],
+  [
+    { text: "이용약관", path: "/" },
+    { text: "개인정보처리방침", path: "/" },
+    { text: "위치기반서비스 이용약관", path: "/" },
+  ],
+];

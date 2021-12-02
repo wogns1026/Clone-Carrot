@@ -12,10 +12,13 @@ const Background = styled.section`
 
 const Container = styled.div`
   width: 1024px;
+  height: 100%;
   display: flex;
   flex-direction: ${(props) => props.direction};
-
-  justify-content: space-between;
+  justify-content: ${(props) =>
+    props.direction === "row" || props.direction === "row-reverse"
+      ? "space-between"
+      : "center"};
   align-items: center;
 `;
 

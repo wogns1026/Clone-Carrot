@@ -1,21 +1,21 @@
 import React, { useEffect, useState } from "react";
+import styled from "styled-components";
 import ContentContainer from "Components/Universal/ContentContainer";
 import LinkContentList from "Components/Universal/LinkContentList";
-import styled from "styled-components";
 import LinkContent from "Components/Universal/LinkContent";
-import { getTopSearchData } from "api";
 import Loader from "Components/Loading/Loader";
 import Message from "Components/Loading/Message";
+import { getTopSearchData } from "api";
 
 const Title = styled.div`
   width: 100%;
   font-weight: 700;
   margin-bottom: 23px;
 `;
-const Links = styled.div`
+const LinkContainer = styled.div`
   width: 100%;
-  height: 65px;
-  border: 1px solid red;
+  padding-left: 57px;
+  margin-bottom: 18px;
 `;
 
 const TopSearchTermsBanner = () => {
@@ -54,7 +54,9 @@ const TopSearchTermsBanner = () => {
               underline={true}
             ></LinkContent>
           </Title>
-          <LinkContentList content={topSearchBannerData} />
+          <LinkContainer>
+            <LinkContentList content={topSearchBannerData} />
+          </LinkContainer>
         </>
       }
     ></ContentContainer>

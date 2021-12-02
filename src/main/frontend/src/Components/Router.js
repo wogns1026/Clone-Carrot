@@ -8,6 +8,7 @@ import {
 import { Redirect } from "react-dom";
 import Home from "Routes/Home";
 import Header from "./Semantic/Header";
+import Footer from "./Semantic/Footer";
 
 export default () => (
   <HashRouter>
@@ -17,6 +18,7 @@ export default () => (
         <Route path="/" element={<Home />} />
         <Route path="*" render={() => <Redirect to="/" />} />
       </Routes>
+      <Footer />
     </>
   </HashRouter>
 );

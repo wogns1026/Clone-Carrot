@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 const Container = styled.div`
   display: flex;
   flex-direction: column;
+  gap: 20px;
 `;
 const TextLink = styled(Link)`
   text-decoration: ${(props) =>
@@ -11,14 +12,17 @@ const TextLink = styled(Link)`
 `;
 
 const LinkContent = ({ content, underline = false }) => {
-  return content
-    ? content.map(({ text, path = `/search/${text}` }, index) => (
-        <Container key={index}>
-          <TextLink to={path} underline={underline}>
-            {text}
-          </TextLink>
-        </Container>
-      ))
-    : "";
+  console.log(content);
+  return content ? (
+    <Container>
+      {content.map(({ text, path = `/search/${text}`, index }) => (
+        <TextLink to={path} key={index} underline={underline}>
+          {text}
+        </TextLink>
+      ))}
+    </Container>
+  ) : (
+    ""
+  );
 };
 export default LinkContent;

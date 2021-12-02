@@ -24,28 +24,27 @@
 ### Semantic
 
 - [x] Header (header, 100%, 71px) : 페이지 상단에 고정된 헤더
-- [ ] Footer (footer, 100%, 550px) : 페이지 하단 푸터
+- [x] Footer (footer, 100%, 550px) : 페이지 하단 푸터
 
 ### Banner
 
 - [x] MainBanner (section) : 메인 화면 일반배너
 - [x] TradeBanner (section) : 메인 화면 중고거래 인기매물 배너
-- [ ] TopSearchTermsBanner (section) : 메인 화면 중고거래 인기검색어 배너
+- [x] TopSearchTermsBanner (section) : 메인 화면 중고거래 인기검색어 배너
 
 ### universal
 
 - [x] ContentContainer (section, 외부100%/내부1024px, 160px) : 원하는 방향 n개 HTML element 배치
 - [x] Content (div, 490px, auto) : col방향 n개의 HTML element(text,button,list) 종합 컨텐츠
 - [x] ImageContent (img, min512px, auto) : 이미지 컨텐츠
-- [ ] LinkContentList (div,100%, auto) : row 방향 n개 LinkContent 배치
-- [ ] LinkContent (div, auto, auto) : col 방향 n개 Link 배치
+- [x] LinkContentList (div,100%, auto) : row 방향 n개 <span style="color:green">LinkContent</span> 배치
+- [x] LinkContent (div, auto, auto) : col 방향 n개 Link 배치
 
 ### Search
 
 - [ ] LocationFilter (nav) : row방향 지역/동네/동 선택
 - [ ] UserFilter (nav) : row방향 지역/동네/동 선택
 - [x] Search (section, 393px, 40px) : 검색창
-- [ ] HotSearchTerms (section) : 인기 검색어 목록
 - [ ] RecommandSearchTerms (section) : 추천 검색어 목록
 
 ### Poster

@@ -4,7 +4,7 @@ import LinkContent from "./LinkContent";
 const Container = styled.section`
   width: 100%;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
 `;
 
 const LinkContentList = ({ content, underline }) => {
