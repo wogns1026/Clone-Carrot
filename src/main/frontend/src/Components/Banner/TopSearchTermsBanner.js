@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import ContentContainer from "Components/Univeral/ContentContainer";
-import LinkContentList from "Components/Univeral/LinkContentList";
+import ContentContainer from "Components/Universal/ContentContainer";
+import LinkContentList from "Components/Universal/LinkContentList";
 import styled from "styled-components";
-import LinkContent from "Components/Univeral/LinkContent";
+import LinkContent from "Components/Universal/LinkContent";
 import { getTopSearchData } from "api";
 import Loader from "Components/Loading/Loader";
 import Message from "Components/Loading/Message";

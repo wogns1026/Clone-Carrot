@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import ContentContainer from "Components/Univeral/ContentContainer";
-import ImageContent from "Components/Univeral/ImageContent.js";
-import Content from "Components/Univeral/Content.js";
 import Loader from "Components/Loading/Loader";
 import { getBannerData } from "api";
+import ContentContainer from "Components/Universal/ContentContainer";
+import Content from "Components/Universal/Content";
+import ImageContent from "Components/Universal/ImageContent";
 
 const Banner = () => {
   const [bannerData, setBannerData] = useState([]);

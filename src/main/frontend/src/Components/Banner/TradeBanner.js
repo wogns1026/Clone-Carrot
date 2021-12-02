@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import TradePosterList from "Components/Poster/TradePosterList";
-import styled from "styled-components";
-import ContentContainer from "Components/Univeral/ContentContainer";
-import LinkContent from "Components/Univeral/LinkContent";
 import { getTradePostData } from "api";
+import styled from "styled-components";
+import TradePosterList from "Components/Poster/TradePosterList";
+import ContentContainer from "Components/Universal/ContentContainer";
+import LinkContent from "Components/Universal/LinkContent";
 import Loader from "Components/Loading/Loader";
 import Message from "Components/Loading/Message";
 
