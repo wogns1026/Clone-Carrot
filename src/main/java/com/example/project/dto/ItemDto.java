@@ -1,4 +1,4 @@
-package com.example.project.vo;
+package com.example.project.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -7,7 +7,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
-public class MainVo {
+public class ItemDto {
 
     public String userId;
     public String password;
