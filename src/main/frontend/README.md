@@ -31,6 +31,8 @@
 - [x] MainBanner (section) : 메인 화면 일반배너
 - [x] TradeBanner (section) : 메인 화면 중고거래 인기매물 배너
 - [x] TopSearchTermsBanner (section) : 메인 화면 중고거래 인기검색어 배너
+- [ ] TradeFilterBanner (section) : 필터 기능을 가진 중고거래 인기매물 배너
+- [ ] TradeDescriptionBanner (section) : 거래 정보 배너(제목,제품분류,게시시간,가격,내용,관심수,조회수)
 
 ### universal
 
@@ -39,6 +41,12 @@
 - [x] ImageContent (img, min512px, auto) : 이미지 컨텐츠
 - [x] LinkContentList (div,100%, auto) : row 방향 n개 <span style="color:green">LinkContent</span> 배치
 - [x] LinkContent (div, auto, auto) : col 방향 n개 Link 배치
+- [ ] DropdownMenuContainer (section, 100%, 45px) : row방향 <span style="color:green">DropDownMenu</span> 를 담는 컨테이너
+- [ ] DropdownMenu (input, 180px, 45px) : 드랍다운 메뉴
+- [ ] ImageSlider (section, 100%, 변수) : 이미지 슬라이더
+- [ ] ImageSliderButton (button, 30px, 100%) : 이미지 슬라이더 버튼
+- [ ] FullImage (image, 100%, 100%) : 이미지를 담는 풀사이즈 컨테이너
+- [ ] FixedContainer (div, 100%, 86px) : 고정된 요소를 담는 컨테이너
 
 ### Search
 
@@ -56,15 +64,14 @@
 
 ### PosterDetail
 
-- [ ] ImageSlider (section) : 앞/뒤로 이미지를 한 장씩 넘기며 볼 수 있게 배치
-- [ ] FullImage (section) : 전체 화면 크기로 이미지 보기
-- [ ] PosterDescription (section) : col방향 게시글정보 (제목,제품분류,게시시간,가격,내용,관심수,조회수)
+- [ ] FullScreen (section) : 전체 화면 크기로 이미지 보기
+- [ ] PosterDescription (section) : col방향 게시글정보
 - [ ] PosterCommment (section) : col방향 댓글정보 (Profile,내용,시간,좋아요)
 
 ### Profile
 
-- [ ] WideProfile (section) : row방향 넓은 사용자프로필 (이미지,거주지,매너온도)
-- [ ] Profile (section) : row방향 사용자프로필 (이미지,거주지,매너온도,재거래희망률)
+- [ ] Profile (section, 100%, auto) : row방향 사용자 프로필 (이미지,거주지,매너온도)
+- [ ] LargeProfile (section) : row방향 사용자 프로필 (이미지,거주지,매너온도,재거래희망률)
 - [ ] MannerList (section) : col방향 사용자 매너칭찬 리스트 별 횟수
 
 ## 기능
