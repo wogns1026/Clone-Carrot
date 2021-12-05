@@ -9,16 +9,22 @@ const Container = styled.div`
 
 const Grid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fill, 210px);
-  grid-gap: 60px;
+  grid-template-columns: repeat(auto-fill, ${(props) => props.gridSize});
+  grid-gap: ${(props) => props.gridGap};
 `;
 
-const TradePosterList = ({ posterList, loading, error }) => {
+const TradePosterList = ({
+  posterList,
+  loading,
+  error,
+  gridSize = "210px",
+  gridGap = "60px",
+}) => {
   return loading ? (
     <Loader />
   ) : (
     <Container>
-      <Grid>
+      <Grid gridSize={gridSize} gridGap={gridGap}>
         {posterList.map((post) => (
           <TradePoster
             key={post.id}
