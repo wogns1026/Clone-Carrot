@@ -1,5 +1,6 @@
 package com.example.project.domain;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 import javax.persistence.Entity;
