@@ -41,8 +41,8 @@
 - [x] ImageContent (img, min512px, auto) : 이미지 컨텐츠
 - [x] LinkContentList (div,100%, auto) : row 방향 n개 <span style="color:green">LinkContent</span> 배치
 - [x] LinkContent (div, auto, auto) : col 방향 n개 Link 배치
-- [ ] DropdownMenuContainer (section, 100%, 45px) : row방향 <span style="color:green">DropDownMenu</span> 를 담는 컨테이너
-- [ ] DropdownMenu (input, 180px, 45px) : 드랍다운 메뉴
+- [x] DropdownMenuContainer (section, 100%, 45px) : row방향 <span style="color:green">DropDownMenu</span> 를 담는 컨테이너
+- [x] DropdownMenu (input, 180px, 45px) : 드랍다운 메뉴
 - [ ] ImageSlider (section, 100%, 변수) : 이미지 슬라이더
 - [ ] ImageSliderButton (button, 30px, 100%) : 이미지 슬라이더 버튼
 - [ ] FullImage (image, 100%, 100%) : 이미지를 담는 풀사이즈 컨테이너
@@ -50,10 +50,12 @@
 
 ### Search
 
-- [ ] LocationFilter (nav) : row방향 지역/동네/동 선택
-- [ ] UserFilter (nav) : row방향 지역/동네/동 선택
 - [x] Search (section, 393px, 40px) : 검색창
 - [ ] RecommandSearchTerms (section) : 추천 검색어 목록
+
+### Filter
+
+- [x] LocationFilter (nav) : row방향 지역/동네/동 선택
 
 ### Poster
 
