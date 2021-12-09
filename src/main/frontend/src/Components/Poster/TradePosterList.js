@@ -1,6 +1,7 @@
 import React from "react";
-import Loader from "Components/Loading/Loader";
 import TradePoster from "./TradePoster";
+import Loader from "Components/Loading/Loader";
+import Message from "Components/Loading/Message";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -11,6 +12,7 @@ const Grid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, ${(props) => props.gridSize});
   grid-gap: ${(props) => props.gridGap};
+  margin-bottom: ${(props) => props.gridGap};
 `;
 
 const TradePosterList = ({
@@ -22,6 +24,8 @@ const TradePosterList = ({
 }) => {
   return loading ? (
     <Loader />
+  ) : error ? (
+    <Message color="red" text={error} />
   ) : (
     <Container>
       <Grid gridSize={gridSize} gridGap={gridGap}>
@@ -34,6 +38,7 @@ const TradePosterList = ({
             price={post.price}
             location={post.location}
             interest={post.interest}
+            height={gridSize}
           />
         ))}
       </Grid>

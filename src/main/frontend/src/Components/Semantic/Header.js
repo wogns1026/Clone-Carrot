@@ -16,15 +16,13 @@ const FixedHeader = styled.header`
 `;
 const LogoTitle = styled.ul`
   display: flex;
-  width: 1024px;
-  height: 39px;
   align-items: center;
 `;
 const LogoLink = styled(Link)`
-  height: 39px;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-bottom: 5px;
 `;
 const Header = () => {
   return (

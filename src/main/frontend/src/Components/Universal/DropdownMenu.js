@@ -17,14 +17,13 @@ const DropDownButton = styled.button`
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 5px;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 17px;
   background-color: transparent;
 
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
-  padding: 0px 15px;
-
+  padding-bottom: 3px;
   &:focus {
     border: 2px solid black;
   }
@@ -52,8 +51,8 @@ const Menu = styled.button`
   }
 `;
 const Icon = styled.img`
-  width: 10px;
-  height: 10px;
+  width: 12px;
+  height: 12px;
 `;
 
 const DropdownMenu = ({ title, menuList, onSelected, disabled }) => {
