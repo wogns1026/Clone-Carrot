@@ -14,7 +14,7 @@ const TradePosterTitle = styled.span`
 `;
 const TradePosterMoreLink = styled.div`
   font-weight: 700;
-  margin-top: 60px;
+  margin-bottom: 60px;
 `;
 
 const TradeBanner = () => {

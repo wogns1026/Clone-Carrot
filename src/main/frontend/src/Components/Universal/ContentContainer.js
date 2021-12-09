@@ -11,7 +11,7 @@ const Background = styled.section`
 `;
 
 const Container = styled.div`
-  width: 1024px;
+  width: ${(props) => props.width};
   height: 100%;
   display: flex;
   flex-direction: ${(props) => props.direction};
@@ -25,12 +25,15 @@ const Container = styled.div`
 const ContentContainer = ({
   bgColor = "white",
   direction = "row",
+  width = "1024px",
   height = "760px",
   component,
 }) => {
   return component ? (
     <Background bgColor={bgColor} height={height}>
-      <Container direction={direction}>{component}</Container>
+      <Container width={width} direction={direction}>
+        {component}
+      </Container>
     </Background>
   ) : (
     ""

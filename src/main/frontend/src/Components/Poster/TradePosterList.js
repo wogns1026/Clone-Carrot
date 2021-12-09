@@ -1,6 +1,7 @@
 import React from "react";
-import Loader from "Components/Loading/Loader";
 import TradePoster from "./TradePoster";
+import Loader from "Components/Loading/Loader";
+import Message from "Components/Loading/Message";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -9,16 +10,25 @@ const Container = styled.div`
 
 const Grid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fill, 210px);
-  grid-gap: 60px;
+  grid-template-columns: repeat(auto-fill, ${(props) => props.gridSize});
+  grid-gap: ${(props) => props.gridGap};
+  margin-bottom: ${(props) => props.gridGap};
 `;
 
-const TradePosterList = ({ posterList, loading, error }) => {
+const TradePosterList = ({
+  posterList,
+  loading,
+  error,
+  gridSize = "210px",
+  gridGap = "60px",
+}) => {
   return loading ? (
     <Loader />
+  ) : error ? (
+    <Message color="red" text={error} />
   ) : (
     <Container>
-      <Grid>
+      <Grid gridSize={gridSize} gridGap={gridGap}>
         {posterList.map((post) => (
           <TradePoster
             key={post.id}
@@ -28,6 +38,7 @@ const TradePosterList = ({ posterList, loading, error }) => {
             price={post.price}
             location={post.location}
             interest={post.interest}
+            height={gridSize}
           />
         ))}
       </Grid>

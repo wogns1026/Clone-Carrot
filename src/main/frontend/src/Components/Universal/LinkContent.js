@@ -12,7 +12,6 @@ const TextLink = styled(Link)`
 `;
 
 const LinkContent = ({ content, underline = false }) => {
-  console.log(content);
   return content ? (
     <Container>
       {content.map(({ text, path = `/search/${text}`, index }) => (

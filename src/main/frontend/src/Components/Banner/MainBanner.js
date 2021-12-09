@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Loader from "Components/Loading/Loader";
+import Message from "Components/Loading/Message";
 import { getBannerData } from "api";
 import ContentContainer from "Components/Universal/ContentContainer";
 import Content from "Components/Universal/Content";
@@ -8,7 +9,7 @@ import ImageContent from "Components/Universal/ImageContent";
 const Banner = () => {
   const [bannerData, setBannerData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [isError, setIsError] = useState(false);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     const getData = async () => {
@@ -17,7 +18,7 @@ const Banner = () => {
         setBannerData(data);
         setIsLoading(false);
       } catch (e) {
-        setIsError(true);
+        setError(e);
       }
     };
     getData();
@@ -25,6 +26,8 @@ const Banner = () => {
 
   return isLoading ? (
     <Loader />
+  ) : error ? (
+    <Message color="red" text={error} />
   ) : (
     bannerData.map(
       (

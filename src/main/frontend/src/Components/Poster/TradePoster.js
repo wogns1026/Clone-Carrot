@@ -11,7 +11,7 @@ const Container = styled.article`
 
 const Image = styled.div`
   background-image: url(${(props) => props.bgUrl});
-  height: 210px;
+  height: 100%;
   border-radius: 10px;
   border: 1px solid rgba(0, 0, 0, 0.1);
   background-size: cover;
@@ -20,7 +20,7 @@ const Image = styled.div`
 `;
 
 const ImageContainer = styled.div`
-  height: 210px;
+  height: ${(props) => props.height};
   margin-bottom: 17px;
   position: relative;
   &:hover {
@@ -47,11 +47,11 @@ const Price = styled.div`
 `;
 const Location = styled.div`
   font-size: 13px;
-  margin-bottom: 11px;
+  margin-bottom: 10px;
 `;
 const Interest = styled.div`
-  font-size: 13px;
-  opacity: 0.7;
+  font-size: 12.5px;
+  opacity: 0.6;
 `;
 
 const TradePoster = ({
@@ -61,6 +61,7 @@ const TradePoster = ({
   price = 0,
   location,
   interest = 0,
+  height = "210px",
 }) => {
   return (
     <Link
@@ -70,7 +71,7 @@ const TradePoster = ({
       }}
     >
       <Container>
-        <ImageContainer>
+        <ImageContainer height={height}>
           <Image bgUrl={imgUrl} alt="이미지" />
         </ImageContainer>
         <Title>{title}</Title>

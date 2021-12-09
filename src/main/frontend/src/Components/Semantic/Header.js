@@ -11,21 +11,18 @@ const FixedHeader = styled.header`
   z-index: 10;
 
   width: 100%;
-  height: 71px;
 
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 `;
 const LogoTitle = styled.ul`
   display: flex;
-  width: 1024px;
-  height: 39px;
   align-items: center;
 `;
 const LogoLink = styled(Link)`
-  height: 39px;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-bottom: 5px;
 `;
 const Header = () => {
   return (
