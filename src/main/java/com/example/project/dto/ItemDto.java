@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
+
 import static org.springframework.beans.BeanUtils.copyProperties;
 
 @Getter
@@ -30,7 +32,7 @@ public class ItemDto {
 
     private String image;
 
-    private String itemRegTime;
+    private LocalDateTime itemRegTime;
 
     public ItemDto(Item item){
         copyProperties(item, this);
