@@ -11,7 +11,7 @@
 ## 화면
 
 - [x] / : 메인 화면
-- [ ] /top_trade_posts : 중고거래 인기 매물 목록
+- [x] /top_trade_posts : 중고거래 인기 매물 목록
 - [ ] /trade_post/:id : 중고거래 매물 정보
 - [ ] /neighbor_post/:id : 동네 정보
 - [ ] /search/:id : 검색 화면 → 검색어와 관련된 매물/동네 정보
@@ -31,7 +31,7 @@
 - [x] MainBanner (section) : 메인 화면 일반배너
 - [x] TradeBanner (section) : 메인 화면 중고거래 인기매물 배너
 - [x] TopSearchTermsBanner (section) : 메인 화면 중고거래 인기검색어 배너
-- [ ] TradeFilterBanner (section) : 필터 기능을 가진 중고거래 인기매물 배너
+- [x] TradeFilterBanner (section) : 필터 기능을 가진 중고거래 인기매물 배너
 - [ ] TradeDescriptionBanner (section) : 거래 정보 배너(제목,제품분류,게시시간,가격,내용,관심수,조회수)
 
 ### universal
@@ -95,7 +95,7 @@
 
 - [ ] **필터**
 
-  - [ ] <span style="color:green">LocationFilter</span> 드랍다운 항목 선택시 필터 데이터 로드
+  - [x] <span style="color:green">LocationFilter</span> 드랍다운 항목 선택시 필터 데이터 로드
   - [ ] <span style="color:green">UserFilter</span> 항목 선택시 필터 데이터 로드
 
 - [ ] **다크모드** : 스위칭버튼으로 테마변경
