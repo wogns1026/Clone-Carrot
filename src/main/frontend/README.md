@@ -12,7 +12,7 @@
 
 - [x] / : 메인 화면
 - [x] /top_trade_posts : 중고거래 인기 매물 목록
-- [ ] /trade_post/:id : 중고거래 매물 정보
+- [x] /trade_post/:id : 중고거래 매물 정보
 - [ ] /neighbor_post/:id : 동네 정보
 - [ ] /search/:id : 검색 화면 → 검색어와 관련된 매물/동네 정보
 - [ ] /top_search_terms : 인기 검색어
@@ -32,19 +32,19 @@
 - [x] TradeBanner (section) : 메인 화면 중고거래 인기매물 배너
 - [x] TopSearchTermsBanner (section) : 메인 화면 중고거래 인기검색어 배너
 - [x] TradeFilterBanner (section) : 필터 기능을 가진 중고거래 인기매물 배너
-- [ ] TradeDescriptionBanner (section) : 거래 정보 배너(제목,제품분류,게시시간,가격,내용,관심수,조회수)
+- [x] TradePostDetailBanner (section) : 거래 정보 배너(제목,제품분류,게시시간,가격,내용,관심수,조회수)
 
 ### universal
 
 - [x] ContentContainer (section, 외부100%/내부1024px, 160px) : 원하는 방향 n개 HTML element 배치
 - [x] Content (div, 490px, auto) : col방향 n개의 HTML element(text,button,list) 종합 컨텐츠
-- [x] ImageContent (img, min512px, auto) : 이미지 컨텐츠
 - [x] LinkContentList (div,100%, auto) : row 방향 n개 <span style="color:green">LinkContent</span> 배치
 - [x] LinkContent (div, auto, auto) : col 방향 n개 Link 배치
 - [x] DropdownMenuContainer (section, 100%, 45px) : row방향 <span style="color:green">DropDownMenu</span> 를 담는 컨테이너
 - [x] DropdownMenu (input, 180px, 45px) : 드랍다운 메뉴
-- [ ] ImageSlider (section, 100%, 변수) : 이미지 슬라이더
-- [ ] ImageSliderButton (button, 30px, 100%) : 이미지 슬라이더 버튼
+- [x] ImageSwiper (section, 100%, 500px) : 이미지 Swiper
+- [x] ArrowSwiperButton (button, 30px, 100%) : 이미지 Swiper arrow 버튼
+- [x] DotSwiperButton (button, 30px, 100%) : 이미지 Swiper Dot 버튼 리스트
 - [ ] FullImage (image, 100%, 100%) : 이미지를 담는 풀사이즈 컨테이너
 - [ ] FixedContainer (div, 100%, 86px) : 고정된 요소를 담는 컨테이너
 
@@ -90,7 +90,7 @@
 
 - [ ] **이미지**
 
-  - [ ] 슬라이더 : <span style="color:green">ImageSlider</span> 로 이미지를 한 장씩 넘기며 보기
+  - [x] Swiper : <span style="color:green">ImageSlider</span> 로 이미지를 한 장씩 넘기며 보기
   - [ ] 전체화면 : 이미지 클릭시 <span style="color:green">FullImage</span> 화면으로 보여주기
 
 - [ ] **필터**
