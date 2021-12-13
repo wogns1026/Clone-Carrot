@@ -16,7 +16,7 @@ public class ItemServiceImpl implements ItemService {
     private final ItemRepository itemRepository;
 
     @Override
-    public Item getItem(String itemTitle) {
+    public List<Item> getItem(String itemTitle) {
         return itemRepository.findByItemTitleContainsIgnoreCase(itemTitle);
     }
 

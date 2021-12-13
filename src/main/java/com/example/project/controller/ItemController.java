@@ -25,18 +25,25 @@ public class ItemController {
 
     @ApiOperation(value = "매물 조회")
     @GetMapping(value = "/search/{itemTitle}")
-    public ResponseEntity<ItemDto> getItem(@PathVariable String itemTitle){
-        Item item = itemService.getItem(itemTitle);
-        return new ResponseEntity<>(new ItemDto(item), HttpStatus.OK);
+    public ResponseEntity<Map<String, Object>> getItem(@PathVariable String itemTitle){
+        List<Item> itemList = itemService.getItem(itemTitle);
+
+        Map<String, Object> result = new HashMap<>();
+        result.put("data", itemList);
+        result.put("count", itemList.size());
+
+        return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
     @ApiOperation(value = "인기 매물 조회")
     @GetMapping(value = "/hot-articles")
     public ResponseEntity<Map<String, Object>> getHotItem(){
         List<Item> itemList = itemService.getHotItem();
+
         Map<String, Object> result = new HashMap<>();
         result.put("data", itemList);
         result.put("count", itemList.size());
+
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
