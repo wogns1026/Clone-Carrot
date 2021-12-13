@@ -12,6 +12,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 @RestController
 @RequestMapping(value = "/api/v1")
 @RequiredArgsConstructor
@@ -24,6 +28,16 @@ public class ItemController {
     public ResponseEntity<ItemDto> getItem(@PathVariable String itemTitle){
         Item item = itemService.getItem(itemTitle);
         return new ResponseEntity<>(new ItemDto(item), HttpStatus.OK);
+    }
+
+    @ApiOperation(value = "인기 매물 조회")
+    @GetMapping(value = "/hot-articles")
+    public ResponseEntity<Map<String, Object>> getHotItem(){
+        List<Item> itemList = itemService.getHotItem();
+        Map<String, Object> result = new HashMap<>();
+        result.put("data", itemList);
+        result.put("count", itemList.size());
+        return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
 }
