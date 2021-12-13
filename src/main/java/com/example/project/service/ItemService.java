@@ -12,4 +12,7 @@ public interface ItemService {
     /* 인기 매물 조회 */
     List<Item> getHotItem();
 
+    /* 매물 상세 조회 */
+    Item getItemDetail(Long itemId);
+
 }

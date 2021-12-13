@@ -25,4 +25,9 @@ public class ItemServiceImpl implements ItemService {
         return itemRepository.findAll(Sort.by(Sort.Direction.DESC, "viewCnt"));
     }
 
+    @Override
+    public Item getItemDetail(Long itemId){
+        return itemRepository.findByItemId(itemId);
+    }
+
 }

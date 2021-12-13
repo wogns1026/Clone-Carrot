@@ -47,4 +47,12 @@ public class ItemController {
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
+    @ApiOperation(value = "매물 상세 조회")
+    @GetMapping(value = "/articles/{itemId}")
+    public ResponseEntity<Map<String, Object>> getItemDetail(@PathVariable Long itemId){
+        Map<String, Object> result = new HashMap<>();
+        result.put("data", new ItemDto(itemService.getItemDetail(itemId)));
+        return new ResponseEntity<>(result, HttpStatus.OK);
+    }
+
 }
