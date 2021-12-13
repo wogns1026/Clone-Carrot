@@ -3,14 +3,12 @@ package com.example.project.domain;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
 @Getter
+@Table(name = "TB_ITEMS")
 public class Item {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -18,7 +16,7 @@ public class Item {
 
     private String itemTitle;
 
-    private String sellerId;
+    private long sellerId;
 
     private int cost;
 
