@@ -42,11 +42,17 @@
 - [x] LinkContent (div, auto, auto) : col 방향 n개 Link 배치
 - [x] DropdownMenuContainer (section, 100%, 45px) : row방향 <span style="color:green">DropDownMenu</span> 를 담는 컨테이너
 - [x] DropdownMenu (input, 180px, 45px) : 드랍다운 메뉴
+- [x] ProgressBar (hr, auto, auto) : 진행도를 표시해주는 가로바
+- [ ] HoriontalDivider (hr, auto, auto) : 가로줄
+- [ ] TextContent (div, auto, auto) : 텍스트 요소를 좀 더 편리하게 만들기 위한 컴포넌트
+- [ ] FullImage (image, 100%, 100%) : 이미지를 담는 풀사이즈 컨테이너
+- [ ] FixedContainer (div, 100%, 86px) : 고정된 요소를 담는 컨테이너
+
+### Swiper
+
 - [x] ImageSwiper (section, 100%, 500px) : 이미지 Swiper
 - [x] ArrowSwiperButton (button, 30px, 100%) : 이미지 Swiper arrow 버튼
 - [x] DotSwiperButton (button, 30px, 100%) : 이미지 Swiper Dot 버튼 리스트
-- [ ] FullImage (image, 100%, 100%) : 이미지를 담는 풀사이즈 컨테이너
-- [ ] FixedContainer (div, 100%, 86px) : 고정된 요소를 담는 컨테이너
 
 ### Search
 
@@ -72,7 +78,7 @@
 
 ### Profile
 
-- [ ] Profile (section, 100%, auto) : row방향 사용자 프로필 (이미지,거주지,매너온도)
+- [x] Profile (section, 100%, auto) : row방향 사용자 프로필 (이미지,거주지,매너온도)
 - [ ] LargeProfile (section) : row방향 사용자 프로필 (이미지,거주지,매너온도,재거래희망률)
 - [ ] MannerList (section) : col방향 사용자 매너칭찬 리스트 별 횟수
 

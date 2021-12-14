@@ -42,7 +42,7 @@ const Page = styled(animated.div)`
   scale: ${(props) => props.sacle};
 `;
 
-const ImageSlider = ({ imageList }) => {
+const ImageSwiper = ({ imageList }) => {
   const [page, setPage] = useState(0);
   const [ref, { width }] = useMeasure();
   const [props, api] = useSprings(
@@ -112,4 +112,4 @@ const ImageSlider = ({ imageList }) => {
     </Container>
   );
 };
-export default ImageSlider;
+export default ImageSwiper;
