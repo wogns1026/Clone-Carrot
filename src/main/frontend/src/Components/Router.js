@@ -6,10 +6,12 @@ import Header from "./Semantic/Header";
 import Footer from "./Semantic/Footer";
 import TopTradePosts from "Routes/TopTradePosts";
 import TradeDetail from "Routes/TradeDetail";
+import AutoScrollToTop from "./Universal/AutoScrollToTop";
 
 const Router = () => (
   <HashRouter>
     <>
+      <AutoScrollToTop />
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
