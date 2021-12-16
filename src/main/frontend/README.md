@@ -73,7 +73,7 @@
 ### PosterDetail
 
 - [ ] FullScreen (section) : 전체 화면 크기로 이미지 보기
-- [ ] PosterDescription (section) : col방향 게시글정보
+- [x] PosterDescription (section) : col방향 게시글정보
 - [ ] PosterCommment (section) : col방향 댓글정보 (Profile,내용,시간,좋아요)
 
 ### Profile
