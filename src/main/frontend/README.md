@@ -44,7 +44,7 @@
 - [x] DropdownMenu (input, 180px, 45px) : 드랍다운 메뉴
 - [x] ProgressBar (hr, auto, auto) : 진행도를 표시해주는 가로바
 - [ ] HoriontalDivider (hr, auto, auto) : 가로줄
-- [ ] TextContent (div, auto, auto) : 텍스트 요소를 좀 더 편리하게 만들기 위한 컴포넌트
+- [x] TextContent (div, auto, auto) : 텍스트 요소를 좀 더 편리하게 만들기 위한 컴포넌트
 - [ ] FullImage (image, 100%, 100%) : 이미지를 담는 풀사이즈 컨테이너
 - [ ] FixedContainer (div, 100%, 86px) : 고정된 요소를 담는 컨테이너
 
