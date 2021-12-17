@@ -92,7 +92,12 @@ const Footer = () => {
           <Nav>
             <Image src={logo} alt="메인로고" />
             <Link>
-              <LinkContentList content={footerData} />
+              <LinkContentList
+                content={footerData}
+                fontSize={"16px"}
+                fontWeight={700}
+                color={"white"}
+              />
             </Link>
           </Nav>
           <HorizontalLine />
