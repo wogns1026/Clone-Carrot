@@ -2,11 +2,13 @@ package com.example.project.domain;
 
 import lombok.Getter;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity
 @Getter
-@Table(name = "TB_USERS")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

@@ -1,14 +1,14 @@
 package com.example.project.domain;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 
-import javax.persistence.*;
-import java.time.LocalDateTime;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity
 @Getter
-@Table(name = "TB_ITEMS")
 public class Item {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -16,7 +16,7 @@ public class Item {
 
     private String itemTitle;
 
-    private long sellerId;
+    private String sellerId;
 
     private int cost;
 
@@ -30,6 +30,6 @@ public class Item {
 
     private String image;
 
-    private LocalDateTime itemRegTime;
+    private String itemRegTime;
 
 }
