@@ -51,11 +51,13 @@ const TopSearchTermsBanner = () => {
               content={[
                 { text: "중고거래 인기검색어", path: "/top_search_terms" },
               ]}
-              underline={true}
+              fontSize={"16px"}
+              fontWeight={700}
+              underline={"underline"}
             ></LinkContent>
           </Title>
           <LinkContainer>
-            <LinkContentList content={topSearchBannerData} />
+            <LinkContentList content={topSearchBannerData} fontSize={"16px"} />
           </LinkContainer>
         </>
       }

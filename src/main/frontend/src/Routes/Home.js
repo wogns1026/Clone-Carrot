@@ -1,4 +1,4 @@
-import TradeBanner from "Components/Banner/TradeBanner";
+import TopTradeBanner from "Components/Banner/TopTradeBanner";
 import MainBanner from "Components/Banner/MainBanner";
 import TopSearchTermsBanner from "Components/Banner/TopSearchTermsBanner";
 
@@ -6,7 +6,7 @@ const Home = () => {
   return (
     <>
       <MainBanner />
-      <TradeBanner />
+      <TopTradeBanner />
       <TopSearchTermsBanner />
     </>
   );
