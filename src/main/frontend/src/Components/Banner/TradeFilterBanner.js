@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import ContentContainer from "Components/Universal/ContentContainer";
 import LocationFilter from "Components/Filter/LocationFilter";
 import TradePosterList from "Components/Poster/TradePosterList";
+import { getShortCityName, getTradePostData } from "api";
+import { useAxios } from "Hooks/useAxios";
 
 const TradePosterTitle = styled.span`
   font-size: 31.5px;
@@ -11,7 +13,49 @@ const TradePosterTitle = styled.span`
   margin-bottom: 45px;
 `;
 const TradeFilterBanner = () => {
-  const [filter, setFilter] = useState({});
+  const [filter, setFilter] = useState([{ city: "", gu: "" }]);
+  let { loading, data, error, refetch } = useAxios({
+    url: "http://localhost:8080/api/v1/hot-articles",
+  });
+
+  const getFilteredData = () => {
+    let filteredData = data;
+    const shortCityName = getShortCityName();
+
+    if (filter.city) {
+      filteredData = filteredData.filter((d) =>
+        d.location.includes(shortCityName[filter.city])
+      );
+      if (filter.gu) {
+        filteredData = filteredData.filter((d) =>
+          d.location.includes(filter.gu)
+        );
+      }
+    }
+    return filteredData;
+  };
+
+  // 제거 예정 (start)
+  useEffect(() => {
+    // getTradeData();
+  }, []);
+
+  async function getTradeData(city = "", gu = "") {
+    let data = await getTradePostData();
+    if (!data) {
+      return;
+    }
+    if (city) {
+      const shortCityName = getShortCityName();
+      if (shortCityName[city]) {
+        city = shortCityName[city];
+        data = data.filter((d) => d.location.includes(city));
+        data = gu ? data.filter((d) => d.location.includes(gu)) : data;
+      }
+    }
+  }
+  // 제거 예정 (end)
+
   return (
     <ContentContainer
       bgColor="white"
@@ -21,11 +65,13 @@ const TradeFilterBanner = () => {
       component={
         <>
           <TradePosterTitle>중고거래 인기매물</TradePosterTitle>
-          <LocationFilter onFilterSelected={setFilter} />
+          <LocationFilter updateRequest={setFilter} />
           <TradePosterList
-            filter={filter}
+            posterList={data}
+            loading={loading}
+            error={error}
             gridSize={"201px"}
-            gridGap={"54px"}
+            gridGap={"57px"}
           ></TradePosterList>
         </>
       }
