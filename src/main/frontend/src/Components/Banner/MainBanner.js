@@ -1,12 +1,18 @@
 import React, { useEffect, useState } from "react";
+import styled from "styled-components";
 import Loader from "Components/Loading/Loader";
 import Message from "Components/Loading/Message";
 import { getBannerData } from "api";
 import ContentContainer from "Components/Universal/ContentContainer";
 import Content from "Components/Universal/Content";
-import ImageContent from "Components/Universal/ImageContent";
 
-const Banner = () => {
+const Image = styled.img`
+  background-size: cover;
+  background-position: center center;
+  max-width: 512px;
+`;
+
+const MainBanner = () => {
   const [bannerData, setBannerData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(false);
@@ -46,7 +52,7 @@ const Banner = () => {
                 btn={btn}
                 list={list}
               />
-              <ImageContent imgSrc={imgSrc} />
+              <Image src={imgSrc} alt="이미지" />
             </>
           }
         ></ContentContainer>
@@ -54,4 +60,4 @@ const Banner = () => {
     )
   );
 };
-export default Banner;
+export default MainBanner;

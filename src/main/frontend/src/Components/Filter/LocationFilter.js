@@ -16,30 +16,30 @@ const DropdownMenuList = styled.div`
   margin-bottom: 30px;
 `;
 
-const LocationFilter = ({ updateRequest }) => {
+const LocationFilter = ({ onFilterSelected }) => {
   const [cityData, setCityData] = useState();
-  const [selectedCity, setSelectedCity] = useState(DEFAULT_CITY);
-  const [selectedGu, setSelectedGu] = useState(NONE);
+  const [filterData, setFilterData] = useState({
+    city: NONE,
+    gu: NONE,
+  });
   const [isLoading, setIsLoading] = useState(true);
   const [error, serError] = useState(null);
 
   const onCitySelected = (option) => {
-    setSelectedCity(option);
-    setSelectedGu(NONE);
-    if (option === DEFAULT_CITY) {
-      updateRequest(NONE, NONE);
-    } else {
-      updateRequest(option, NONE);
-    }
+    option = option === DEFAULT_CITY ? NONE : option;
+    const newData = { ...filterData, city: option, gu: NONE };
+    setFilterData(newData);
+    onFilterSelected(newData);
   };
 
   const onGuSelected = (option) => {
-    setSelectedGu(option);
-    updateRequest(selectedCity, option);
+    const newData = { ...filterData, gu: option };
+    setFilterData(newData);
+    onFilterSelected(newData);
   };
 
   const disableCondition = () => {
-    return selectedCity === DEFAULT_CITY;
+    return filterData.city === NONE;
   };
 
   useEffect(() => {
@@ -63,17 +63,15 @@ const LocationFilter = ({ updateRequest }) => {
     <DropdownMenuList>
       <DropdownMenu
         title={
-          selectedCity === DEFAULT_CITY
-            ? "지역을 선택하세요"
-            : `${selectedCity}`
+          filterData.city === NONE ? "지역을 선택하세요" : `${filterData.city}`
         }
         menuList={[DEFAULT_CITY, ...Object.keys(cityData)]}
         onSelected={onCitySelected}
         disabled={false}
       />
       <DropdownMenu
-        title={selectedGu ? `${selectedGu}` : "동네를 선택하세요"}
-        menuList={cityData[selectedCity]}
+        title={filterData.gu ? `${filterData.gu}` : "동네를 선택하세요"}
+        menuList={cityData[filterData.city]}
         onSelected={onGuSelected}
         disabled={disableCondition()}
       />

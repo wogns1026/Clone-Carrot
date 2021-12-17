@@ -7,11 +7,24 @@ const Container = styled.section`
   justify-content: space-between;
 `;
 
-const LinkContentList = ({ content, underline }) => {
+const LinkContentList = ({
+  content,
+  underline,
+  fontSize,
+  fontWeight,
+  color,
+}) => {
   return (
     <Container>
       {content.map((con, index) => (
-        <LinkContent key={index} content={con} underline={underline} />
+        <LinkContent
+          key={index}
+          content={con}
+          underline={underline}
+          fontSize={fontSize}
+          fontWeight={fontWeight}
+          color={color}
+        />
       ))}
     </Container>
   );

@@ -75,72 +75,161 @@ export const getTradePostData = () => [
     imgSrc:
       "https://dnvefa72aowie.cloudfront.net/origin/article/202111/E0C758C53F97FA176C36A3629035CD51F514054EAE9CC054ACA5E2FD6C5E43D9.jpg?q=82&s=300x300&t=crop",
     title: "가히 멀티밤 새제품",
-    price: 12000,
     location: "서울 성북구 장위동",
+    category: "뷰티/미용",
+    price: 200000,
+    description: `다이슨 에어랩 스타일러 컴플리트입니다.
+    
+19년도 구매했습니다.
+라운드 볼륨 브러시가 사라져서 저렴하게 보내드려요!
+    
+외에 30,40mm 배럴 / 하드 스무딩 브러시 / 소프트 스무딩 브러시 / 드라이어 들어있습니다.
+    
+사진에 보이시는 그대로입니다.
+    
+무게가 꽤 나가서 직거래 환영합니다 ^-^//`,
+    view_cnt: 8,
     interest: 18,
+    item_reg_time: 7,
   },
   {
     id: 2,
     imgSrc:
       "https://dnvefa72aowie.cloudfront.net/origin/article/202111/FA4B9CC7F962D325967E91B150A77579FA588A5A41491A92836E79527F8231BA.jpg?q=82&s=300x300&t=crop",
-    title: "lg룸앤티비 팝니다",
-    price: 200000,
+    title: "다이슨 에어랩 컴플리트",
     location: "경기도 평택시 고덕면",
-    interest: 7,
+    price: 200000,
+    category: "뷰티/미용",
+    description: `다이슨 에어랩 스타일러 컴플리트입니다.
+
+19년도 구매했습니다.
+라운드 볼륨 브러시가 사라져서 저렴하게 보내드려요!
+    
+외에 30,40mm 배럴 / 하드 스무딩 브러시 / 소프트 스무딩 브러시 / 드라이어 들어있습니다.
+    
+사진에 보이시는 그대로입니다.
+    
+무게가 꽤 나가서 직거래 환영합니다 ^-^//`,
+    view_cnt: 8,
+    interest: 18,
+    item_reg_time: 7,
   },
   {
     id: 3,
     imgSrc:
       "https://dnvefa72aowie.cloudfront.net/origin/article/202111/805348487711971BBB6489B8A0A3B7306E5A4E0798930AF2587545B533C0DA72.jpg?q=82&s=300x300&t=crop",
     title: "오단 플라스틱 서랍장 팔아용",
-    price: 10000,
     location: "충북 청주시 흥덕구 봉명동",
-    interest: 9,
+    category: "뷰티/미용",
+    price: 200000,
+    description: `다이슨 에어랩 스타일러 컴플리트입니다.
+
+19년도 구매했습니다.
+라운드 볼륨 브러시가 사라져서 저렴하게 보내드려요!
+    
+외에 30,40mm 배럴 / 하드 스무딩 브러시 / 소프트 스무딩 브러시 / 드라이어 들어있습니다.
+    
+사진에 보이시는 그대로입니다.
+    
+무게가 꽤 나가서 직거래 환영합니다 ^-^//`,
+    view_cnt: 8,
+    interest: 18,
+    item_reg_time: 7,
   },
   {
     id: 4,
     imgSrc:
       "https://dnvefa72aowie.cloudfront.net/origin/article/202111/F27DC1068390BE4B11D1DCAA60A80C41D46C5827F9C4C9C2E8A7A7FE66EECCE5.jpg?q=82&s=300x300&t=crop",
     title: "선반 팔아요",
-    price: 3000,
     location: "대전 중구 선화동",
-    interest: 16,
+    category: "뷰티/미용",
+    price: 200000,
+    description: `다이슨 에어랩 스타일러 컴플리트입니다.
+
+19년도 구매했습니다.
+라운드 볼륨 브러시가 사라져서 저렴하게 보내드려요!
+    
+외에 30,40mm 배럴 / 하드 스무딩 브러시 / 소프트 스무딩 브러시 / 드라이어 들어있습니다.
+    
+사진에 보이시는 그대로입니다.
+    
+무게가 꽤 나가서 직거래 환영합니다 ^-^//`,
+    view_cnt: 8,
+    interest: 18,
+    item_reg_time: 7,
   },
   {
     id: 5,
     imgSrc:
       "https://dnvefa72aowie.cloudfront.net/origin/article/202111/0D42A9E42599B17B80A19A701AE5C821CB9BDE9F3144441CC4E9B6817E0B8A2D.jpg?q=82&s=300x300&t=crop",
     title: "엘지 냉장고",
-    price: 120000,
     location: "인천 부평구 산곡4동",
-    interest: 12,
+    category: "뷰티/미용",
+    price: 200000,
+    description: `다이슨 에어랩 스타일러 컴플리트입니다.
+
+19년도 구매했습니다.
+라운드 볼륨 브러시가 사라져서 저렴하게 보내드려요!
+    
+외에 30,40mm 배럴 / 하드 스무딩 브러시 / 소프트 스무딩 브러시 / 드라이어 들어있습니다.
+    
+사진에 보이시는 그대로입니다.
+    
+무게가 꽤 나가서 직거래 환영합니다 ^-^//`,
+    view_cnt: 8,
+    interest: 18,
+    item_reg_time: 7,
   },
   {
     id: 6,
     imgSrc:
       "https://dnvefa72aowie.cloudfront.net/origin/article/202111/6cd0065376a9cc301ac50b73d6b9b5a2d4130199644c6afcc87f05cb1977a4be.webp?q=82&s=300x300&t=crop",
     title: "냉장고",
-    price: 80000,
     location: "충북 충주시 용산동",
-    interest: 4,
   },
   {
     id: 7,
     imgSrc:
       "https://dnvefa72aowie.cloudfront.net/origin/article/202111/3dd86f296983905960301c171ffd5ff8c4c3e2fd31a80322431e6cefd88aa4af.webp?q=82&s=300x300&t=crop",
     title: "티비 판매해요",
-    price: 30000,
     location: "경남 창원시 마산회원구 구암동",
-    interest: 6,
+    category: "뷰티/미용",
+    price: 200000,
+    description: `다이슨 에어랩 스타일러 컴플리트입니다.
+
+19년도 구매했습니다.
+라운드 볼륨 브러시가 사라져서 저렴하게 보내드려요!
+    
+외에 30,40mm 배럴 / 하드 스무딩 브러시 / 소프트 스무딩 브러시 / 드라이어 들어있습니다.
+    
+사진에 보이시는 그대로입니다.
+    
+무게가 꽤 나가서 직거래 환영합니다 ^-^//`,
+    view_cnt: 8,
+    interest: 18,
+    item_reg_time: 7,
   },
   {
     id: 8,
     imgSrc:
       "https://dnvefa72aowie.cloudfront.net/origin/article/202111/8ED2FF937365B586E5100DAB9C3F3E4404AB2C6E84FCA4FC1739789F29D5F916.jpg?q=82&s=300x300&t=crop",
     title: "LG 통돌이 세탁기 14kg 입니다.",
-    price: 100000,
     location: "광주 북구 연제동",
-    interest: 6,
+    category: "뷰티/미용",
+    price: 200000,
+    description: `다이슨 에어랩 스타일러 컴플리트입니다.
+
+19년도 구매했습니다.
+라운드 볼륨 브러시가 사라져서 저렴하게 보내드려요!
+    
+외에 30,40mm 배럴 / 하드 스무딩 브러시 / 소프트 스무딩 브러시 / 드라이어 들어있습니다.
+    
+사진에 보이시는 그대로입니다.
+    
+무게가 꽤 나가서 직거래 환영합니다 ^-^//`,
+    view_cnt: 8,
+    interest: 18,
+    item_reg_time: 7,
   },
 ];
 
