@@ -3,18 +3,12 @@ import TradePoster from "./TradePoster";
 import Loader from "Components/Loading/Loader";
 import Message from "Components/Loading/Message";
 import styled from "styled-components";
+import { RegularGrid } from "Components/Universal/Grid";
 import { getShortCityName, getTradePostData } from "api";
 
 const Container = styled.div`
   width: 100%;
   padding: 0px 6px;
-`;
-
-const Grid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fill, ${(props) => props.gridSize});
-  grid-gap: ${(props) => props.gridGap};
-  margin-bottom: ${(props) => props.gridGap};
 `;
 
 const TradePosterList = ({ filter, gridSize = "210px", gridGap = "56px" }) => {
@@ -57,10 +51,10 @@ const TradePosterList = ({ filter, gridSize = "210px", gridGap = "56px" }) => {
   return isLoading ? (
     <Loader />
   ) : error ? (
-    <Message color="red" text={error} />
+    <Message text={error} />
   ) : (
     <Container>
-      <Grid gridSize={gridSize} gridGap={gridGap}>
+      <RegularGrid gridSize={gridSize} gridGap={gridGap}>
         {tradeBannerData.map((post) => (
           <TradePoster
             key={post.id}
@@ -73,7 +67,7 @@ const TradePosterList = ({ filter, gridSize = "210px", gridGap = "56px" }) => {
             height={gridSize}
           />
         ))}
-      </Grid>
+      </RegularGrid>
     </Container>
   );
 };

@@ -1,21 +1,32 @@
-// import img1 from "images/img1.svg";
-// import img2 from "images/img2.svg";
-// import img3 from "images/img3.svg";
-// import img4 from "images/img4.svg";
-
 import main1 from "images/main1.png";
 import main2 from "images/main2.png";
 import main3 from "images/main3.png";
 import main4 from "images/main4.png";
 import icon from "images/search_icon.svg";
 
+export const icons = {
+  facebook:
+    "https://d1unjqcospf8gs.cloudfront.net/assets/home/base/footer/icon-facebook-0563f4a93852d073b41f13b8bcabb03d47af3bb3a6755cdfedd8a73686c7f18c.svg",
+  instagram:
+    "https://d1unjqcospf8gs.cloudfront.net/assets/home/base/footer/icon-instagram-2f6c88a461597907c114b7ce28eab053fcae791ed26417915fefb6f7c9f95756.svg",
+  blog: "https://d1unjqcospf8gs.cloudfront.net/assets/home/base/footer/icon-blog-e1b0d512d1766a6962ec5bbb5b0803d2a6a9c55ad97db5ba9eebb76013caceba.svg",
+};
+
+export const contactInfo = [
+  { text: "고객문의", address: "cs@daangnservice.com" },
+  { text: "제휴문의", address: "contact@daangn.com" },
+  { text: "지역광고", address: "daangn.com" },
+  { text: "PR문의", address: "pr@daangn.com" },
+];
+
 export const getBannerData = () => [
   {
     bgColor: "#FBF7F3",
     direction: "row",
-    title: "당신 근처의 당근마켓",
-    description:
-      "중고 거래부터 동네 정보까지, 이웃과 함께해 가깝고 따뜻한 당신의 근처를 만들어요.",
+    title: `당신 근처의
+당근마켓`,
+    description: `중고 거래부터 동네 정보까지, 이웃과 함께해
+가깝고 따뜻한 당신의 근처를 만들어요.`,
     imgSrc: main1,
     btn: [],
     list: [],
@@ -23,7 +34,8 @@ export const getBannerData = () => [
   {
     bgColor: "white",
     direction: "row-reverse",
-    title: "우리 동네 중고 직거래 마켓",
+    title: `우리 동네
+중고 직거래 마켓`,
     description: "동네 주민들과 가깝고 따뜻한 거래를 지금 경험해보세요.",
     imgSrc: main2,
     btn: [
@@ -35,24 +47,28 @@ export const getBannerData = () => [
   {
     bgColor: "#E6F3E6",
     direction: "row",
-    title: "이웃과 함께 하는 동네생활",
+    title: `이웃과 함께 하는
+동네생활`,
     description: "우리 동네의 다양한 이야기를 이웃과 함께 나누어요.",
     imgSrc: main3,
     btn: [],
     list: [
       {
         title: "우리동네질문",
-        description: "궁금한 게 있을 땐 이웃에게 물어보세요.",
+        description: `궁금한 게 있을 땐
+이웃에게 물어보세요.`,
         imgSrc: icon,
       },
       {
         title: "동네분실센터",
-        description: "무언가를 잃어버렸을 때, 함께 찾을 수 있어요.",
+        description: `무언가를 잃어버렸을 때, 
+함께 찾을 수 있어요.`,
         imgSrc: icon,
       },
       {
         title: "동네모임",
-        description: "관심사가 비슷한 이웃과 온오프라인으로 만나요.",
+        description: `관심사가 비슷한 이웃과 
+온오프라인으로 만나요.`,
         imgSrc: icon,
       },
     ],
@@ -60,9 +76,10 @@ export const getBannerData = () => [
   {
     bgColor: "white",
     direction: "row-reverse",
-    title: "내 근처에서 찾는 동네가게",
-    description:
-      "우리 동네 가게를 찾고 있나요? 동네 주민이 남긴 진짜 후기를 함께 확인해보세요!",
+    title: `내 근처에서 찾는
+동네가게`,
+    description: `우리 동네 가게를 찾고 있나요? 
+동네 주민이 남긴 진짜 후기를 함께 확인해보세요!`,
     imgSrc: main4,
     btn: [{ title: "당근마켓 동네가게 찾기", url: "/neighborMarket" }],
     list: [],
@@ -234,16 +251,16 @@ export const getTradePostData = () => [
 ];
 
 export const getTopSearchData = () => [
-  [{ text: "자전거" }],
-  [{ text: "캠핑" }],
-  [{ text: "패딩" }],
-  [{ text: "의자" }],
-  [{ text: "냉장고" }],
-  [{ text: "노트북" }],
-  [{ text: "이어폰" }],
-  [{ text: "난로" }],
-  [{ text: "컴퓨터" }],
-  [{ text: "아이패드" }],
+  { text: "자전거" },
+  { text: "캠핑" },
+  { text: "패딩" },
+  { text: "의자" },
+  { text: "냉장고" },
+  { text: "노트북" },
+  { text: "이어폰" },
+  { text: "난로" },
+  { text: "컴퓨터" },
+  { text: "아이패드" },
 ];
 
 export const getFooterData = () => [

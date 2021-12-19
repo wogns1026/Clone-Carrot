@@ -3,8 +3,9 @@ import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import ContentContainer from "Components/Universal/ContentContainer";
 import HorizontalDivider from "Components/Universal/HorizontalDivider";
+import { SpaceBetweenFlexBox } from "Components/Universal/Flex";
+import { boxType, VerticalSpaceBox, Box } from "Components/Universal/Box";
 import TextContent from "Components/Universal/TextContent";
-import LinkContent from "Components/Universal/LinkContent";
 import TradePosterList from "Components/Poster/TradePosterList";
 import PosterDescription from "Components/Poster/PosterDescription";
 import ImageSwiper from "Components/Swiper/ImageSwiper";
@@ -22,12 +23,6 @@ const Conatiner = styled.section`
   width: 100%;
   margin-top: 30px;
 `;
-const Title = styled.div`
-  display: flex;
-  justify-content: space-between;
-  margin: 35px 0;
-`;
-
 const TradePostDetailBanner = () => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -61,46 +56,44 @@ const TradePostDetailBanner = () => {
         direction="column"
         width="677px"
         height="100%"
-        component={
-          <Conatiner>
-            <ImageSwiper imageList={[data.imgSrc, main1, data.imgSrc, main2]} />
-            <Profile
-              id={data.id}
-              imgUrl
-              name={"요호요호요홋"}
-              location={data.location}
-              mannerTemper={38.2}
-            />
-            <HorizontalDivider marginBottom={"38px"} />
-            <PosterDescription
-              item_id={data.id}
-              item_title={data.title}
-              category={data.category}
-              price={data.price}
-              description={data.description}
-              view_cnt={data.view_cnt}
-              item_reg_time={data.item_reg_time}
-            />
-            <HorizontalDivider />
-            {/* <TradePosterTitle>중고거래 인기중고</TradePosterTitle> */}
-            <Title>
-              <TextContent
-                text={"당근마켓 인기중고"}
-                fontSize={"18px"}
-                fontWeight={800}
-              />
-              <LinkContent
-                content={[{ text: "더 구경하기", path: "/top_trade_posts" }]}
-                color={"#FF8A3D"}
-              />
-            </Title>
-            <TradePosterList
-              gridSize={"200px"}
-              gridGap={"30px"}
-            ></TradePosterList>
-          </Conatiner>
-        }
-      />
+      >
+        <Conatiner>
+          <Box types={["fullSize"]} marginSize="10px"></Box>
+          <ImageSwiper imageList={[data.imgSrc, main1, data.imgSrc, main2]} />
+          <Profile
+            id={data.id}
+            imgUrl
+            name={"요호요호요홋"}
+            location={data.location}
+            mannerTemper={38.2}
+          />
+          <HorizontalDivider marginBottom={"38px"} />
+          <PosterDescription
+            item_id={data.id}
+            item_title={data.title}
+            category={data.category}
+            price={data.price}
+            description={data.description}
+            view_cnt={data.view_cnt}
+            item_reg_time={data.item_reg_time}
+          />
+          <HorizontalDivider />
+          <VerticalSpaceBox marginSize="35px">
+            <SpaceBetweenFlexBox>
+              <TextContent fontSize={"18px"} fontWeight={800}>
+                당근마켓 인기중고
+              </TextContent>
+              <TextContent to={"/top_trade_posts"} color={"#FF8A3D"}>
+                더 구경하기
+              </TextContent>
+            </SpaceBetweenFlexBox>
+          </VerticalSpaceBox>
+          <TradePosterList
+            gridSize={"200px"}
+            gridGap={"30px"}
+          ></TradePosterList>
+        </Conatiner>
+      </ContentContainer>
     </>
   );
 };

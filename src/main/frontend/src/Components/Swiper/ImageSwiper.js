@@ -5,7 +5,7 @@ import useMeasure from "react-use-measure";
 import { useDrag } from "react-use-gesture";
 import clamp from "lodash.clamp";
 import DotSwiperButtonList from "./DotSwiperButtonList";
-import ArrowSwiperButton from "./ArrowSwiperButton";
+import { ArrowButton } from "Components/Universal/ArrowButton";
 
 const Container = styled.section`
   position: relative;
@@ -13,10 +13,10 @@ const Container = styled.section`
   height: 500px;
 `;
 const SlideContainer = styled.section`
+  display: flex;
   position: relative;
   width: 100%;
   height: 500px;
-  display: flex;
   overflow: hidden;
   border-radius: 8px;
 `;
@@ -31,14 +31,13 @@ const PageContainer = styled(animated.div)`
 const Page = styled(animated.div)`
   height: 100%;
   touch-action: none;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
   will-change: transform;
   box-shadow: 0 62.5px 125px -25px rgba(50, 50, 73, 0.5),
     0 37.5px 75px -37.5px rgba(0, 0, 0, 0.6);
 
+  background-repeat: no-repeat;
   background-image: ${(props) => props.bgimg};
+  ${(props) => props.theme.background.center};
   scale: ${(props) => props.sacle};
 `;
 
@@ -107,8 +106,20 @@ const ImageSwiper = ({ imageList }) => {
           onClicked={swipe}
         />
       </SlideContainer>
-      <ArrowSwiperButton isNext={false} onButtonClicked={() => swipe(-1)} />
-      <ArrowSwiperButton isNext={true} onButtonClicked={() => swipe(1)} />
+      <ArrowButton
+        width="50px"
+        size="25px"
+        isLeft={true}
+        offset="-50px"
+        onClicked={() => swipe(-1)}
+      />
+      <ArrowButton
+        width="50px"
+        size="25px"
+        isLeft={false}
+        offset="-50px"
+        onClicked={() => swipe(1)}
+      />
     </Container>
   );
 };

@@ -1,31 +1,21 @@
 import styled from "styled-components";
+import LinkTo from "./LinkTo";
 
 const Text = styled.div`
-  font-size: ${(props) => props.fontSize || "15px"};
-  font-weight: ${(props) => props.fontWeight || 400};
-  color: ${(props) => props.color || "black"};
-  line-height: ${(props) => props.lineHeight || "inherit"};
-  white-space: pre;
-  text-decoration: ${(props) => props.underline || "none"};
+  font-size: ${({ fontSize }) => fontSize};
+  font-weight: ${({ fontWeight }) => fontWeight};
+  color: ${({ color }) => color};
+  line-height: ${({ lineHeight }) => lineHeight};
+  white-space: ${({ whiteSpace }) => whiteSpace || "pre"};
+  text-decoration: ${({ underline }) => underline};
 `;
-const TextContent = ({
-  text,
-  fontSize,
-  fontWeight,
-  color,
-  lineHeight,
-  underline,
-}) => {
-  return (
-    <Text
-      fontSize={fontSize}
-      fontWeight={fontWeight}
-      color={color}
-      lineHeight={lineHeight}
-      underline={underline}
-    >
-      {text}
-    </Text>
+const TextContent = ({ to, children, ...rest }) => {
+  return to ? (
+    <LinkTo to={to}>
+      <Text {...rest}>{children}</Text>
+    </LinkTo>
+  ) : (
+    <Text {...rest}>{children}</Text>
   );
 };
 export default TextContent;

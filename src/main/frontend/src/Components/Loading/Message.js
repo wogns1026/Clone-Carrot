@@ -7,7 +7,7 @@ const Container = styled.div`
   justify-content: center;
 `;
 const Text = styled.span`
-  color: ${(props) => props.color};
+  color: ${(props) => props.color || props.theme.colors.red};
 `;
 
 const Message = ({ text, color }) => (

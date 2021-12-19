@@ -3,7 +3,7 @@ import styled from "styled-components";
 import ContentContainer from "Components/Universal/ContentContainer";
 import LocationFilter from "Components/Filter/LocationFilter";
 import TradePosterList from "Components/Poster/TradePosterList";
-import { getShortCityName, getTradePostData } from "api";
+import { getShortCityName } from "api";
 import { useAxios } from "Hooks/useAxios";
 
 const TradePosterTitle = styled.span`
@@ -40,20 +40,17 @@ const TradeFilterBanner = () => {
       direction="column"
       width="980px"
       height="100%"
-      component={
-        <>
-          <TradePosterTitle>중고거래 인기매물</TradePosterTitle>
-          <LocationFilter updateRequest={setFilter} />
-          <TradePosterList
-            posterList={data}
-            loading={loading}
-            error={error}
-            gridSize={"201px"}
-            gridGap={"57px"}
-          ></TradePosterList>
-        </>
-      }
-    ></ContentContainer>
+    >
+      <TradePosterTitle>중고거래 인기매물</TradePosterTitle>
+      <LocationFilter updateRequest={setFilter} />
+      <TradePosterList
+        posterList={data}
+        loading={loading}
+        error={error}
+        gridSize={"201px"}
+        gridGap={"50px"}
+      ></TradePosterList>
+    </ContentContainer>
   );
 };
 
