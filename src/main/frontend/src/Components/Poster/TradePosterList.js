@@ -2,14 +2,9 @@ import React, { useEffect, useState } from "react";
 import TradePoster from "./TradePoster";
 import Loader from "Components/Loading/Loader";
 import Message from "Components/Loading/Message";
-import styled from "styled-components";
 import { RegularGrid } from "Components/Universal/Grid";
+import { Box } from "Components/Universal";
 import { getShortCityName, getTradePostData } from "api";
-
-const Container = styled.div`
-  width: 100%;
-  padding: 0px 6px;
-`;
 
 const TradePosterList = ({ filter, gridSize = "210px", gridGap = "56px" }) => {
   const [tradeBannerData, setTradeBannerData] = useState([]);
@@ -53,7 +48,7 @@ const TradePosterList = ({ filter, gridSize = "210px", gridGap = "56px" }) => {
   ) : error ? (
     <Message text={error} />
   ) : (
-    <Container>
+    <Box width="100%" horizontalMargin="6px">
       <RegularGrid gridSize={gridSize} gridGap={gridGap}>
         {tradeBannerData.map((post) => (
           <TradePoster
@@ -68,7 +63,7 @@ const TradePosterList = ({ filter, gridSize = "210px", gridGap = "56px" }) => {
           />
         ))}
       </RegularGrid>
-    </Container>
+    </Box>
   );
 };
 export default TradePosterList;

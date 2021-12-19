@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import { CenterFlexBox } from "Components/Universal/Flex";
 import { DotButton } from "Components/Universal/Button";
+import { FlexBox } from "Components/Universal";
 
 const DotContainer = styled.div`
   position: absolute;
@@ -15,7 +15,7 @@ const DotSwiperButtonList = ({ curIndex, listSize, onClicked }) => {
   const range = [...Array(listSize)].map((v, i) => i);
   return (
     <DotContainer>
-      <CenterFlexBox gap="7px">
+      <FlexBox center gap="7px">
         {range?.map((d, index) => (
           <DotButton
             key={index}
@@ -27,7 +27,7 @@ const DotSwiperButtonList = ({ curIndex, listSize, onClicked }) => {
             }
           />
         ))}
-      </CenterFlexBox>
+      </FlexBox>
     </DotContainer>
   );
 };

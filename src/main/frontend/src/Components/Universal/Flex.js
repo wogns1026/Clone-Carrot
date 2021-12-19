@@ -1,4 +1,7 @@
+import theme from "Style/theme";
 import styled from "styled-components";
+
+const STYLE = theme.flex;
 
 const Flex = styled.div`
   display: flex;
@@ -8,34 +11,26 @@ const Flex = styled.div`
   gap: ${(props) => props.gap};
 
   ${(props) => props.theme.box.fullSize};
+
+  ${(props) => {
+    const styles = [];
+    Object.keys(props).forEach((key) => {
+      if (STYLE[key]) {
+        if (typeof STYLE[key] === "function") {
+          styles.push(STYLE[key](props[key]));
+        } else {
+          styles.push(`${STYLE[key]}`);
+        }
+      }
+    });
+    return styles.join();
+  }}
 `;
-export const CenterFlexBox = ({ gap, children }) => {
+export const FlexBox = ({ dir, gap, children, ...rest }) => {
   return (
-    <Flex dir="row" gap={gap} justify="center" align="center">
+    <Flex dir={dir} gap={gap} {...rest}>
       {children}
     </Flex>
   );
 };
-export const CenterColumnFlexBox = ({ gap, children }) => {
-  return (
-    <Flex dir="column" gap={gap} justify="center" align="center">
-      {children}
-    </Flex>
-  );
-};
-
-export const SpaceBetweenFlexBox = ({ dir, gap, children }) => {
-  return (
-    <Flex dir={dir} gap={gap} justify="space-between">
-      {children}
-    </Flex>
-  );
-};
-
-export const FlexBox = ({ dir, gap, children }) => {
-  return (
-    <Flex dir={dir} gap={gap}>
-      {children}
-    </Flex>
-  );
-};
+export default FlexBox;

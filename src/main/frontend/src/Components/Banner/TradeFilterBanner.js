@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-import ContentContainer from "Components/Universal/ContentContainer";
 import LocationFilter from "Components/Filter/LocationFilter";
 import TradePosterList from "Components/Poster/TradePosterList";
 import { getShortCityName } from "api";
 import { useAxios } from "Hooks/useAxios";
+import { ContentContainer } from "Components/Universal";
 
 const TradePosterTitle = styled.span`
   font-size: 31.5px;

@@ -19,3 +19,5 @@ export const Input = ({ onKeyPress, onChange, placeholder }) => {
     />
   );
 };
+
+export default Input;

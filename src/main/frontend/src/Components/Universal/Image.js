@@ -1,11 +1,27 @@
 import React from "react";
 import styled from "styled-components";
+import theme from "Style/theme";
 import { useLazyImageObserver } from "Hooks/useLazyImageObserver";
+
+const STYLE = theme.background;
 
 const BackgroundImg = styled.img`
   width: ${(props) => props.width || "100%"};
   height: ${(props) => props.height || "100%"};
-  ${(props) => props.theme.background.center};
+
+  ${(props) => {
+    const styles = [];
+    Object.keys(props).forEach((key) => {
+      if (STYLE[key]) {
+        if (typeof STYLE[key] === "function") {
+          styles.push(STYLE[key](props[key]));
+        } else {
+          styles.push(`${STYLE[key]}`);
+        }
+      }
+    });
+    return styles.join();
+  }}
 `;
 export const Icon = styled.img`
   width: ${(props) => props.size || "50px"};
@@ -14,12 +30,14 @@ export const Icon = styled.img`
   transform: ${(props) => props.reverse && "scaleX(-1)"};
 `;
 
-export const LazyIcon = React.memo(({ src, ...rest }) => {
+export const LazyIcon = React.memo(({ src, alt = "icon", ...rest }) => {
   const { imgSrc, imgRef } = useLazyImageObserver({ src });
-  return <Icon ref={imgRef} src={imgSrc} isCircle={false} {...rest} />;
+  return (
+    <Icon ref={imgRef} src={imgSrc} alt={alt} isCircle={false} {...rest} />
+  );
 });
 
-export const LazyCircleIcon = React.memo(({ src, size, alt = "image" }) => {
+export const LazyCircleIcon = React.memo(({ src, size, alt = "icon" }) => {
   const { imgSrc, imgRef } = useLazyImageObserver({ src });
   return (
     <Icon ref={imgRef} src={imgSrc} size={size} alt={alt} isCircle={true} />

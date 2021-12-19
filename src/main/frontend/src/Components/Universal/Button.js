@@ -1,7 +1,9 @@
 import styled, { css } from "styled-components";
 import LinkTo from "./LinkTo";
 import { LazyIcon, LazyImage } from "Components/Universal/Image";
+import theme from "Style/theme";
 
+const STYLE = theme.button;
 const StyledButton = styled.button`
   cursor: pointer;
   width: ${(props) => props.width};
@@ -24,12 +26,19 @@ const StyledButton = styled.button`
       }
     `;
   }}
+
   ${(props) => {
-    if (props.attach) {
-      return css`
-        ${props.theme.box.absolute}
-      `;
-    }
+    const styles = [];
+    Object.keys(props).forEach((key) => {
+      if (STYLE[key]) {
+        if (typeof STYLE[key] === "function") {
+          styles.push(STYLE[key](props[key]));
+        } else {
+          styles.push(`${STYLE[key]}`);
+        }
+      }
+    });
+    return styles.join();
   }}
 `;
 

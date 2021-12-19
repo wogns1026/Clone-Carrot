@@ -1,9 +1,8 @@
 import styled from "styled-components";
 import TextContent from "./TextContent";
-import { SpaceBetweenFlexBox } from "Components/Universal/Flex";
 import { Button } from "Components/Universal/Button";
-import { FullSizeBox } from "Components/Universal/Box";
 import { LazyCircleIcon } from "Components/Universal/Image";
+import { FlexBox, Box } from "Components/Universal";
 
 const Body = styled.div`
   display: flex;
@@ -29,7 +28,7 @@ const Content = ({ title, description, btn, list }) => {
       <TextContent fontSize="16px" lineHeight="25px">
         {description}
       </TextContent>
-      <SpaceBetweenFlexBox>
+      <FlexBox spaceBetween>
         {btn &&
           btn.map(({ title, url }, index) => (
             <Button
@@ -43,25 +42,25 @@ const Content = ({ title, description, btn, list }) => {
               </TextContent>
             </Button>
           ))}
-      </SpaceBetweenFlexBox>
-      <SpaceBetweenFlexBox>
+      </FlexBox>
+      <FlexBox spaceBetween>
         {list &&
           list.map(({ title, description, imgSrc }, index) => (
-            <FullSizeBox key={index}>
+            <Box key={index}>
               <ItemImage>
                 <LazyCircleIcon src={imgSrc} />
               </ItemImage>
               <Title>
-                <TextContent fontSize={"14px"} fontWeight={700}>
+                <TextContent fontSize="14px" fontWeight={700}>
                   {title}
                 </TextContent>
               </Title>
-              <TextContent fontSize={"13px"} lineHeight={"20px"}>
+              <TextContent fontSize="13px" lineHeight="20px">
                 {description}
               </TextContent>
-            </FullSizeBox>
+            </Box>
           ))}
-      </SpaceBetweenFlexBox>
+      </FlexBox>
     </Body>
   );
 };

@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import ContentContainer from "Components/Universal/ContentContainer";
 import Loader from "Components/Loading/Loader";
 import Message from "Components/Loading/Message";
 import { getTopSearchData } from "api";
-import TextContent from "Components/Universal/TextContent";
+import { TextContent, ContentContainer } from "Components/Universal";
 
 const Title = styled.div`
   width: 100%;

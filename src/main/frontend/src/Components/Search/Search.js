@@ -1,11 +1,10 @@
 import styled from "styled-components";
 import search_icon from "images/search_icon.svg";
 import { useNavigate } from "react-router-dom";
-import { CenterFlexBox } from "Components/Universal/Flex";
 import { LazyIcon } from "Components/Universal/Image";
 import { Button } from "Components/Universal/Button";
-import { Input } from "Components/Universal/Input";
 import { useState } from "react";
+import { Input, FlexBox } from "Components/Universal";
 
 const SearchContainer = styled.section`
   width: 393px;
@@ -35,7 +34,7 @@ const Search = () => {
   };
   return (
     <SearchContainer>
-      <CenterFlexBox>
+      <FlexBox center>
         <Input
           placeholder="동네 이름, 물품명 등을 검색해보세요!"
           onKeyPress={onKeyPress}
@@ -44,7 +43,7 @@ const Search = () => {
         <Button color="transparent" onClick={() => LetSearch()}>
           <LazyIcon src={search_icon} size="19px" />
         </Button>
-      </CenterFlexBox>
+      </FlexBox>
     </SearchContainer>
   );
 };

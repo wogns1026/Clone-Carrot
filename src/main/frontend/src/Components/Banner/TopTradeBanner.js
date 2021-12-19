@@ -1,8 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import TradePosterList from "Components/Poster/TradePosterList";
-import ContentContainer from "Components/Universal/ContentContainer";
-import TextContent from "Components/Universal/TextContent";
+import { TextContent, ContentContainer } from "Components/Universal";
 
 const Title = styled.span`
   margin: 129px 0px 87px 0px;
@@ -15,7 +14,7 @@ const TopTradeBanner = () => {
   return (
     <ContentContainer bgColor="#f8f9fa" direction="column" height="100%">
       <Title>
-        <TextContent fontSize={"40px"} fontWeight={600}>
+        <TextContent fontSize="40px" fontWeight={600}>
           중고거래 인기매물
         </TextContent>
       </Title>

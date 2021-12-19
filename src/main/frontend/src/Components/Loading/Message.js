@@ -1,10 +1,9 @@
 import React from "react";
 import styled from "styled-components";
+import { FlexBox } from "Components/Universal/Flex";
 
 const Container = styled.div`
   width: 100vw;
-  display: flex;
-  justify-content: center;
 `;
 const Text = styled.span`
   color: ${(props) => props.color || props.theme.colors.red};
@@ -12,7 +11,9 @@ const Text = styled.span`
 
 const Message = ({ text, color }) => (
   <Container>
-    <Text color={color}>{text}</Text>
+    <FlexBox flexJustify="center">
+      <Text color={color}>{text}</Text>
+    </FlexBox>
   </Container>
 );
 export default Message;

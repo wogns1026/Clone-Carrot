@@ -14,10 +14,11 @@ export const ArrowButton = ({ width, size, isLeft, offset, onClicked }) => {
       size={size}
       width={width}
       height="100%"
-      attach={true}
+      absolute
       left={left}
       right={right}
       onClick={onClicked}
     ></IconButton>
   );
 };
+export default ArrowButton;
