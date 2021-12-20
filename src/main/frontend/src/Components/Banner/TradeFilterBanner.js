@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-import ContentContainer from "Components/Universal/ContentContainer";
 import LocationFilter from "Components/Filter/LocationFilter";
 import TradePosterList from "Components/Poster/TradePosterList";
-import { getShortCityName, getTradePostData } from "api";
+import { getShortCityName } from "api";
 import { useAxios } from "Hooks/useAxios";
+import { ContentContainer } from "Components/Universal";
 
 const TradePosterTitle = styled.span`
   font-size: 31.5px;
@@ -18,7 +18,7 @@ const TradeFilterBanner = () => {
     url: "http://localhost:8080/api/v1/hot-articles",
   });
 
-  const getFilteredData = () => {
+  const getFilterData = () => {
     let filteredData = data;
     const shortCityName = getShortCityName();
 
@@ -34,48 +34,23 @@ const TradeFilterBanner = () => {
     }
     return filteredData;
   };
-
-  // 제거 예정 (start)
-  useEffect(() => {
-    // getTradeData();
-  }, []);
-
-  async function getTradeData(city = "", gu = "") {
-    let data = await getTradePostData();
-    if (!data) {
-      return;
-    }
-    if (city) {
-      const shortCityName = getShortCityName();
-      if (shortCityName[city]) {
-        city = shortCityName[city];
-        data = data.filter((d) => d.location.includes(city));
-        data = gu ? data.filter((d) => d.location.includes(gu)) : data;
-      }
-    }
-  }
-  // 제거 예정 (end)
-
   return (
     <ContentContainer
       bgColor="white"
       direction="column"
       width="980px"
       height="100%"
-      component={
-        <>
-          <TradePosterTitle>중고거래 인기매물</TradePosterTitle>
-          <LocationFilter updateRequest={setFilter} />
-          <TradePosterList
-            posterList={data}
-            loading={loading}
-            error={error}
-            gridSize={"201px"}
-            gridGap={"57px"}
-          ></TradePosterList>
-        </>
-      }
-    ></ContentContainer>
+    >
+      <TradePosterTitle>중고거래 인기매물</TradePosterTitle>
+      <LocationFilter updateRequest={setFilter} />
+      <TradePosterList
+        posterList={data}
+        loading={loading}
+        error={error}
+        gridSize={"201px"}
+        gridGap={"50px"}
+      ></TradePosterList>
+    </ContentContainer>
   );
 };
 

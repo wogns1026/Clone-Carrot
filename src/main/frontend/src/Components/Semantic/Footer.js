@@ -2,70 +2,37 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import logo from "images/logo.svg";
 import { getFooterData } from "api";
-import ContentContainer from "../Universal/ContentContainer";
-import LinkContentList from "Components/Universal/LinkContentList";
 import Loader from "Components/Loading/Loader";
+import Message from "Components/Loading/Message";
+import { LazyIcon } from "Components/Universal/Image";
+import { RegularGrid, ColumnAssignGrid } from "Components/Universal/Grid";
 
-const Container = styled.footer`
-  width: 100%;
-  height: 100%;
-  padding: 80px 0;
-`;
-const Nav = styled.div`
-  width: 100%;
-  display: flex;
-  align-items: flex-start;
-  color: white;
-  font-size: 16px;
-  font-weight: 700;
-`;
-const Image = styled.img`
-  background-size: cover;
-  background-position: center center;
-  margin-right: 95px;
-  max-height: 45px;
-`;
+import {
+  FlexBox,
+  Box,
+  TextContent,
+  HorizontalDivider,
+  ContentContainer,
+} from "Components/Universal";
+
+import { icons, contactInfo } from "api";
+import theme from "Style/theme";
+
 const Link = styled.div`
   width: 100%;
+  margin-left: 85px;
   margin-top: 20px;
 `;
-
-const HorizontalLine = styled.hr`
-  width: 100%;
-  opacity: 0.1;
-
-  margin-top: 60px;
-  margin-bottom: 35px;
-`;
-
 const Info = styled.div`
-  width: 100%;
   display: flex;
   flex-direction: column;
-  color: rgba(255, 255, 255, 0.3);
   font-size: 14px;
-  gap: 10px;
-`;
-const Title = styled.span`
-  color: rgba(255, 255, 255, 0.5);
-`;
-const IconContainer = styled.div`
-  display: flex;
-  gap: 25px;
-  margin: 25px 0;
-`;
-const Icon = styled.img`
-  background-size: cover;
-  background-position: center center;
-  max-height: 25px;
-`;
-const Address = styled.span`
-  margin-top: 10px;
+  color: ${(props) => props.theme.colors.darkGrey};
 `;
 const Footer = () => {
   const [footerData, setfooterData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [isError, setIsError] = useState(false);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const getData = async () => {
@@ -74,64 +41,79 @@ const Footer = () => {
         setfooterData(data);
         setIsLoading(false);
       } catch (e) {
-        setIsError(true);
+        setError(e);
       }
     };
     getData();
   }, []);
-
   return isLoading ? (
     <Loader />
+  ) : error ? (
+    <Message text={error} />
   ) : (
     <ContentContainer
-      bgColor="#495057"
+      bgColor={`${theme.colors.deepDarkgrey}`}
       direction="column"
-      height="550px"
-      component={
-        <Container>
-          <Nav>
-            <Image src={logo} alt="메인로고" />
-            <Link>
-              <LinkContentList content={footerData} />
-            </Link>
-          </Nav>
-          <HorizontalLine />
-          <Info>
-            <div>
-              <Title>{`고객문의`}</Title>
-              <span>{`cs@daangnservice.com`}</span>
-              <Title>{`제휴문의`}</Title>
-              <span>{`contact@daangn.com`}</span>
-            </div>
+      height="100%"
+    >
+      <Box width="100%" verticalMargin="85px">
+        <FlexBox>
+          <Box width="170px" height="100%">
+            <LazyIcon src={logo} size="100%" />
+          </Box>
 
-            <div>
-              <Title>{`지역광고`}</Title>
-              <span>{`ad@daangn.com`}</span>
-              <Title>{`PR문의`}</Title>
-              <span>{`pr@daangn.com`}</span>
-            </div>
+          <Link>
+            <RegularGrid gridSize="150px" gridGap="50px">
+              {footerData.map((data, index) => (
+                <FlexBox key={index} dir="column" gap="20px">
+                  {data.map(({ text }) => (
+                    <TextContent to="/" fontWeight={600} color="white">
+                      {text}
+                    </TextContent>
+                  ))}
+                </FlexBox>
+              ))}
+            </RegularGrid>
+          </Link>
+        </FlexBox>
 
-            <Address>{`서울특별시 구로구 디지털로30길 28, 609호 (당근서비스) 사업자 등록번호 : 375-87-00088 직업정보제공사업 신고번호 : J1200020200016`}</Address>
-            <IconContainer>
-              <Icon
-                src="https://d1unjqcospf8gs.cloudfront.net/assets/home/base/footer/icon-facebook-0563f4a93852d073b41f13b8bcabb03d47af3bb3a6755cdfedd8a73686c7f18c.svg"
-                alt="facebook"
-              />
-              <Icon
-                src="https://d1unjqcospf8gs.cloudfront.net/assets/home/base/footer/icon-instagram-2f6c88a461597907c114b7ce28eab053fcae791ed26417915fefb6f7c9f95756.svg"
-                alt="instagram"
-              />
-              <Icon
-                src="https://d1unjqcospf8gs.cloudfront.net/assets/home/base/footer/icon-blog-e1b0d512d1766a6962ec5bbb5b0803d2a6a9c55ad97db5ba9eebb76013caceba.svg"
-                alt="blog"
-              />
-              <Title>한국</Title>
-            </IconContainer>
-            <span>{`©Danggeun Market Inc.`}</span>
-          </Info>
-        </Container>
-      }
-    ></ContentContainer>
+        <HorizontalDivider marginTop="10px" marginBottom="35px" />
+
+        <Info>
+          <Box width="450px">
+            <ColumnAssignGrid colSize={2}>
+              {contactInfo.map(({ text, address }, index) => (
+                <FlexBox key={index}>
+                  <TextContent color={theme.colors.grey}>{text}</TextContent>
+                  <span>{address}</span>
+                </FlexBox>
+              ))}
+            </ColumnAssignGrid>
+          </Box>
+
+          <Box verticalMargin="20px">
+            <TextContent whiteSpace="wrap">
+              서울특별시 구로구 디지털로30길 28, 609호 (당근서비스) 사업자
+              등록번호 : 375-87-00088 직업정보제공사업 신고번호 : J1200020200016
+            </TextContent>
+          </Box>
+
+          <Box verticalMargin="15px">
+            <RegularGrid gridSize="25px" gridGap="25px">
+              {[icons.facebook, icons.instagram, icons.blog].map(
+                (icon, index) => (
+                  <LazyIcon key={index} src={icon} size="25px" alt="icon" />
+                )
+              )}
+              <TextContent color={theme.colors.grey} underline="underline">
+                한국
+              </TextContent>
+            </RegularGrid>
+          </Box>
+          <TextContent>©Danggeun Market Inc.</TextContent>
+        </Info>
+      </Box>
+    </ContentContainer>
   );
 };
 export default Footer;

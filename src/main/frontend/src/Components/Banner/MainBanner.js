@@ -2,11 +2,10 @@ import React, { useEffect, useState } from "react";
 import Loader from "Components/Loading/Loader";
 import Message from "Components/Loading/Message";
 import { getBannerData } from "api";
-import ContentContainer from "Components/Universal/ContentContainer";
-import Content from "Components/Universal/Content";
-import ImageContent from "Components/Universal/ImageContent";
+import { LazyBackgroundImage } from "Components/Universal/Image";
+import { Box, Content, ContentContainer } from "Components/Universal";
 
-const Banner = () => {
+const MainBanner = () => {
   const [bannerData, setBannerData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(false);
@@ -27,7 +26,7 @@ const Banner = () => {
   return isLoading ? (
     <Loader />
   ) : error ? (
-    <Message color="red" text={error} />
+    <Message text={error} />
   ) : (
     bannerData.map(
       (
@@ -38,20 +37,20 @@ const Banner = () => {
           key={index}
           bgColor={bgColor}
           direction={direction}
-          component={
-            <>
-              <Content
-                title={title}
-                description={description}
-                btn={btn}
-                list={list}
-              />
-              <ImageContent imgSrc={imgSrc} />
-            </>
-          }
-        ></ContentContainer>
+          gap="50px"
+        >
+          <Content
+            title={title}
+            description={description}
+            btn={btn}
+            list={list}
+          />
+          <Box width="100%" height="600px">
+            <LazyBackgroundImage center src={imgSrc} />
+          </Box>
+        </ContentContainer>
       )
     )
   );
 };
-export default Banner;
+export default MainBanner;

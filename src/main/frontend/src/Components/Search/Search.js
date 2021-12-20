@@ -1,57 +1,49 @@
 import styled from "styled-components";
 import search_icon from "images/search_icon.svg";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { LazyIcon } from "Components/Universal/Image";
+import { Button } from "Components/Universal/Button";
+import { useState } from "react";
+import { Input, FlexBox } from "Components/Universal";
 
 const SearchContainer = styled.section`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
   width: 393px;
   height: 40px;
   margin-left: 32px;
   padding: 0 16px;
 
   border-radius: 5px;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  border: 1px solid ${(props) => props.theme.colors.lightDark};
 
   &:focus-within {
-    outline: 1px solid rgba(0, 0, 0, 5);
+    outline: 1px solid ${(props) => props.theme.colors.Dark};
   }
-`;
-const TextInput = styled.input`
-  padding: 8px 15px 0px 0px;
-  font-size: 16px;
-  width: 100%;
-  border: none;
-  outline: none;
-  &::placeholder {
-    color: rgba(0, 0, 0, 0.5);
-  }
-`;
-const SearchLink = styled(Link)`
-  display: flex;
-  align-items: center;
-`;
-const Icon = styled.img`
-  width: 19px;
-  height: 19px;
 `;
 const Search = () => {
   const navigate = useNavigate();
+  const [text, setText] = useState("");
   const onKeyPress = (e) => {
-    if (e.key === "Enter") navigate("/search");
+    if (e.key === "Enter") LetSearch();
     //alert("검색");
+  };
+  const onChange = (e) => {
+    setText(e.target.value);
+  };
+  const LetSearch = () => {
+    navigate(`/search/${text}`);
   };
   return (
     <SearchContainer>
-      <TextInput
-        placeholder="동네 이름, 물품명 등을 검색해보세요!"
-        onKeyPress={onKeyPress}
-      />
-      <SearchLink to="/">
-        <Icon src={search_icon} alt="검색" />
-      </SearchLink>
+      <FlexBox center>
+        <Input
+          placeholder="동네 이름, 물품명 등을 검색해보세요!"
+          onKeyPress={onKeyPress}
+          onChange={onChange}
+        />
+        <Button color="transparent" onClick={() => LetSearch()}>
+          <LazyIcon src={search_icon} size="19px" />
+        </Button>
+      </FlexBox>
     </SearchContainer>
   );
 };

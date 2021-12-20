@@ -10,12 +10,11 @@ const Container = styled.article`
 `;
 
 const Image = styled.div`
+  ${(props) => props.theme.background.center};
   background-image: url(${(props) => props.bgUrl});
   height: 100%;
   border-radius: 10px;
   border: 1px solid rgba(0, 0, 0, 0.1);
-  background-size: cover;
-  background-position: center center;
   transition: opacity 0.1s linear;
 `;
 
