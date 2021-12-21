@@ -1,88 +1,67 @@
 import styled from "styled-components";
+import TextContent from "./TextContent";
+import { Button } from "Components/Universal/Button";
+import { LazyCircleIcon } from "Components/Universal/Image";
+import { FlexBox, Box } from "Components/Universal";
 
 const Body = styled.div`
-  width: 490px;
   display: flex;
   justify-content: center;
   flex-direction: column;
   gap: 30px;
 `;
-const Title = styled.div`
-  font-size: 40px;
-  font-weight: 600;
-  line-height: 70px;
-`;
-const Description = styled.div`
-  line-height: 25px;
-`;
-
-const ButtonContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-`;
-
-const Button = styled.button`
-  font-size: 18px;
-  font-weight: 700;
-  height: 55px;
-  padding: 0 25px;
-  border: none;
-  border-radius: 5px;
-  &:hover {
-    opacity: 0.5;
-  }
-`;
-const ListContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-`;
-const ListItem = styled.div`
-  font-size: 13px;
-  width: 150px;
-`;
-const ItemImage = styled.img`
+const ItemImage = styled.div`
   width: 50px;
   height: 50px;
   border-radius: 50%;
   background-color: #c2e8c2;
 `;
-const ItemTitle = styled.div`
-  font-size: 14px;
+const Title = styled.div`
   margin: 15px 0;
-  width: 100px;
-  font-weight: 700;
-`;
-const ItemDescription = styled.div`
-  line-height: 20px;
 `;
 const Content = ({ title, description, btn, list }) => {
-  return title ? (
+  return (
     <Body>
-      <Title>{title}</Title>
-      <Description>{description}</Description>
-      <ButtonContainer>
-        {btn
-          ? btn.map(({ title, url }, index) => (
-              <Button key={index} onClick={() => console.log(url)}>
+      <TextContent fontSize="40px" fontWeight={600} lineHeight="70px">
+        {title}
+      </TextContent>
+      <TextContent fontSize="16px" lineHeight="25px">
+        {description}
+      </TextContent>
+      <FlexBox spaceBetween>
+        {btn &&
+          btn.map(({ title, url }, index) => (
+            <Button
+              key={index}
+              width="200px"
+              height="55px"
+              onClick={() => console.log(url)}
+            >
+              <TextContent fontSize="18px" fontWeight="700">
                 {title}
-              </Button>
-            ))
-          : ""}
-      </ButtonContainer>
-      <ListContainer>
-        {list
-          ? list.map(({ title, description, imgSrc }, index) => (
-              <ListItem key={index}>
-                <ItemImage src={imgSrc} alt="이미지" />
-                <ItemTitle>{title}</ItemTitle>
-                <ItemDescription>{description}</ItemDescription>
-              </ListItem>
-            ))
-          : ""}
-      </ListContainer>
+              </TextContent>
+            </Button>
+          ))}
+      </FlexBox>
+      <FlexBox spaceBetween>
+        {list &&
+          list.map(({ title, description, imgSrc }, index) => (
+            <Box key={index}>
+              <ItemImage>
+                <LazyCircleIcon src={imgSrc} />
+              </ItemImage>
+              <Title>
+                <TextContent fontSize="14px" fontWeight={700}>
+                  {title}
+                </TextContent>
+              </Title>
+              <TextContent fontSize="13px" lineHeight="20px">
+                {description}
+              </TextContent>
+            </Box>
+          ))}
+      </FlexBox>
     </Body>
-  ) : (
-    ""
   );
 };
 export default Content;

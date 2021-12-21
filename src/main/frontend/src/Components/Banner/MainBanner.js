@@ -1,16 +1,9 @@
 import React, { useEffect, useState } from "react";
-import styled from "styled-components";
 import Loader from "Components/Loading/Loader";
 import Message from "Components/Loading/Message";
 import { getBannerData } from "api";
-import ContentContainer from "Components/Universal/ContentContainer";
-import Content from "Components/Universal/Content";
-
-const Image = styled.img`
-  background-size: cover;
-  background-position: center center;
-  max-width: 512px;
-`;
+import { LazyBackgroundImage } from "Components/Universal/Image";
+import { Box, Content, ContentContainer } from "Components/Universal";
 
 const MainBanner = () => {
   const [bannerData, setBannerData] = useState([]);
@@ -33,7 +26,7 @@ const MainBanner = () => {
   return isLoading ? (
     <Loader />
   ) : error ? (
-    <Message color="red" text={error} />
+    <Message text={error} />
   ) : (
     bannerData.map(
       (
@@ -44,18 +37,18 @@ const MainBanner = () => {
           key={index}
           bgColor={bgColor}
           direction={direction}
-          component={
-            <>
-              <Content
-                title={title}
-                description={description}
-                btn={btn}
-                list={list}
-              />
-              <Image src={imgSrc} alt="이미지" />
-            </>
-          }
-        ></ContentContainer>
+          gap="50px"
+        >
+          <Content
+            title={title}
+            description={description}
+            btn={btn}
+            list={list}
+          />
+          <Box width="100%" height="600px">
+            <LazyBackgroundImage center src={imgSrc} />
+          </Box>
+        </ContentContainer>
       )
     )
   );

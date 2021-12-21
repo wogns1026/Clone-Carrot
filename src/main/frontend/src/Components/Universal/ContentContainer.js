@@ -1,9 +1,10 @@
 import styled from "styled-components";
 
 const Background = styled.section`
-  background-color: ${(props) => props.bgColor};
+  background-color: ${(props) => props.bgColor || "white"};
   width: 100%;
-  height: ${(props) => props.height};
+  height: ${(props) => props.height || "780px"};
+  min-height: ${(props) => props.minHeight};
 
   display: flex;
   justify-content: center;
@@ -11,7 +12,7 @@ const Background = styled.section`
 `;
 
 const Container = styled.div`
-  width: ${(props) => props.width};
+  width: ${(props) => props.width || "1024px"};
   height: 100%;
   display: flex;
   flex-direction: ${(props) => props.direction};
@@ -20,23 +21,24 @@ const Container = styled.div`
       ? "space-between"
       : "center"};
   align-items: center;
+  gap: ${(props) => props.gap};
 `;
 
 const ContentContainer = ({
-  bgColor = "white",
-  direction = "row",
-  width = "1024px",
-  height = "760px",
-  component,
+  bgColor,
+  direction,
+  width,
+  height,
+  minHeight,
+  gap,
+  children,
 }) => {
-  return component ? (
-    <Background bgColor={bgColor} height={height}>
-      <Container width={width} direction={direction}>
-        {component}
+  return (
+    <Background bgColor={bgColor} height={height} minHeight={minHeight}>
+      <Container width={width} direction={direction} gap={gap}>
+        {children}
       </Container>
     </Background>
-  ) : (
-    ""
   );
 };
 export default ContentContainer;

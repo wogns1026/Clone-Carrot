@@ -38,8 +38,6 @@
 
 - [x] ContentContainer (section, 외부100%/내부1024px, 160px) : 원하는 방향 n개 HTML element 배치
 - [x] Content (div, 490px, auto) : col방향 n개의 HTML element(text,button,list) 종합 컨텐츠
-- [x] LinkContentList (div,100%, auto) : row 방향 n개 <span style="color:green">LinkContent</span> 배치
-- [x] LinkContent (div, auto, auto) : col 방향 n개 Link 배치
 - [x] DropdownMenuContainer (section, 100%, 45px) : row방향 <span style="color:green">DropDownMenu</span> 를 담는 컨테이너
 - [x] DropdownMenu (input, 180px, 45px) : 드랍다운 메뉴
 - [x] ProgressBar (hr, auto, auto) : 진행도를 표시해주는 가로바

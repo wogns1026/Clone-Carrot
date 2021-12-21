@@ -1,31 +1,38 @@
 import styled from "styled-components";
+import LinkTo from "./LinkTo";
+import theme from "Style/theme";
 
-const Text = styled.div`
-  font-size: ${(props) => props.fontSize || "15px"};
-  font-weight: ${(props) => props.fontWeight || 400};
-  color: ${(props) => props.color || "black"};
-  line-height: ${(props) => props.lineHeight || "inherit"};
-  white-space: pre;
-  text-decoration: ${(props) => props.underline || "none"};
+const STYLE = theme.text;
+
+const Text = styled.span`
+  font-size: ${(props) => props.fontSize};
+  font-weight: ${(props) => props.fontWeight};
+  color: ${(props) => props.color};
+  line-height: ${(props) => props.lineHeight};
+  white-space: ${(props) => props.whiteSpace || "pre"};
+  text-decoration: ${(props) => props.underline};
+
+  ${(props) => {
+    const styles = [];
+    Object.keys(props).forEach((key) => {
+      if (STYLE[key]) {
+        if (typeof STYLE[key] === "function") {
+          styles.push(STYLE[key](props[key]));
+        } else {
+          styles.push(`${STYLE[key]}`);
+        }
+      }
+    });
+    return styles.join();
+  }}
 `;
-const TextContent = ({
-  text,
-  fontSize,
-  fontWeight,
-  color,
-  lineHeight,
-  underline,
-}) => {
-  return (
-    <Text
-      fontSize={fontSize}
-      fontWeight={fontWeight}
-      color={color}
-      lineHeight={lineHeight}
-      underline={underline}
-    >
-      {text}
-    </Text>
+const TextContent = ({ to, children, ...rest }) => {
+  return to ? (
+    <LinkTo to={to}>
+      <Text {...rest}>{children}</Text>
+    </LinkTo>
+  ) : (
+    <Text {...rest}>{children}</Text>
   );
 };
 export default TextContent;

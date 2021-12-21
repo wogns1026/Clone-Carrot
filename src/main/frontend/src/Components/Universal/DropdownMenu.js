@@ -34,20 +34,16 @@ const MenuList = styled.div`
   width: 100%;
   margin-top: 45px;
   z-index: 10;
-  /* background-color: #f9f9f9; */
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
 `;
 
 const Menu = styled.button`
   width: 100%;
   text-decoration: none;
+  &:focus,
   &:hover {
     color: white;
-    background-color: #1d74e9;
-  }
-  &:focus {
-    color: white;
-    background-color: #1d74e9;
+    background-color: ${(props) => props.theme.button.point};
   }
 `;
 const Icon = styled.img`

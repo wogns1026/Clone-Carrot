@@ -1,39 +1,35 @@
 import React from "react";
 import styled from "styled-components";
 import TradePosterList from "Components/Poster/TradePosterList";
-import ContentContainer from "Components/Universal/ContentContainer";
-import LinkContent from "Components/Universal/LinkContent";
+import { TextContent, ContentContainer } from "Components/Universal";
 
-const TradePosterTitle = styled.span`
-  font-size: 40px;
-  font-weight: 600;
-  margin-top: 129px;
-  margin-bottom: 87px;
+const Title = styled.span`
+  margin: 129px 0px 87px 0px;
 `;
-const TradePosterMoreLink = styled.div`
-  font-weight: 700;
+const Link = styled.div`
   margin-bottom: 185px;
 `;
 
 const TopTradeBanner = () => {
   return (
-    <ContentContainer
-      bgColor="#f8f9fa"
-      direction="column"
-      height="100%"
-      component={
-        <>
-          <TradePosterTitle>중고거래 인기매물</TradePosterTitle>
-          <TradePosterList />
-          <TradePosterMoreLink>
-            <LinkContent
-              content={[{ text: "인기매물 더 보기", path: "/top_trade_posts" }]}
-              underline={true}
-            />
-          </TradePosterMoreLink>
-        </>
-      }
-    ></ContentContainer>
+    <ContentContainer bgColor="#f8f9fa" direction="column" height="100%">
+      <Title>
+        <TextContent fontSize="40px" fontWeight={600}>
+          중고거래 인기매물
+        </TextContent>
+      </Title>
+      <TradePosterList />
+      <Link>
+        <TextContent
+          to={`/top_trade_posts`}
+          fontSize={"16px"}
+          fontWeight={600}
+          underline={"underline"}
+        >
+          인기매물 더 보기
+        </TextContent>
+      </Link>
+    </ContentContainer>
   );
 };
 export default TopTradeBanner;

@@ -1,56 +1,44 @@
-import TextContent from "Components/Universal/TextContent";
 import React from "react";
-import styled from "styled-components";
+import { Box, FlexBox, TextContent } from "Components/Universal";
 
-const Container = styled.article`
-  font-size: 15px;
-  display: flex;
-  flex-direction: column;
-`;
-const Header = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 11px;
-  margin-bottom: 30px;
-`;
-const Footer = styled.div`
-  margin: 25px 0;
-`;
 const PosterDescription = ({
-  item_id,
-  item_title = "",
+  itemId,
+  itemTitle = "",
   category = "",
-  price = 0,
+  cost = 0,
   description = "",
-  view_cnt = 0,
-  item_reg_time = 0,
+  viewCnt = 0,
+  itemRegTime = 0,
 }) => {
   return (
-    <Container>
-      <Header>
-        <TextContent text={item_title} fontSize={"19.5px"} fontWeight={"600"} />
+    <FlexBox dir="column">
+      <Box marginBottom="30px">
+        <FlexBox dir="column" gap="11px">
+          <TextContent fontSize="19.5px" fontWeight={600}>
+            {itemTitle}
+          </TextContent>
+          <TextContent
+            fontSize="13px"
+            color={`rgba(0,0,0,0.5)`}
+            fontWeight={500}
+          >{`${category} ∙ ${itemRegTime}시간 전`}</TextContent>
+          <TextContent
+            fontSize="17.5px"
+            fontWeight={700}
+          >{`${cost.toLocaleString()}원`}</TextContent>
+        </FlexBox>
+      </Box>
+      <TextContent fontSize="16.5px" lineHeight={1.4}>
+        {description}
+      </TextContent>
+      <Box verticalMargin="25px">
         <TextContent
-          text={`${category} ∙ ${item_reg_time}시간 전`}
-          fontSize={"13px"}
+          fontSize="14px"
+          fontWeight={500}
           color={`rgba(0,0,0,0.5)`}
-          fontWeight={"500"}
-        />
-        <TextContent
-          text={`${price.toLocaleString()}원`}
-          fontSize={"17.5px"}
-          fontWeight={"700"}
-        />
-      </Header>
-      <TextContent text={description} fontSize={"16.5px"} lineHeight={1.4} />
-      <Footer>
-        <TextContent
-          text={`조회 ${view_cnt}`}
-          fontSize={"14px"}
-          fontWeight={"500"}
-          color={`rgba(0,0,0,0.5)`}
-        />
-      </Footer>
-    </Container>
+        >{`조회 ${viewCnt}`}</TextContent>
+      </Box>
+    </FlexBox>
   );
 };
 
