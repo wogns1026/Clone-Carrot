@@ -1,5 +1,6 @@
 DELETE FROM TB_USERS;
 DELETE FROM TB_ITEMS;
+DELETE FROM TB_BUY_REVIEWS;
 
 INSERT INTO TB_ITEMS (ITEM_ID, CATEGORY, COST, DESCRIPTION, IMAGE, ITEM_REG_TIME, ITEM_TITLE, SELLER_ID, STATUS, VIEW_CNT)
 VALUES
@@ -15,3 +16,10 @@ VALUES
     (1, '한지훈', '화성시', 34, 5, '이거 뭐였지???'),
     (2, '이재훈', '수원시', 100, 100, '이거 뭐였지???'),
     (3, '이소정', '서울시', 4, 0, '이거 뭐였지???');
+
+INSERT INTO TB_BUY_REVIEWS (REVIEW_ID, USER_ID, SELLER_ID, CONTENT, REG_TIME)
+VALUES
+    (1, 2, 1, '깔끔한 제품 파네요!!', CURRENT_TIMESTAMP ),
+    (2, 2, 3, '어떻게 이런걸 파나요...', CURRENT_TIMESTAMP ),
+    (3, 1, 2, '깔끔한 거래 좋았습니다!', CURRENT_TIMESTAMP ),
+    (4, 3, 1, 'VERY GOOD!', CURRENT_TIMESTAMP );
