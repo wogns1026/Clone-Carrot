@@ -7,7 +7,7 @@ import { Box, FlexBox, DropdownMenu } from "Components/Universal";
 const DEFAULT_CITY = "전체";
 const NONE = "";
 
-const LocationFilter = ({ onFilterSelected }) => {
+const LocationFilter = ({ updateRequest }) => {
   const [cityData, setCityData] = useState();
   const [filterData, setFilterData] = useState({
     city: NONE,
@@ -15,18 +15,17 @@ const LocationFilter = ({ onFilterSelected }) => {
   });
   const [isLoading, setIsLoading] = useState(true);
   const [error, serError] = useState(null);
-
   const onCitySelected = (option) => {
     option = option === DEFAULT_CITY ? NONE : option;
     const newData = { ...filterData, city: option, gu: NONE };
     setFilterData(newData);
-    onFilterSelected(newData);
+    updateRequest(newData);
   };
 
   const onGuSelected = (option) => {
     const newData = { ...filterData, gu: option };
     setFilterData(newData);
-    onFilterSelected(newData);
+    updateRequest(newData);
   };
 
   const disableCondition = () => {

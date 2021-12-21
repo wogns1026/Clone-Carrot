@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useParams } from "react-router-dom";
 import TradePosterList from "Components/Poster/TradePosterList";
 import PosterDescription from "Components/Poster/PosterDescription";
@@ -6,7 +6,6 @@ import ImageSwiper from "Components/Swiper/ImageSwiper";
 import Profile from "Components/Profile/Profile";
 import Loader from "Components/Loading/Loader";
 import Message from "Components/Loading/Message";
-import { getTradePostData } from "api";
 import {
   Box,
   FlexBox,
@@ -14,35 +13,16 @@ import {
   ContentContainer,
   HorizontalDivider,
 } from "Components/Universal";
-
-// 임시 이미지 (start)
-import main1 from "images/main1.png";
-import main2 from "images/main2.png";
-// 임시 이미지 (end)
+import theme from "Style/theme";
+import { useAxios } from "Hooks/useAxios";
 
 const TradePostDetailBanner = () => {
-  const [data, setData] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(false);
   const params = useParams();
+  let { loading, data, error, refetch } = useAxios({
+    url: `/articles/${params.id}`,
+  });
 
-  useEffect(() => {
-    const getData = async () => {
-      try {
-        const newData = await getTradePostData()
-          .filter((item) => item.id === Number(params.id))
-          .pop();
-        if (!newData) return;
-        setData(newData);
-        setIsLoading(false);
-      } catch (e) {
-        setError(e);
-      }
-    };
-    getData();
-  }, []);
-
-  return isLoading ? (
+  return loading ? (
     <Loader />
   ) : error ? (
     <Message color="red" text={error} />
@@ -54,23 +34,23 @@ const TradePostDetailBanner = () => {
       height="100%"
     >
       <Box marginTop="30px">
-        <ImageSwiper imageList={[data.imgSrc, main1, data.imgSrc, main2]} />
+        <ImageSwiper imageList={[data.image]} />
         <Profile
-          id={data.id}
+          id={data.itemId}
           imgUrl
-          name={"요호요호요홋"}
+          name={data.sellerId}
           location={data.location}
           mannerTemper={38.2}
         />
         <HorizontalDivider marginBottom="38px" />
         <PosterDescription
-          item_id={data.id}
-          item_title={data.title}
+          itemId={data.itemId}
+          itemTitle={data.itemTitle}
           category={data.category}
-          price={data.price}
+          cost={data.cost}
           description={data.description}
-          view_cnt={data.view_cnt}
-          item_reg_time={data.item_reg_time}
+          viewCnt={data.viewCnt}
+          itemRegTime={data.itemRegTime}
         />
         <HorizontalDivider />
         <Box verticalMargin="35px">
@@ -78,7 +58,7 @@ const TradePostDetailBanner = () => {
             <TextContent fontSize="18px" fontWeight={800}>
               당근마켓 인기중고
             </TextContent>
-            <TextContent to="/top_trade_posts" color="#FF8A3D">
+            <TextContent to="/top_trade_posts" color={`${theme.colors.carrot}`}>
               더 구경하기
             </TextContent>
           </FlexBox>

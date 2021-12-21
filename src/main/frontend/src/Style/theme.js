@@ -10,6 +10,7 @@ const colors = {
   black: "#000000",
   blue: "#1d74e9",
   red: "#E3393C",
+  carrot: "#FF8A3D",
   grey: "rgba(255, 255, 255, 0.5)",
   darkGrey: "rgba(255, 255, 255, 0.3)",
   deepDarkgrey: "#495057",

@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import defaultAxios from "axios";
 
 export const useAxios = (opts, axiosInstance = defaultAxios) => {
+  opts.baseURL = "http://localhost:8080/api/v1";
   const [state, setState] = useState({
     loading: true,
     error: null,
@@ -17,12 +18,15 @@ export const useAxios = (opts, axiosInstance = defaultAxios) => {
     const loading = { loading: false };
     axiosInstance(opts)
       .then((data) => {
-        setState({ ...state, loading, data });
+        setState({
+          ...state,
+          loading: false,
+          data: data.data.data,
+        });
       })
       .catch((error) => {
         setState({ ...state, loading, error });
       });
-    console.log(state);
   }, [trigger]);
 
   const refetch = () => {

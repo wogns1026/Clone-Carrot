@@ -40,7 +40,7 @@ const Title = styled.span`
   margin-bottom: 11px;
 `;
 
-const Price = styled.div`
+const Cost = styled.div`
   font-weight: 700;
   margin-bottom: 11px;
 `;
@@ -48,35 +48,35 @@ const Location = styled.div`
   font-size: 13px;
   margin-bottom: 10px;
 `;
-const Interest = styled.div`
+const ViewCount = styled.div`
   font-size: 12.5px;
   opacity: 0.6;
 `;
 
 const TradePoster = ({
-  id,
-  imgUrl = defaultImg,
-  title,
-  price = 0,
+  itemId,
+  image = defaultImg,
+  itemTitle,
+  cost = 0,
   location,
-  interest = 0,
+  viewCnt = 0,
   height = "210px",
 }) => {
   return (
     <Link
       to={{
-        pathname: `/trade_post/${id}`,
-        state: { id, imgUrl, title, price, location, interest },
+        pathname: `/trade_post/${itemId}`,
+        state: { image, itemTitle, cost, location, ViewCount },
       }}
     >
       <Container>
         <ImageContainer height={height}>
-          <Image bgUrl={imgUrl} alt="이미지" />
+          <Image bgUrl={image} alt="이미지" />
         </ImageContainer>
-        <Title>{title}</Title>
-        <Price>{`${price.toLocaleString()}원`}</Price>
+        <Title>{itemTitle}</Title>
+        <Cost>{`${cost.toLocaleString()}원`}</Cost>
         <Location>{location}</Location>
-        <Interest>{`관심 ${interest}`}</Interest>
+        <ViewCount>{`관심 ${viewCnt}`}</ViewCount>
       </Container>
     </Link>
   );
