@@ -1,11 +1,16 @@
 import React from "react";
-import TradeArticleList from "Components/Poster/TradeArticleList";
 import ContentContainer from "Components/Content/ContentContainer";
+import TradeArticleList from "Components/Article/TradeArticleList";
 import { Text, Box } from "Components/Universal";
+import theme from "Style/theme";
 
 const HotTradeList = () => {
   return (
-    <ContentContainer bgColor="#f8f9fa" direction="column" height="100%">
+    <ContentContainer
+      bgColor={theme.colors.white}
+      direction="column"
+      height="100%"
+    >
       <Box marginTop="129px" marginBottom="87px">
         <Text fontSize="40px" fontWeight={600}>
           중고거래 인기매물

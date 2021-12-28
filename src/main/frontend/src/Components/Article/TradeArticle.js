@@ -1,20 +1,14 @@
 import React from "react";
-import styled from "styled-components";
 import defaultImg from "images/logo.svg";
-import { FlexBox, LazyBackgroundImage, LinkTo } from "Components/Universal";
+import {
+  Box,
+  FlexBox,
+  LazyBackgroundImage,
+  LinkTo,
+} from "Components/Universal";
 import theme from "Style/theme";
 import ArticleInfo from "./ArticleInfo";
 
-const ImageContainer = styled.div`
-  height: ${(props) => props.height};
-  margin-bottom: 17px;
-  position: relative;
-  &:hover {
-    ${LazyBackgroundImage} {
-      opacity: 0.3;
-    }
-  }
-`;
 const TradeArticle = ({
   itemId,
   image = defaultImg,
@@ -26,15 +20,15 @@ const TradeArticle = ({
 }) => {
   return (
     <LinkTo to={{ pathname: `/articles/${itemId}` }}>
-      <FlexBox column>
-        <ImageContainer height={height}>
+      <FlexBox column interactive>
+        <Box height={height} marginBottom="17px">
           <LazyBackgroundImage
             borderRadius="10px"
             src={image}
             center
             border={theme.colors.lightDark}
           />
-        </ImageContainer>
+        </Box>
         <ArticleInfo
           itemTitle={itemTitle}
           cost={`${cost.toLocaleString()}원`}

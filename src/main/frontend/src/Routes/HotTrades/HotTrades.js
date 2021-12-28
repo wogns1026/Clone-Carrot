@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import LocationFilter from "Components/Filter/LocationFilter";
-import TradeArticleList from "Components/Poster/TradeArticleList";
 import ContentContainer from "Components/Content/ContentContainer";
+import TradeArticleList from "Components/Article/TradeArticleList";
 import { getShortCityName } from "api";
 import { Text } from "Components/Universal";
 

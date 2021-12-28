@@ -1,5 +1,5 @@
 import React from "react";
-import TradeArticleList from "Components/Poster/TradeArticleList";
+import TradeArticleList from "Components/Article/TradeArticleList";
 import { Box, FlexBox, Text } from "Components/Universal";
 import theme from "Style/theme";
 
