@@ -3,11 +3,17 @@ import { useParams } from "react-router-dom";
 import { useAxios } from "Hooks/useAxios";
 import HotTradeSmallList from "./HotTradeSmallList";
 import TradeDescription from "./TradeDescription";
+import TradeDetailInfo from "./TradeDetailInfo";
 import Loader from "Components/Loading/Loader";
 import Message from "Components/Loading/Message";
 import ContentContainer from "Components/Content/ContentContainer";
 import Profile from "Components/Profile/Profile";
-import { Box, HorizontalDivider, ImageSwiper } from "Components/Universal";
+import {
+  Box,
+  FlexBox,
+  HorizontalDivider,
+  ImageSwiper,
+} from "Components/Universal";
 
 const TradeDetail = () => {
   const params = useParams();
@@ -36,7 +42,10 @@ const TradeDetail = () => {
           mannerTemper={38.2}
         />
         <HorizontalDivider marginBottom="38px" />
-        <TradeDescription {...data} />
+        <FlexBox column>
+          <TradeDetailInfo {...data} />
+          <TradeDescription {...data} />
+        </FlexBox>
         <HorizontalDivider />
         <HotTradeSmallList />
       </Box>

@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useAxios } from "Hooks/useAxios";
 import { Box, RegularGrid } from "Components/Universal";
-import Loader from "Components/Loading/Loader";
-import Message from "Components/Loading/Message";
 import SeeMoreContianer from "../SeeMoreContainer";
 import TradeArticle from "./TradeArticle";
 import theme from "Style/theme";
@@ -30,26 +28,24 @@ const TradeArticleList = () => {
     }
   }, [loading, data]);
 
-  return loading ? (
-    <Loader />
-  ) : error ? (
-    <Message text={error} />
-  ) : (
-    <Box fullSize marginTop="32px">
-      <SeeMoreContianer
-        title="중고거래"
-        bgColor={theme.colors.white}
-        onClicked={LoadMoreData}
-      >
-        <Box width="100%">
-          <RegularGrid gridSize="215px" gridGap="35px">
-            {state.map(({ itemId, ...rest }) => (
-              <TradeArticle key={itemId} itemId={itemId} {...rest} />
-            ))}
-          </RegularGrid>
-        </Box>
-      </SeeMoreContianer>
-    </Box>
+  return (
+    !loading && (
+      <Box fullSize marginTop="32px">
+        <SeeMoreContianer
+          title="중고거래"
+          bgColor={theme.colors.white}
+          onClicked={LoadMoreData}
+        >
+          <Box width="100%">
+            <RegularGrid gridSize="215px" gridGap="35px">
+              {state.map(({ itemId, ...rest }) => (
+                <TradeArticle key={itemId} itemId={itemId} {...rest} />
+              ))}
+            </RegularGrid>
+          </Box>
+        </SeeMoreContianer>
+      </Box>
+    )
   );
 };
 export default TradeArticleList;

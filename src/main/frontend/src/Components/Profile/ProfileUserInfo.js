@@ -2,7 +2,6 @@ import React from "react";
 import { Text, FlexBox, LazyBackgroundImage } from "Components/Universal";
 import theme from "Style/theme";
 const ProfileUserinfo = ({ id, src, name, location }) => {
-  console.log(src);
   return (
     <FlexBox>
       <LazyBackgroundImage

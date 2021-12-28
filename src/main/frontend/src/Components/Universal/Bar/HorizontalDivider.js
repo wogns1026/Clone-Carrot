@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 const Line = styled.hr`
   border: none;
+  width: 100%;
   height: ${(props) => props.height || "1px"};
   background-color: ${(props) => props.color || "rgba(0,0,0,0.1)"};
   margin-top: ${(props) => props.marginTop || 0};

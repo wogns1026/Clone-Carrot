@@ -6,12 +6,7 @@ import defaultImg from "images/logo.svg";
 
 const Profile = ({ id, src = defaultImg, name, location, mannerTemper }) => {
   return (
-    <LinkTo
-      to={{
-        pathname: `/profile/${id}`,
-        state: { id, src, name, location, mannerTemper },
-      }}
-    >
+    <LinkTo to={{ pathname: `/profile/${id}` }}>
       <FlexBox
         width="100%"
         spaceBetween

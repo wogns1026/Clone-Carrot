@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import Loader from "Components/Loading/Loader";
+import Message from "Components/Loading/Message";
 import TradeArticle from "./TradeArticle";
 import { useAxios } from "Hooks/useAxios";
 import { Box, RegularGrid } from "Components/Universal";
@@ -19,20 +21,22 @@ const TradeArticleList = ({ filter, gridSize = "210px", gridGap = "56px" }) => {
     }
   }, [loading, data]);
 
-  return (
-    loading && (
-      <Box width="100%">
-        <RegularGrid gridSize={gridSize} gridGap={gridGap}>
-          {filter
-            ? filter(state).map(({ itemId, ...rest }) => (
-                <TradeArticle key={itemId} itemId={itemId} {...rest} />
-              ))
-            : state.map(({ itemId, ...rest }) => (
-                <TradeArticle key={itemId} itemId={itemId} {...rest} />
-              ))}
-        </RegularGrid>
-      </Box>
-    )
+  return loading ? (
+    <Loader />
+  ) : error ? (
+    <Message text={error} />
+  ) : (
+    <Box width="100%">
+      <RegularGrid gridSize={gridSize} gridGap={gridGap}>
+        {filter
+          ? filter(state).map(({ itemId, ...rest }) => (
+              <TradeArticle key={itemId} itemId={itemId} {...rest} />
+            ))
+          : state.map(({ itemId, ...rest }) => (
+              <TradeArticle key={itemId} itemId={itemId} {...rest} />
+            ))}
+      </RegularGrid>
+    </Box>
   );
 };
 export default TradeArticleList;

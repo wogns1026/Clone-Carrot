@@ -62,7 +62,7 @@ const Footer = () => {
                       to="/"
                       fontWeight={600}
                       color={theme.colors.lightGrey}
-                      whiteSpace="pre"
+                      whiteSpace="pre-wrap"
                     >
                       {text}
                     </Text>
@@ -102,7 +102,11 @@ const Footer = () => {
                     <LazyImage key={index} src={icon} size="25px" alt="icon" />
                   )
                 )}
-                <Text color={textColor} underline="underline" whiteSpace="pre">
+                <Text
+                  color={textColor}
+                  underline="underline"
+                  whiteSpace="pre-wrap"
+                >
                   한국
                 </Text>
               </RegularGrid>

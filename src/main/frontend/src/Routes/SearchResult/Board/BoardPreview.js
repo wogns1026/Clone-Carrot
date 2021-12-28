@@ -4,7 +4,8 @@ import theme from "Style/theme";
 
 const BoardPreview = ({ id, src, description, location }) => {
   return (
-    <LinkTo to={`/board/${id}`}>
+    // <LinkTo to={`/board/${id}`}>
+    <LinkTo to={`/board/1`}>
       <FlexBox fullSize marginBottom="25px" interactive>
         {src && <LazyImage src={src} size="120px" />}
         <FlexBox column>
