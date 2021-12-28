@@ -7,6 +7,7 @@ import Footer from "Routes/Semantic/Footer";
 import HotTrades from "Routes/HotTrades/HotTrades";
 import TradeDetail from "Routes/TradeDetail/TradeDetail";
 import SearchResult from "Routes/SearchResult/SearchResult";
+import Board from "Routes/Board/Board";
 import { AutoScrollToTop } from "./Universal";
 
 const Router = () => (
@@ -19,6 +20,7 @@ const Router = () => (
         <Route path="/hot-articles" element={<HotTrades />} />
         <Route path="/articles/:id" element={<TradeDetail />} />
         <Route path="/search/:id" element={<SearchResult />} />
+        <Route path="/board/:id" element={<Board />} />
         <Route path="*" render={() => <Redirect to="/" />} />
       </Routes>
       <Footer />
