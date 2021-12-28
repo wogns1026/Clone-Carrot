@@ -12,6 +12,9 @@ export function useLazyImageObserver({ src }) {
 
   useEffect(() => {
     let observer;
+    if (!src) {
+      return;
+    }
     if (imgRef) {
       //* 기본이미지가 없다면 !imgSrc 조건 추가필요
 

@@ -11,11 +11,15 @@ const colors = {
   blue: "#1d74e9",
   red: "#E3393C",
   carrot: "#FF8A3D",
-  grey: "rgba(255, 255, 255, 0.5)",
-  darkGrey: "rgba(255, 255, 255, 0.3)",
+  lightGreen: "#c2e8c2",
+  green: "#319e45",
+  lightGrey: "#F8F9FA",
+  grey: "rgba(0, 0, 0, 0.05)",
+  darkGrey: "#868E96",
   deepDarkgrey: "#495057",
   lightDark: "rgba(0,0,0,0.1)",
-  Dark: "rgba(0,0,0,0.5)",
+  dark: "rgba(0,0,0,0.5)",
+  white: "rgba(255,255,255,1)",
 };
 // 16px 700 underline
 //
@@ -23,35 +27,117 @@ const common = {
   fullSize: `
   width: 100%;
   height: 100%;
-  `,
+`,
+  width: (width) => `
+  width: ${width};
+`,
+  height: (height) => `
+  height: ${height};
+`,
+  minHeight: (minHeight) => `
+  min-height: ${minHeight};
+`,
+  size: (size) => `
+  width: ${size}; 
+  height: ${size};
+`,
+  border: (color) => `
+  border: 1px solid ${color};
+`,
+  border2x: (color) => `
+  border: 2px solid ${color};
+`,
+  borderRadius: (radius) => `
+  border-radius: ${radius};
+`,
+  round: `
+  border-radius: 50%;
+`,
+  relative: `
+  position: relative;
+`,
   absolute: `
   position: absolute;
-  top:0;
- `,
+  top: 0;
+`,
+  absoluteBottom: `
+  position: absolute;
+  bottom: 0;
+  `,
   fixed: `
   position: fixed;
   top: 0;
   z-index: 1;
- `,
+`,
   verticalMargin: (vMargin) => `
   margin-top: ${vMargin};
   margin-bottom: ${vMargin};
- `,
+`,
   horizontalMargin: (hMargin) => `
   margin-left: ${hMargin};
   margin-right:${hMargin};
 `,
+  marginTop: (tMargin) => `
+  margin-top: ${tMargin};
+`,
+  marginRight: (rMargin) => `
+  margin-right: ${rMargin};
+`,
   marginBottom: (bMargin) => `
   margin-bottom: ${bMargin};
-  `,
-  marginTop: (tMargin) => `
-  margin-Top: ${tMargin};
-  `,
+`,
+  marginLeft: (lMargin) => `
+  margin-left: ${lMargin};
+`,
+  verticalPadding: (vPadding) => `
+  padding-top: ${vPadding};
+  padding-bottom: ${vPadding};
+`,
+  horizontalPadding: (hPadding) => `
+  padding-left: ${hPadding};
+  padding-right:${hPadding};
+`,
+  opacity: (o) => `
+  opacity: ${o};
+`,
+  color: (color) => `
+  color: ${color};
+`,
+  bgColor: (bgColor) => `
+  background-color: ${bgColor};
+`,
+  outline: (color) => `&:focus-within {
+    outline: 1px solid ${color};
+  }`,
+  fontSize: (fontSize) => `
+  font-size: ${fontSize};
+`,
+  fontWeight: (fontWeight) => `
+  font-weight: ${fontWeight};
+`,
+  interactive: `
+  &:active,
+  &:hover {
+    background: ${colors.grey};
+    opacity: 0.7;
+  }
+`,
 };
 const text = {
   ...common,
   underline: `
   text-decoration: underline;
+`,
+  notOverflow: `
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+`,
+  lineHeight: (lineHeight) => `
+  line-height: ${lineHeight};
+`,
+  whiteSpace: (whiteSpace) => `
+  white-space: ${whiteSpace};
 `,
 };
 const button = {
@@ -66,39 +152,37 @@ const box = {
 const flex = {
   ...common,
   center: `
-  display: flex;
   justify-content: center;
   align-items: center;
-  `,
+`,
   column: `
-  display: flex;
   flex-direction : column;
 `,
   spaceBetween: `
-  display: flex;
   justify-content: space-between;
-  `,
+`,
   flexJustify: (justify) => `
-  display: flex;
   justify-content: ${justify};
-  `,
+`,
   flexAlign: (align) => `
-  display: flex;
   align-items: ${align};
 `,
-};
-const background = {
-  ...common,
-  center: `
-  background-size: cover;
-  background-position: center center;
-  `,
+  gap: (gap) => `
+  gap: ${gap};
+`,
 };
 const image = {
   ...common,
-  round: `
-  border-radius: "50%";
+  reverse: `
+  transform: scaleX(-1);
   `,
+  center: `
+  background-size: cover;
+  background-position: center center;
+`,
+};
+const input = {
+  ...common,
 };
 
 const theme = {
@@ -107,9 +191,9 @@ const theme = {
   flex,
   box,
   button,
-  background,
   image,
   text,
+  input,
 };
 
 export default theme;

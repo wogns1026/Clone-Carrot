@@ -42,7 +42,7 @@
 - [x] DropdownMenu (input, 180px, 45px) : 드랍다운 메뉴
 - [x] ProgressBar (hr, auto, auto) : 진행도를 표시해주는 가로바
 - [x] HoriontalDivider (hr, auto, auto) : 가로줄
-- [x] TextContent (div, auto, auto) : 텍스트 요소를 좀 더 편리하게 만들기 위한 컴포넌트
+- [x] Text (div, auto, auto) : 텍스트 요소를 좀 더 편리하게 만들기 위한 컴포넌트
 - [ ] FullImage (image, 100%, 100%) : 이미지를 담는 풀사이즈 컨테이너
 - [ ] FixedContainer (div, 100%, 86px) : 고정된 요소를 담는 컨테이너
 
@@ -63,8 +63,8 @@
 
 ### Poster
 
-- [x] TradePosterList (section, 100%) : grid(nx4) 형태의 <span style="color:green">TradePoster</span> 배치
-- [x] TradePoster (article, 210px) : col방향 제품정보(이미지,제목,가격,위치,관심수)
+- [x] TradeArticleList (section, 100%) : grid(nx4) 형태의 <span style="color:green">TradeArticle</span> 배치
+- [x] TradeArticle (article, 210px) : col방향 제품정보(이미지,제목,가격,위치,관심수)
 - [ ] NeighborPosterList (section) : col방향 <span style="color:green">NeighborPoster</span> 배치
 - [ ] NeighborPoster (article) : col방향 동네정보(이미지,내용,위치)
 
