@@ -1,11 +1,11 @@
 package com.example.project.service;
 
 import com.example.project.domain.Board;
-
-import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 public interface BoardService {
 
-    List<Board> getBoard();
+    Page<Board> getBoard(Pageable pageable);
 
 }

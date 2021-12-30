@@ -4,10 +4,10 @@ import com.example.project.domain.Item;
 import com.example.project.repository.ItemRepository;
 import com.example.project.service.ItemService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -16,13 +16,13 @@ public class ItemServiceImpl implements ItemService {
     private final ItemRepository itemRepository;
 
     @Override
-    public List<Item> getItem(String itemTitle) {
-        return itemRepository.findByItemTitleContainsIgnoreCase(itemTitle);
+    public Page<Item> getItem(String itemTitle, Pageable pageable) {
+        return itemRepository.findByItemTitleContainsIgnoreCase(itemTitle, pageable);
     }
 
     @Override
-    public List<Item> getHotItem(){
-        return itemRepository.findAll(Sort.by(Sort.Direction.DESC, "viewCnt"));
+    public Page<Item> getHotItem(Pageable pageable){
+        return itemRepository.findAll(pageable);
     }
 
     @Override

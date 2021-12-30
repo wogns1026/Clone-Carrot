@@ -4,9 +4,9 @@ import com.example.project.domain.Board;
 import com.example.project.repository.BoardRepository;
 import com.example.project.service.BoardService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -15,8 +15,8 @@ public class BoardServiceImpl implements BoardService {
     private final BoardRepository boardRepository;
 
     @Override
-    public List<Board> getBoard(){
-        return boardRepository.findAll();
+    public Page<Board> getBoard(Pageable pageable){
+        return boardRepository.findAll(pageable);
     }
 
 }
