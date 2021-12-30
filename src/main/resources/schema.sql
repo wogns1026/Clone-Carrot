@@ -41,3 +41,12 @@ CREATE TABLE TB_BOARD(
     VIEW_CNT        INT,
     REG_TIME        DATETIME
 );
+
+CREATE TABLE TB_REVIEWS(
+    REVIEW_ID           LONG NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    BOARD_ID            LONG,
+    CONTENT             VARCHAR(500),
+    USER_ID             LONG,
+    REG_TIME            DATETIME,
+    PARENT_REVIEW_ID    LONG
+);
