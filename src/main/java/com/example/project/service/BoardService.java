@@ -8,4 +8,6 @@ public interface BoardService {
 
     Page<Board> getBoard(Pageable pageable);
 
+    void deleteBoard(Long boardId);
+
 }
