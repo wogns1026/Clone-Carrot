@@ -122,6 +122,9 @@ const common = {
     opacity: 0.7;
   }
 `,
+  underlineEffect: `
+  border-bottom: 3px solid ${colors.carrot}};
+`,
 };
 const text = {
   ...common,

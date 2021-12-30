@@ -9,6 +9,7 @@ import TradeDetail from "Routes/TradeDetail/TradeDetail";
 import SearchResult from "Routes/SearchResult/SearchResult";
 import Board from "Routes/Board/Board";
 import { AutoScrollToTop } from "./Universal";
+import SellerInfo from "Routes/SellerInfo/SellerInfo";
 
 const Router = () => (
   <HashRouter>
@@ -21,6 +22,7 @@ const Router = () => (
         <Route path="/articles/:id" element={<TradeDetail />} />
         <Route path="/search/:id" element={<SearchResult />} />
         <Route path="/board/:id" element={<Board />} />
+        <Route path="/seller-info/:id" element={<SellerInfo />} />
         <Route path="*" render={() => <Redirect to="/" />} />
       </Routes>
       <Footer />
