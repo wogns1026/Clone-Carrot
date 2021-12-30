@@ -10,6 +10,7 @@ import defaultImg from "images/logo.svg";
 import theme from "Style/theme";
 
 const TradeArticle = ({
+  id,
   itemId,
   image = defaultImg,
   itemTitle,
@@ -18,7 +19,7 @@ const TradeArticle = ({
   viewCnt = 0,
 }) => {
   return (
-    <LinkTo to={{ pathname: `/articles/${itemId}` }}>
+    <LinkTo to={`/articles/${itemId}`}>
       <FlexBox column interactive>
         <Box height="160px">
           <LazyBackgroundImage

@@ -1,6 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { useAxios } from "Hooks/useAxios";
 import HotTradeSmallList from "./HotTradeSmallList";
 import TradeDescription from "./TradeDescription";
 import TradeDetailInfo from "./TradeDetailInfo";
@@ -14,12 +13,16 @@ import {
   HorizontalDivider,
   ImageSwiper,
 } from "Components/Universal";
+import { ArticleAPI } from "api";
 
 const TradeDetail = () => {
-  const params = useParams();
-  let { loading, data, error } = useAxios({
-    url: `/articles/${params.id}`,
-  });
+  const { id } = useParams();
+  let { loading, data, error } = ArticleAPI(id);
+  const [state, setState] = useState([]);
+
+  useEffect(() => {
+    if (data) setState(data);
+  }, [data]);
 
   return loading ? (
     <Loader />
@@ -33,18 +36,12 @@ const TradeDetail = () => {
       height="100%"
     >
       <Box fullSize marginTop="30px">
-        <ImageSwiper imageList={[data.image]} />
-        <Profile
-          id={data.itemId}
-          src=""
-          name={data.sellerId}
-          location={data.location}
-          mannerTemper={38.2}
-        />
+        <ImageSwiper imageList={[state.image]} />
+        <Profile id={state.sellerId} />
         <HorizontalDivider marginBottom="38px" />
         <FlexBox column>
-          <TradeDetailInfo {...data} />
-          <TradeDescription {...data} />
+          <TradeDetailInfo {...state} />
+          <TradeDescription {...state} />
         </FlexBox>
         <HorizontalDivider />
         <HotTradeSmallList />

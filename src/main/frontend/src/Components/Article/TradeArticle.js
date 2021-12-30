@@ -19,12 +19,12 @@ const TradeArticle = ({
   height = "210px",
 }) => {
   return (
-    <LinkTo to={{ pathname: `/articles/${itemId}` }}>
+    <LinkTo to={`/articles/${itemId}`}>
       <FlexBox column interactive>
         <Box height={height} marginBottom="17px">
           <LazyBackgroundImage
             borderRadius="10px"
-            src={image}
+            src={defaultImg}
             center
             border={theme.colors.lightDark}
           />

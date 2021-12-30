@@ -1,25 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import Loader from "Components/Loading/Loader";
 import Message from "Components/Loading/Message";
 import TradeArticle from "./TradeArticle";
-import { useAxios } from "Hooks/useAxios";
 import { Box, RegularGrid } from "Components/Universal";
+import { HotArticleAPI } from "api";
 
 const TradeArticleList = ({ filter, gridSize = "210px", gridGap = "56px" }) => {
+  let { loading, data, error } = HotArticleAPI();
   const [state, setState] = useState([]);
-  let { loading, data, error } = useAxios({
-    url: "/hot-articles",
-  });
 
   useEffect(() => {
-    if (data) {
-      const newData = data.reduce((acc, cur) => {
-        acc.push({ ...cur, location: "경기도 화성시" });
-        return acc;
-      }, []);
-      setState(newData);
-    }
-  }, [loading, data]);
+    if (data) setState(data.data);
+  }, [data]);
 
   return loading ? (
     <Loader />
