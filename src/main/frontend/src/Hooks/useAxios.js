@@ -21,7 +21,7 @@ export const useAxios = (opts, axiosInstance = defaultAxios) => {
         setState({
           ...state,
           loading: false,
-          data: data.data.data,
+          data: data.data.content,
         });
       })
       .catch((error) => {

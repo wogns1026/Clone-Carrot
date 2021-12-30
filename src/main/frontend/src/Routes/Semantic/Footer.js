@@ -56,9 +56,10 @@ const Footer = () => {
           <Box width="100%" marginLeft="85px" marginTop="20px">
             <RegularGrid gridSize="150px" gridGap="50px">
               {footerData.map((data, index) => (
-                <FlexBox key={index} column gap="20px">
+                <FlexBox key={new Date().getTime() + index} column gap="20px">
                   {data.map(({ text }) => (
                     <Text
+                      key={text}
                       to="/"
                       fontWeight={600}
                       color={theme.colors.lightGrey}

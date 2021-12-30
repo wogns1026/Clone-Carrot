@@ -7,9 +7,9 @@ import {
 } from "Components/Universal";
 import theme from "Style/theme";
 
-const ReviewProfile = ({ id, src, name, location }) => {
+const ReviewProfile = ({ id, src, name, address }) => {
   return (
-    <LinkTo to={{ pathname: `/profile/${id}` }}>
+    <LinkTo to={`/seller-info/${id}`}>
       <FlexBox flexAlign="center" gap="10px" marginBottom="10px">
         <LazyBackgroundImage
           src={src}
@@ -22,7 +22,7 @@ const ReviewProfile = ({ id, src, name, location }) => {
         <Text fontSize="15px" fontWeight={700}>
           {name}
         </Text>
-        <Text fontSize="13px">{location}</Text>
+        <Text fontSize="13px">{address}</Text>
       </FlexBox>
     </LinkTo>
   );

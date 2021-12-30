@@ -1,7 +1,7 @@
 import React from "react";
 import { Text, FlexBox, LazyBackgroundImage } from "Components/Universal";
 import theme from "Style/theme";
-const ProfileUserinfo = ({ id, src, name, location }) => {
+const ProfileUserinfo = ({ id, src, name, address }) => {
   return (
     <FlexBox>
       <LazyBackgroundImage
@@ -16,7 +16,7 @@ const ProfileUserinfo = ({ id, src, name, location }) => {
         <Text width="100%" fontSize="15px" fontWeight={700} marginBottom="5px">
           {name}
         </Text>
-        <Text fontSize="13px">{location}</Text>
+        <Text fontSize="13px">{address}</Text>
       </FlexBox>
     </FlexBox>
   );

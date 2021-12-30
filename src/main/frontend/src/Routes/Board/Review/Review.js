@@ -1,21 +1,19 @@
 import React from "react";
-import { Box, HorizontalDivider } from "Components/Universal";
 import ReviewDescription from "./ReviewDescription";
 import ReviewProfile from "./ReviewProfile";
+import { Box } from "Components/Universal";
 
-const Review = ({
-  boardId,
-  userId,
-  image,
-  name,
-  location,
-  Review,
-  itemRegTime,
-}) => {
+const Review = (data) => {
+  const { userId, image, userName, address, content, regTime } = data;
   return (
     <Box>
-      <ReviewProfile id={userId} src={image} name={name} location={location} />
-      <ReviewDescription description={Review} itemRegTime={itemRegTime} />
+      <ReviewProfile
+        id={userId}
+        src={image}
+        name={userName}
+        address={address}
+      />
+      <ReviewDescription description={content} itemRegTime={regTime} />
     </Box>
   );
 };

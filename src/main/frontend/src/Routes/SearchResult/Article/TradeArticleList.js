@@ -1,34 +1,27 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { useAxios } from "Hooks/useAxios";
 import { Box, RegularGrid } from "Components/Universal";
 import SeeMoreContianer from "../SeeMoreContainer";
 import TradeArticle from "./TradeArticle";
 import theme from "Style/theme";
+import { SearchAPI } from "api";
+import Message from "Components/Loading/Message";
 
 const TradeArticleList = () => {
-  const params = useParams();
+  const { id } = useParams();
   const [state, setState] = useState([]);
-  let { loading, data, error } = useAxios({
-    url: `/search/${params.id}`,
-  });
+  let { loading, data, error } = SearchAPI(id);
+  useEffect(() => {
+    if (data) setState(data.data);
+  }, [data]);
 
   const LoadMoreData = () => {
     // 데이터 추가 로드
   };
 
-  useEffect(() => {
-    if (data) {
-      // 임시 데이터
-      const newData = data.reduce((acc, cur) => {
-        acc.push({ ...cur, location: "경기도 화성시" });
-        return acc;
-      }, []);
-      setState(newData);
-    }
-  }, [loading, data]);
-
-  return (
+  return error ? (
+    <Message text={error} />
+  ) : (
     !loading && (
       <Box fullSize marginTop="32px">
         <SeeMoreContianer

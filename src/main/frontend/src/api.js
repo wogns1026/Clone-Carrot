@@ -1,3 +1,4 @@
+import { useAxios } from "Hooks/useAxios";
 import main1 from "images/main1.png";
 import main2 from "images/main2.png";
 import main3 from "images/main3.png";
@@ -83,170 +84,6 @@ export const getBannerData = () => [
     imgSrc: main4,
     btn: [{ title: "당근마켓 동네가게 찾기", url: "/neighborMarket" }],
     list: [],
-  },
-];
-
-export const getTradePostData = () => [
-  {
-    id: 1,
-    imgSrc:
-      "https://dnvefa72aowie.cloudfront.net/origin/article/202111/E0C758C53F97FA176C36A3629035CD51F514054EAE9CC054ACA5E2FD6C5E43D9.jpg?q=82&s=300x300&t=crop",
-    title: "가히 멀티밤 새제품",
-    location: "서울 성북구 장위동",
-    category: "뷰티/미용",
-    price: 200000,
-    description: `다이슨 에어랩 스타일러 컴플리트입니다.
-    
-19년도 구매했습니다.
-라운드 볼륨 브러시가 사라져서 저렴하게 보내드려요!
-    
-외에 30,40mm 배럴 / 하드 스무딩 브러시 / 소프트 스무딩 브러시 / 드라이어 들어있습니다.
-    
-사진에 보이시는 그대로입니다.
-    
-무게가 꽤 나가서 직거래 환영합니다 ^-^//`,
-    view_cnt: 8,
-    interest: 18,
-    item_reg_time: 7,
-  },
-  {
-    id: 2,
-    imgSrc:
-      "https://dnvefa72aowie.cloudfront.net/origin/article/202111/FA4B9CC7F962D325967E91B150A77579FA588A5A41491A92836E79527F8231BA.jpg?q=82&s=300x300&t=crop",
-    title: "다이슨 에어랩 컴플리트",
-    location: "경기도 평택시 고덕면",
-    price: 200000,
-    category: "뷰티/미용",
-    description: `다이슨 에어랩 스타일러 컴플리트입니다.
-
-19년도 구매했습니다.
-라운드 볼륨 브러시가 사라져서 저렴하게 보내드려요!
-    
-외에 30,40mm 배럴 / 하드 스무딩 브러시 / 소프트 스무딩 브러시 / 드라이어 들어있습니다.
-    
-사진에 보이시는 그대로입니다.
-    
-무게가 꽤 나가서 직거래 환영합니다 ^-^//`,
-    view_cnt: 8,
-    interest: 18,
-    item_reg_time: 7,
-  },
-  {
-    id: 3,
-    imgSrc:
-      "https://dnvefa72aowie.cloudfront.net/origin/article/202111/805348487711971BBB6489B8A0A3B7306E5A4E0798930AF2587545B533C0DA72.jpg?q=82&s=300x300&t=crop",
-    title: "오단 플라스틱 서랍장 팔아용",
-    location: "충북 청주시 흥덕구 봉명동",
-    category: "뷰티/미용",
-    price: 200000,
-    description: `다이슨 에어랩 스타일러 컴플리트입니다.
-
-19년도 구매했습니다.
-라운드 볼륨 브러시가 사라져서 저렴하게 보내드려요!
-    
-외에 30,40mm 배럴 / 하드 스무딩 브러시 / 소프트 스무딩 브러시 / 드라이어 들어있습니다.
-    
-사진에 보이시는 그대로입니다.
-    
-무게가 꽤 나가서 직거래 환영합니다 ^-^//`,
-    view_cnt: 8,
-    interest: 18,
-    item_reg_time: 7,
-  },
-  {
-    id: 4,
-    imgSrc:
-      "https://dnvefa72aowie.cloudfront.net/origin/article/202111/F27DC1068390BE4B11D1DCAA60A80C41D46C5827F9C4C9C2E8A7A7FE66EECCE5.jpg?q=82&s=300x300&t=crop",
-    title: "선반 팔아요",
-    location: "대전 중구 선화동",
-    category: "뷰티/미용",
-    price: 200000,
-    description: `다이슨 에어랩 스타일러 컴플리트입니다.
-
-19년도 구매했습니다.
-라운드 볼륨 브러시가 사라져서 저렴하게 보내드려요!
-    
-외에 30,40mm 배럴 / 하드 스무딩 브러시 / 소프트 스무딩 브러시 / 드라이어 들어있습니다.
-    
-사진에 보이시는 그대로입니다.
-    
-무게가 꽤 나가서 직거래 환영합니다 ^-^//`,
-    view_cnt: 8,
-    interest: 18,
-    item_reg_time: 7,
-  },
-  {
-    id: 5,
-    imgSrc:
-      "https://dnvefa72aowie.cloudfront.net/origin/article/202111/0D42A9E42599B17B80A19A701AE5C821CB9BDE9F3144441CC4E9B6817E0B8A2D.jpg?q=82&s=300x300&t=crop",
-    title: "엘지 냉장고",
-    location: "인천 부평구 산곡4동",
-    category: "뷰티/미용",
-    price: 200000,
-    description: `다이슨 에어랩 스타일러 컴플리트입니다.
-
-19년도 구매했습니다.
-라운드 볼륨 브러시가 사라져서 저렴하게 보내드려요!
-    
-외에 30,40mm 배럴 / 하드 스무딩 브러시 / 소프트 스무딩 브러시 / 드라이어 들어있습니다.
-    
-사진에 보이시는 그대로입니다.
-    
-무게가 꽤 나가서 직거래 환영합니다 ^-^//`,
-    view_cnt: 8,
-    interest: 18,
-    item_reg_time: 7,
-  },
-  {
-    id: 6,
-    imgSrc:
-      "https://dnvefa72aowie.cloudfront.net/origin/article/202111/6cd0065376a9cc301ac50b73d6b9b5a2d4130199644c6afcc87f05cb1977a4be.webp?q=82&s=300x300&t=crop",
-    title: "냉장고",
-    location: "충북 충주시 용산동",
-  },
-  {
-    id: 7,
-    imgSrc:
-      "https://dnvefa72aowie.cloudfront.net/origin/article/202111/3dd86f296983905960301c171ffd5ff8c4c3e2fd31a80322431e6cefd88aa4af.webp?q=82&s=300x300&t=crop",
-    title: "티비 판매해요",
-    location: "경남 창원시 마산회원구 구암동",
-    category: "뷰티/미용",
-    price: 200000,
-    description: `다이슨 에어랩 스타일러 컴플리트입니다.
-
-19년도 구매했습니다.
-라운드 볼륨 브러시가 사라져서 저렴하게 보내드려요!
-    
-외에 30,40mm 배럴 / 하드 스무딩 브러시 / 소프트 스무딩 브러시 / 드라이어 들어있습니다.
-    
-사진에 보이시는 그대로입니다.
-    
-무게가 꽤 나가서 직거래 환영합니다 ^-^//`,
-    view_cnt: 8,
-    interest: 18,
-    item_reg_time: 7,
-  },
-  {
-    id: 8,
-    imgSrc:
-      "https://dnvefa72aowie.cloudfront.net/origin/article/202111/8ED2FF937365B586E5100DAB9C3F3E4404AB2C6E84FCA4FC1739789F29D5F916.jpg?q=82&s=300x300&t=crop",
-    title: "LG 통돌이 세탁기 14kg 입니다.",
-    location: "광주 북구 연제동",
-    category: "뷰티/미용",
-    price: 200000,
-    description: `다이슨 에어랩 스타일러 컴플리트입니다.
-
-19년도 구매했습니다.
-라운드 볼륨 브러시가 사라져서 저렴하게 보내드려요!
-    
-외에 30,40mm 배럴 / 하드 스무딩 브러시 / 소프트 스무딩 브러시 / 드라이어 들어있습니다.
-    
-사진에 보이시는 그대로입니다.
-    
-무게가 꽤 나가서 직거래 환영합니다 ^-^//`,
-    view_cnt: 8,
-    interest: 18,
-    item_reg_time: 7,
   },
 ];
 
@@ -577,3 +414,56 @@ export const getShortCityName = () => ({
   경상남도: "경남",
   제주특별자치도: "제주",
 });
+export const getReviewData = () => [
+  {
+    userId: "1",
+    reviewId: "1",
+    parentReviewId: "1",
+    userName: "미운오리새끼",
+    address: "동구 수정제5동",
+    content: `아이에겐 평생 한번 있는 상인데
+그것을 공유하는건
+그 아이가 커서 당신의 환갑잔치상을 여러사람과 공유한다면 ....
+내자식 내부모에게
+아까운게 아닙니다`,
+  },
+  {
+    userId: "2",
+    reviewId: "2",
+    parentReviewId: "1",
+    userName: "사부",
+    address: "동구 초량제2동",
+    content: `너무 옛날 사고 방식인거같아요;;
+요즘은 세트식으로 예쁘게 만들어진 모형같은 것들을 백일상으로 대여줘해요~~
+코로나라 어쩔 수 없이 집에서 기념으로 사진이라도 남길려고 촬영 소품으로 비싼돈주고 빌려오시는건대 당연히 일정이 비슷한 가정이 있으면 더치페이해서 부담을 나누면 좋죠 ㅡㅡ
+무슨 돈이 아깝다..만다.. 이런소리를 하시는지… 제 눈에는 알뜰한 어머니로 보이네요. 잘 모르시면 훈수 두지않으셨음 좋겠어요 ~~`,
+  },
+  {
+    userId: "3",
+    reviewId: "3",
+    parentReviewId: "3",
+    userName: "하우",
+    address: "중구 영주제1동",
+    content: `좋은생각인거 같습니당`,
+  },
+];
+export const UserAPI = (id) =>
+  useAxios({
+    url: `/seller-info/${id}`,
+  });
+export const SearchAPI = (id) =>
+  useAxios({
+    url: `/search/${id}`,
+  });
+export const HotArticleAPI = () =>
+  useAxios({
+    url: `/hot-articles`,
+  });
+export const ArticleAPI = (id) =>
+  useAxios({
+    url: `/articles/${id}`,
+  });
+export const BoardAPI = (id) =>
+  useAxios({
+    url: `/board?search=${id}`,
+  });
