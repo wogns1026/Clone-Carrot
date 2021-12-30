@@ -5,6 +5,10 @@ import com.example.project.dto.ItemDto;
 import com.example.project.service.ItemService;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -23,26 +27,14 @@ public class ItemController {
 
     @ApiOperation(value = "매물 조회")
     @GetMapping(value = "/search/{itemTitle}")
-    public ResponseEntity<Map<String, Object>> getItem(@PathVariable String itemTitle){
-        List<Item> itemList = itemService.getItem(itemTitle);
-
-        Map<String, Object> result = new HashMap<>();
-        result.put("data", itemList);
-        result.put("count", itemList.size());
-
-        return new ResponseEntity<>(result, HttpStatus.OK);
+    public ResponseEntity<Page<Item>> getItem(@PathVariable String itemTitle, Pageable pageable){
+        return new ResponseEntity<>(itemService.getItem(itemTitle, pageable), HttpStatus.OK);
     }
 
     @ApiOperation(value = "인기 매물 조회")
     @GetMapping(value = "/hot-articles")
-    public ResponseEntity<Map<String, Object>> getHotItem(){
-        List<Item> itemList = itemService.getHotItem();
-
-        Map<String, Object> result = new HashMap<>();
-        result.put("data", itemList);
-        result.put("count", itemList.size());
-
-        return new ResponseEntity<>(result, HttpStatus.OK);
+    public ResponseEntity<Page<Item>> getHotItem(@PageableDefault(sort = "viewCnt", direction = Sort.Direction.DESC) Pageable pageable){
+        return new ResponseEntity<>(itemService.getHotItem(pageable), HttpStatus.OK);
     }
 
     @ApiOperation(value = "매물 상세 조회")
