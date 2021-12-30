@@ -1,20 +1,9 @@
 import React from "react";
-import styled from "styled-components";
-
-const Container = styled.div`
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  font-size: 28px;
-  margin-top: 20px;
-`;
+import { FlexBox, Text } from "Components/Universal";
 
 const Loader = () => (
-  <Container>
-    <span role="img" aria-label="Loading">
-      ⏰
-    </span>
-  </Container>
+  <FlexBox fullSize center marginTop="28px">
+    <Text fontSize="28px">Loading...</Text>
+  </FlexBox>
 );
 export default Loader;

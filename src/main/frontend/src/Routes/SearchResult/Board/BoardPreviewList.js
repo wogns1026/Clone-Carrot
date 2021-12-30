@@ -33,13 +33,8 @@ const BoardPreviewList = () => {
         onClicked={LoadMoreData}
       >
         {state.map((d, index) => (
-          <Box key={d.id}>
-            <BoardPreview
-              id={d.id}
-              src={d.image}
-              description={d.description}
-              location="경기도 화성시"
-            />
+          <Box key={d.boardId}>
+            <BoardPreview {...d} />
             {state.length - 1 > index && (
               <HorizontalDivider marginBottom="25px" />
             )}
