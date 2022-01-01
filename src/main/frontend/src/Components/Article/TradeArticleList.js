@@ -10,7 +10,7 @@ const TradeArticleList = ({ filter, gridSize = "210px", gridGap = "56px" }) => {
   const [state, setState] = useState([]);
 
   useEffect(() => {
-    if (data) setState(data.data);
+    if (data) setState(data);
   }, [data]);
 
   return loading ? (

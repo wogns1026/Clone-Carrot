@@ -12,7 +12,7 @@ const TradeArticleList = () => {
   const [state, setState] = useState([]);
   let { loading, data, error } = SearchAPI(id);
   useEffect(() => {
-    if (data) setState(data.data);
+    if (data) setState(data);
   }, [data]);
 
   const LoadMoreData = () => {
