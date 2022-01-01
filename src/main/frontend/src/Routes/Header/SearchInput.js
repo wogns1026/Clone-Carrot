@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { FlexBox, Box, Input, ImageButton } from "Components/Universal";
+import { FlexBox, Input, ImageButton } from "Components/Universal";
 import search_icon from "images/search_icon.svg";
 import theme from "Style/theme";
 
@@ -18,27 +18,26 @@ const SearchInput = ({ placeholder }) => {
     navigate(`/search/${text}`);
   };
   return (
-    <Box
-      width="393px"
+    <FlexBox
+      center
+      width="100%"
       height="40px"
+      maxWidth="393px"
       marginLeft="32px"
       borderRadius="5px"
       border={theme.colors.lightDark}
       outline={theme.colors.dark}
+      horizontalPadding="16px"
     >
-      <FlexBox fullSize center>
-        <Input
-          width="100%"
-          placeholder={placeholder}
-          onKeyPress={onKeyPress}
-          onChange={onChange}
-          fontSize="16px"
-          marginLeft="16px"
-          marginTop="10px"
-        />
-        <ImageButton src={search_icon} onClick={() => LetSearch()} />
-      </FlexBox>
-    </Box>
+      <Input
+        fullSize
+        placeholder={placeholder}
+        onKeyPress={onKeyPress}
+        onChange={onChange}
+        fontSize="16px"
+      />
+      <ImageButton src={search_icon} onClick={LetSearch} />
+    </FlexBox>
   );
 };
 export default SearchInput;

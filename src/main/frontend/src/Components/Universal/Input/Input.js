@@ -9,6 +9,9 @@ const TextInput = styled.input`
   &::placeholder {
     opacity: 0.5;
   }
+  &:focus::placeholder {
+    color: transparent;
+  }
 
   ${(props) => {
     const styles = [];
