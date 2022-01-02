@@ -34,6 +34,12 @@ const common = {
   height: (height) => `
   height: ${height};
 `,
+  minWidth: (minWidth) => `
+  min-width: ${minWidth};
+`,
+  maxWidth: (maxWidth) => `
+  max-width: ${maxWidth};
+`,
   minHeight: (minHeight) => `
   min-height: ${minHeight};
 `,
@@ -118,12 +124,26 @@ const common = {
   interactive: `
   &:active,
   &:hover {
-    background: ${colors.grey};
-    opacity: 0.7;
+    opacity: 0.6;
   }
 `,
   underlineEffect: `
   border-bottom: 3px solid ${colors.carrot}};
+`,
+  shadow: `
+  box-shadow: 0 62.5px 125px -25px rgba(50, 50, 73, 0.5), 0 37.5px 75px -37.5px rgba(0, 0, 0, 0.6)
+`,
+  bottomShadow: (color) => `
+  box-shadow: 0px 8px ${color};
+`,
+  linearGradient: (colors) =>
+    ` background: linear-gradient(${colors.join(",")});
+`,
+  crossLinearGradient: (colors) =>
+    ` background: linear-gradient(135deg, ${colors.join(",")});
+`,
+  textCenter: `
+text-align: center;
 `,
 };
 const text = {
@@ -149,8 +169,6 @@ const button = {
 };
 const box = {
   ...common,
-  shadow: `0 62.5px 125px -25px rgba(50, 50, 73, 0.5), 0 37.5px 75px -37.5px rgba(0, 0, 0, 0.6)`,
-  linearGradient: ` background: linear-gradient(rgba(255, 255, 255, 0.01), rgba(0, 0, 0, 0.4));`,
 };
 const flex = {
   ...common,

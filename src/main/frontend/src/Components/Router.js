@@ -2,14 +2,17 @@ import React from "react";
 import { HashRouter, Route, Routes } from "react-router-dom";
 import { Redirect } from "react-dom";
 import Home from "Routes/Home/Home";
-import Header from "Routes/Semantic/Header";
-import Footer from "Routes/Semantic/Footer";
+import Header from "Routes/Header/Header";
+import Footer from "Routes/Footer/Footer";
 import HotTrades from "Routes/HotTrades/HotTrades";
 import TradeDetail from "Routes/TradeDetail/TradeDetail";
 import SearchResult from "Routes/SearchResult/SearchResult";
 import Board from "Routes/Board/Board";
 import { AutoScrollToTop } from "./Universal";
 import SellerInfo from "Routes/SellerInfo/SellerInfo";
+import Welcome from "Routes/Welcome/Welcome";
+import Signup from "Routes/Welcome/Signup/Signup";
+import Signin from "Routes/Welcome/Signin/Signin";
 
 const Router = () => (
   <HashRouter>
@@ -23,6 +26,9 @@ const Router = () => (
         <Route path="/search/:id" element={<SearchResult />} />
         <Route path="/board/:id" element={<Board />} />
         <Route path="/seller-info/:id" element={<SellerInfo />} />
+        <Route path="/welcome" element={<Welcome />} />
+        <Route path="/welcome/signup" element={<Signup />} />
+        <Route path="/welcome/signin" element={<Signin />} />
         <Route path="*" render={() => <Redirect to="/" />} />
       </Routes>
       <Footer />

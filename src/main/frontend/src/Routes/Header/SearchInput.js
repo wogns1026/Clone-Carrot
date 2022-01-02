@@ -6,15 +6,8 @@ import theme from "Style/theme";
 
 const SearchInput = ({ placeholder }) => {
   const navigate = useNavigate();
-  const [text, setText] = useState("");
-  const onKeyPress = (e) => {
-    if (e.key === "Enter") LetSearch();
-    //alert("검색");
-  };
-  const onChange = (e) => {
-    setText(e.target.value);
-  };
-  const LetSearch = () => {
+
+  const LetSearch = (text) => {
     navigate(`/search/${text}`);
   };
   return (
@@ -32,8 +25,7 @@ const SearchInput = ({ placeholder }) => {
       <Input
         fullSize
         placeholder={placeholder}
-        onKeyPress={onKeyPress}
-        onChange={onChange}
+        onKeyPress={LetSearch}
         fontSize="16px"
       />
       <ImageButton src={search_icon} onClick={LetSearch} />
