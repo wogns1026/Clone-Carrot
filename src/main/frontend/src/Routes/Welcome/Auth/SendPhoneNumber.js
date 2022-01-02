@@ -34,7 +34,7 @@ const SendPhoneNumber = ({ callback }) => {
         <InputWithCheck
           placeholder="휴대폰 번호 입력"
           initText="인증문자 받기"
-          validText="재전송"
+          validText="다시 전송"
           callback={send}
           validation={valid}
         />

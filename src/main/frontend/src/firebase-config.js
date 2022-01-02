@@ -4,6 +4,8 @@ import {
   getAuth,
   RecaptchaVerifier,
   signInWithPhoneNumber,
+  signInWithCredential,
+  PhoneAuthProvider,
 } from "firebase/auth";
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -67,11 +69,13 @@ export const confirmAuthCode = ({ authCode, callback }) => {
     .then((result) => {
       // 인증 성공
       const user = result.user;
-      const credential = auth.PhoneAuthProvider.credential(
+      const credential = PhoneAuthProvider.credential(
         window.confirmationResult.verificationId,
         authCode
       );
-      auth.signInWithCredential(credential);
+      signInWithCredential(auth, credential).catch((error) =>
+        console.log(error)
+      );
       callback(true);
     })
     .catch((error) => {
@@ -84,7 +88,7 @@ export const confirmAuthCode = ({ authCode, callback }) => {
       if (error.code === "auth/invalid-verification-code") {
         alert("인증 코드를 다시 확인해주세요");
       }
-      console.log(`Error: ${error.code}`);
+      console.log(`Error: ${error}`);
       callback(false);
       // User couldn't sign in (bad verification code?)
     });
