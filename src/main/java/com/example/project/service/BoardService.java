@@ -15,6 +15,8 @@ public interface BoardService {
 
     List<Review> getBoardReviews(Long boardId);
 
+    void saveBoard(Board board);
+
     void deleteBoard(Long boardId);
 
 }

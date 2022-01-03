@@ -42,6 +42,16 @@ public class BoardController {
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
+    @ApiOperation(value = "게시판(동네 정보) 게시글 저장")
+    @PostMapping
+    public ResponseEntity<Map<String, Object>> saveBoard(@RequestBody Board board){
+        boardService.saveBoard(board);
+
+        Map<String, Object> result = new HashMap<>();
+        result.put("success", "success");
+        return new ResponseEntity<>(result, HttpStatus.OK);
+    }
+
     @ApiOperation(value = "게시판(동네 정보) 게시글 삭제")
     @DeleteMapping
     public ResponseEntity<Map<String, Object>> deleteBoard(@RequestParam Long boardId){

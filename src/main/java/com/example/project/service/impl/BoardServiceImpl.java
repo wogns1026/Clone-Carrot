@@ -40,6 +40,12 @@ public class BoardServiceImpl implements BoardService {
 
     @Override
     @Transactional
+    public void saveBoard(Board board) {
+        boardRepository.save(board);
+    }
+
+    @Override
+    @Transactional
     public void deleteBoard(Long boardId) {
         boardRepository.deleteById(boardId);
         reviewRepository.deleteByBoardId(boardId);
