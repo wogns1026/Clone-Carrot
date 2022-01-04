@@ -24,3 +24,4 @@ yarn-error.log*
 
 # 2021/11/28 주석처리 (git에 올릴 필요없는 캐시정보)
 .eslintcache
+.env

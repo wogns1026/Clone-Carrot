@@ -5,7 +5,6 @@ import { LinkTo } from "Components/Universal";
 const STYLE = theme.button;
 export const StyledButton = styled.button`
   cursor: pointer;
-
   border: none;
   background-color: ${(props) => props.color || "transparent"};
   opacity: ${(props) => props.off && "0.3"};

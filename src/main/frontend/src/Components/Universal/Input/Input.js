@@ -9,6 +9,9 @@ const TextInput = styled.input`
   &::placeholder {
     opacity: 0.5;
   }
+  &:focus::placeholder {
+    color: transparent;
+  }
 
   ${(props) => {
     const styles = [];
@@ -29,7 +32,7 @@ export const Input = ({ onKeyPress, onChange, placeholder, ...rest }) => {
   return (
     <TextInput
       placeholder={placeholder}
-      onKeyPress={onKeyPress}
+      onKeyPress={(e) => e.key === "Enter" && onKeyPress(e.target.value)}
       onChange={onChange}
       {...rest}
     />

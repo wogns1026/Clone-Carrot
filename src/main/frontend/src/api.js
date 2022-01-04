@@ -13,13 +13,6 @@ export const icons = {
   blog: "https://d1unjqcospf8gs.cloudfront.net/assets/home/base/footer/icon-blog-e1b0d512d1766a6962ec5bbb5b0803d2a6a9c55ad97db5ba9eebb76013caceba.svg",
 };
 
-export const contactInfo = [
-  { text: "고객문의", address: "cs@daangnservice.com" },
-  { text: "제휴문의", address: "contact@daangn.com" },
-  { text: "지역광고", address: "daangn.com" },
-  { text: "PR문의", address: "pr@daangn.com" },
-];
-
 export const getBannerData = () => [
   {
     bgColor: "#FBF7F3",
@@ -98,26 +91,6 @@ export const getTopSearchData = () => [
   { text: "난로" },
   { text: "컴퓨터" },
   { text: "아이패드" },
-];
-
-export const getFooterData = () => [
-  [
-    { text: "믿을 수 있는 중고거래", path: "/" },
-    { text: "자주 묻는 질문", path: "/" },
-  ],
-  [
-    { text: "광고주센터", path: "/" },
-    { text: "동네가게", path: "/" },
-  ],
-  [
-    { text: "회사 소개", path: "/" },
-    { text: "채용", path: "/" },
-  ],
-  [
-    { text: "이용약관", path: "/" },
-    { text: "개인정보처리방침", path: "/" },
-    { text: "위치기반서비스 이용약관", path: "/" },
-  ],
 ];
 
 export const getCityData = () => ({
