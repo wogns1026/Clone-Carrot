@@ -12,7 +12,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RestController
-@RequestMapping(value = "/api/v1")
+@RequestMapping(value = "/api/v1/review")
 @RequiredArgsConstructor
 @CrossOrigin
 public class ReviewController {
@@ -20,7 +20,7 @@ public class ReviewController {
     private final ReviewService reviewService;
 
     @ApiOperation(value = "리뷰 저장")
-    @PostMapping(value = "/review")
+    @PostMapping
     public ResponseEntity<Map<String, Object>> saveReview(@RequestBody Review review){
         reviewService.saveReview(review);
 
@@ -31,7 +31,7 @@ public class ReviewController {
     }
 
     @ApiOperation(value = "리뷰 삭제")
-    @DeleteMapping(value = "/review")
+    @DeleteMapping
     public ResponseEntity<Map<String, Object>> deleteReview(@RequestParam Long reviewId){
         reviewService.deleteReview(reviewId);
 
