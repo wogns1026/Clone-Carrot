@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 @Table(name = "TB_REVIEWS")
 public class Review {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long reviewId;
 
     private Long boardId;
