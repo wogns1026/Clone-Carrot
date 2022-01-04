@@ -64,16 +64,22 @@ const common = {
 `,
   absolute: `
   position: absolute;
+`,
+  absoluteTop: `
+  position: absolute;
   top: 0;
 `,
   absoluteBottom: `
   position: absolute;
   bottom: 0;
-  `,
+`,
   fixed: `
   position: fixed;
   top: 0;
   z-index: 1;
+`,
+  left: (value) => `
+  left: ${value};
 `,
   verticalMargin: (vMargin) => `
   margin-top: ${vMargin};
@@ -136,14 +142,17 @@ const common = {
   bottomShadow: (color) => `
   box-shadow: 0px 8px ${color};
 `,
-  linearGradient: (colors) =>
-    ` background: linear-gradient(${colors.join(",")});
+  linearGradient: (colors) => `
+  background: linear-gradient(${colors.join(",")});
 `,
-  crossLinearGradient: (colors) =>
-    ` background: linear-gradient(135deg, ${colors.join(",")});
+  crossLinearGradient: (colors) => `
+  background: linear-gradient(135deg, ${colors.join(",")});
 `,
   textCenter: `
-text-align: center;
+  text-align: center;
+`,
+  clickIgnore: `
+  pointer-events: none;
 `,
 };
 const text = {

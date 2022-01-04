@@ -1,25 +1,21 @@
 import { FlexBox, Input } from "Components/Universal";
-import { useState } from "react";
+import WelcomeButton from "Routes/Welcome/WelcomeButton";
 import theme from "Style/theme";
-import WelcomeButton from "../../../Routes/Welcome/WelcomeButton";
 
 const InputWithCheck = ({
   callback,
+  onChange,
   initText,
   validText,
   validation,
+  children,
   ...rest
 }) => {
-  const [input, setInput] = useState("");
   const buttonColor = validation ? theme.colors.green : theme.colors.carrot;
-  const outlineColor = validation ? theme.colors.green : theme.colors.darkGrey;
-
+  const outlineColor = validation ? theme.colors.green : theme.colors.carrot;
+  const shadowColor = theme.colors.lightGrey;
   const checkValidation = () => {
-    if (validation) return;
-    callback(input);
-  };
-  const handleChange = (input) => {
-    setInput(input);
+    if (!validation) callback();
   };
   return (
     <FlexBox
@@ -29,7 +25,7 @@ const InputWithCheck = ({
       borderRadius="30px"
       border={outlineColor}
       outline={outlineColor}
-      bottomShadow={theme.colors.lightGrey}
+      bottomShadow={shadowColor}
     >
       <Input
         width="100%"
@@ -37,7 +33,7 @@ const InputWithCheck = ({
         fontSize="16px"
         bgColor="transparent"
         onKeyPress={checkValidation}
-        onChange={(e) => handleChange(e.target.value)}
+        onChange={(e) => onChange(e.target.value)}
         {...rest}
       />
       <WelcomeButton color={buttonColor} onClick={checkValidation}>
