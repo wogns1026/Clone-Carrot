@@ -20,5 +20,5 @@ public class User {
 
     private int retradeRate;
 
-    private String review;
+    private String image;
 }
