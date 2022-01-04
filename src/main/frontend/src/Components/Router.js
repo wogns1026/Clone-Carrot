@@ -10,7 +10,6 @@ import SearchResult from "Routes/SearchResult/SearchResult";
 import Board from "Routes/Board/Board";
 import { AutoScrollToTop } from "./Universal";
 import SellerInfo from "Routes/SellerInfo/SellerInfo";
-import Welcome from "Routes/Welcome/Welcome";
 import Signup from "Routes/Welcome/Signup/Signup";
 import Signin from "Routes/Welcome/Signin/Signin";
 
@@ -26,9 +25,8 @@ const Router = () => (
         <Route path="/search/:id" element={<SearchResult />} />
         <Route path="/board/:id" element={<Board />} />
         <Route path="/seller-info/:id" element={<SellerInfo />} />
-        <Route path="/welcome" element={<Welcome />} />
-        <Route path="/welcome/signup" element={<Signup />} />
-        <Route path="/welcome/signin" element={<Signin />} />
+        <Route path="/signin" element={<Signin />} />
+        <Route path="/signup" element={<Signup />} />
         <Route path="*" render={() => <Redirect to="/" />} />
       </Routes>
       <Footer />

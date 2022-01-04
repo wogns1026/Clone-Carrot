@@ -5,7 +5,7 @@ const DevelopHeader = () => {
   const btnColor = theme.colors.carrot;
 
   const LinkButton = ({ link, text }) => (
-    <Button bgColor={btnColor} to={link} borderRadius="10px">
+    <Button height="30px" bgColor={btnColor} to={link} borderRadius="10px">
       <Text fontWeight={700}>{text}</Text>
     </Button>
   );
@@ -25,7 +25,8 @@ const DevelopHeader = () => {
       <LinkButton link="/search/1" text="검색 결과" />
       <LinkButton link="/board/1" text="게시물 정보" />
       <LinkButton link="/seller-info/1" text="판매자 정보" />
-      <LinkButton link="/welcome" text="로그인/회원가입" />
+      <LinkButton link="/signin" text="로그인" />
+      <LinkButton link="/signup" text="최초 로그인" />
     </FlexBox>
   );
 };

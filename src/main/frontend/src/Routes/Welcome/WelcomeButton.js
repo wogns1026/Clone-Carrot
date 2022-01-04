@@ -7,10 +7,11 @@ const WelcomeButton = ({ children, ...rest }) => (
     height="50px"
     borderRadius="30px"
     bottomShadow={theme.colors.grey}
+    marginBottom="20px"
     color={theme.colors.carrot}
     {...rest}
   >
-    <Text fontSize="18px" fontWeight={600} color={theme.colors.white}>
+    <Text fontSize="16px" fontWeight={700} color={theme.colors.white}>
       {children}
     </Text>
   </Button>

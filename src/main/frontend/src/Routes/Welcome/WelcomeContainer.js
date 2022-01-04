@@ -11,13 +11,14 @@ const WelcomeContainer = ({ children }) => {
       crossLinearGradient={[theme.colors.lightGreen, theme.colors.carrot]}
     >
       <FlexBox
+        width="300px"
         column
+        center
+        spaceBetween
         borderRadius="30px"
         bgColor={theme.colors.white}
         bottomShadow={theme.colors.grey}
-        horizontalPadding="20px"
-        verticalPadding="70px"
-        gap="50px"
+        verticalPadding="20px"
       >
         {children}
       </FlexBox>

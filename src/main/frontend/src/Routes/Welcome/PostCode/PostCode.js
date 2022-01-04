@@ -3,7 +3,7 @@ import DaumPostCode from "react-daum-postcode";
 import theme from "Style/theme";
 
 const PostCode = ({ callback }) => {
-  const width = "500px";
+  const width = "100%";
   const height = "500px";
   const builtInStyle = {
     width,
