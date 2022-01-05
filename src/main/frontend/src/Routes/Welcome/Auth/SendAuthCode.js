@@ -1,24 +1,21 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { FlexBox, InputWithCheck } from "Components/Universal";
-import { confirmAuthCode } from "Firebase/Auth/Phone/PhoneAuth";
+import { confirmAuthCode } from "Firebase/Auth/phone";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const SendAuthCode = ({ callback }) => {
   const [valid, setValid] = useState(false);
+  const [input, setInput] = useState();
 
-  useEffect(() => {
-    callback(valid);
-  }, [valid, callback]);
-
-  const authentication = (result) => {
-    if (result) {
-      setValid(result);
-      toast.success(`인증 성공 ${result}`);
+  const authentication = (payload) => {
+    if (payload.authSuccess) {
+      setValid(payload.authSuccess);
+      callback(payload);
     }
   };
 
-  const send = (input) => {
+  const send = () => {
     if (input && input.length === 6) {
       confirmAuthCode(input, authentication);
     } else {
@@ -33,6 +30,7 @@ const SendAuthCode = ({ callback }) => {
           placeholder="인증번호 입력"
           initText="확인"
           validText="확인 완료"
+          onChange={setInput}
           callback={send}
           validation={valid}
         />

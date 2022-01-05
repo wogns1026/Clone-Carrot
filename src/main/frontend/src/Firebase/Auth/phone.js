@@ -6,7 +6,7 @@ import {
   RecaptchaVerifier,
 } from "firebase/auth";
 import { auth } from "Firebase/firebaseConfig";
-import AuthErrorHandler from "../AuthErrorHandler";
+import AuthErrorHandler from "./AuthErrorHandler";
 
 export const renderRecaptcha = (callback) => {
   window.recaptchaVerifier = new RecaptchaVerifier(
@@ -32,26 +32,21 @@ export const resetRecaptcha = () => {
 };
 
 export const authByPhone = (phoneNumber, callback) => {
-  renderRecaptcha(
-    // Recaptcha 통과시 수행
-    signInWithPhoneNumber(auth, phoneNumber, window.recaptchaVerifier)
-      .then((confirmationResult) => {
-        window.confirmationResult = confirmationResult;
-        callback(true);
-      })
-      .catch((error) => {
-        AuthErrorHandler(error.code);
-        callback(false);
-        // Error; SMS not sent
-      })
-  );
+  signInWithPhoneNumber(auth, phoneNumber, window.recaptchaVerifier)
+    .then((confirmationResult) => {
+      window.confirmationResult = confirmationResult;
+      callback(true);
+    })
+    .catch((error) => {
+      AuthErrorHandler(error.code);
+      callback(false);
+    });
 };
 export const confirmAuthCode = (authCode, callback) => {
   window.confirmationResult
     .confirm(authCode)
     .then((result) => {
       // 인증 성공
-      const user = result.user;
       const credential = PhoneAuthProvider.credential(
         window.confirmationResult.verificationId,
         authCode
@@ -60,11 +55,13 @@ export const confirmAuthCode = (authCode, callback) => {
       signInWithCredential(auth, credential).catch((error) =>
         AuthErrorHandler(error.code)
       );
-      callback(true);
+      callback({
+        authSuccess: true,
+        id: result.user.phoneNumber,
+        authType: "phone",
+      });
     })
     .catch((error) => {
       AuthErrorHandler(error.code);
-      callback(false);
-      // User couldn't sign in (bad verification code?)
     });
 };

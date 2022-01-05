@@ -19,6 +19,7 @@ const WelcomeContainer = ({ children }) => {
         bgColor={theme.colors.white}
         bottomShadow={theme.colors.grey}
         verticalPadding="20px"
+        gap="20px"
       >
         {children}
       </FlexBox>
