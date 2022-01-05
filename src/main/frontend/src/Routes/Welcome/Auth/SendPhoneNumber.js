@@ -1,38 +1,32 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useAutoDashInput } from "Hooks/useAutoDashInput";
 import { Box, FlexBox, InputWithCheck } from "Components/Universal";
-import { authByPhone } from "Firebase/Auth/Phone/PhoneAuth";
+import { authByPhone, renderRecaptcha } from "Firebase/Auth/phone";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { regDashPhone } from "reg";
 
-const Sendinputber = ({ callback }) => {
-  const [valid, setValid] = useState(false);
+const SendPhoneNumber = ({ valid, setValid }) => {
   const [input, setInput] = useAutoDashInput();
 
   useEffect(() => {
-    callback(valid);
-  }, [valid, callback]);
+    renderRecaptcha(); // 무조건 실행해주어야 함
+  });
 
   const handleChange = (text) => {
     const regex = /^[0-9\b -]{0,13}$/;
-    if (regex.test(text)) {
-      setInput(text);
-    }
+    if (regex.test(text)) setInput(text);
   };
 
   const send = () => {
     if (regDashPhone.test(input)) {
-      authByPhone(
-        `+82 ${input}`, // 대한한국
-        setValid
-      );
+      authByPhone(`+82 ${input}`, setValid);
     } else toast.warning("전화번호를 다시 입력해주세요");
   };
 
   return (
     <>
-      <FlexBox column center gap="20px">
+      <FlexBox column center>
         <InputWithCheck
           placeholder="전화번호 입력"
           value={input}
@@ -48,4 +42,4 @@ const Sendinputber = ({ callback }) => {
     </>
   );
 };
-export default Sendinputber;
+export default SendPhoneNumber;

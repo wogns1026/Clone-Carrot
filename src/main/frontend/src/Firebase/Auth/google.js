@@ -1,10 +1,10 @@
 // Import the functions you need from the SDKs you need
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth } from "Firebase/firebaseConfig";
-import AuthErrorHandler from "../AuthErrorHandler";
+import AuthErrorHandler from "./AuthErrorHandler";
 
 export const provider = new GoogleAuthProvider();
-export const authByGoogles = async (callback) => {
+export const authByGoogle = async (callback) => {
   provider.setCustomParameters({ prompt: "select_account" });
   signInWithPopup(auth, provider)
     .then((result) => {
@@ -14,8 +14,11 @@ export const authByGoogles = async (callback) => {
       // The signed-in user info.
       const user = result.user;
       // redux action? --> dispatch({ type: SET_USER, user });
-      console.log("구글 인증 성공", result);
-      callback(true);
+      callback({
+        authSuccess: true,
+        id: result.user.email,
+        authType: "google",
+      });
     })
     .catch((error) => {
       // Handle Errors here.
@@ -25,6 +28,5 @@ export const authByGoogles = async (callback) => {
       // The AuthCredential type that was used.
       const credential = GoogleAuthProvider.credentialFromError(error);
       AuthErrorHandler(error.code);
-      callback(false);
     });
 };

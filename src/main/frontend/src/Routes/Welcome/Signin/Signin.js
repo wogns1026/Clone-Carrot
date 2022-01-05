@@ -1,29 +1,25 @@
 import React from "react";
 import WelcomeContainer from "../WelcomeContainer";
-import AuthPhoneNumber from "../Auth/AuthPhoneNumber";
+import AuthByPhoneNumber from "../Auth/AuthByPhoneNumber";
+import AuthByGoogle from "../Auth/AuthByGoogle";
 import WelcomeTitle from "../WelcomeTitle";
-import { FlexBox, ImageButton } from "Components/Universal";
-import { authByGoogles } from "Firebase/Auth/Google/GoogleAuth";
-import google_signin_btn from "images/google_signin_btn.png";
-import kakao_signin_btn from "images/kakao_signin_btn.png";
-
+import { FlexBox } from "Components/Universal";
+import AuthByKakao from "../Auth/AuthByKakao";
 const Signin = () => {
   // const navigate = useNavigate();
-  const callback = (result) => {
-    console.log(result);
+
+  const request = ({ id, authType }) => {
+    console.log(`인증방식: ${authType}, ID: ${id}`);
   };
 
   return (
     <WelcomeContainer>
       <WelcomeTitle />
-      <FlexBox column center gap="20px">
-        <AuthPhoneNumber />
+      <AuthByPhoneNumber callback={request} />
+      <FlexBox column center>
+        <AuthByGoogle callback={request} />
+        <AuthByKakao callback={request} />
       </FlexBox>
-      <ImageButton
-        src={google_signin_btn}
-        onClick={() => authByGoogles(callback)}
-      />
-      <ImageButton src={kakao_signin_btn} />
     </WelcomeContainer>
   );
 };

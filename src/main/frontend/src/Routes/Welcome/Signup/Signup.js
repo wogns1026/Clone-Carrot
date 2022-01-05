@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import WelcomeContainer from "../WelcomeContainer";
 import WelcomeTitle from "../WelcomeTitle";
-import AuthPhoneNumber from "../Auth/AuthPhoneNumber";
+import AuthByPhoneNumber from "../Auth/AuthByPhoneNumber";
 import { FlexBox, InputWithCheck } from "Components/Universal";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -39,7 +39,7 @@ const Signup = () => {
             initText="중복확인"
             validText="사용가능"
           />
-          {valid && <AuthPhoneNumber />}
+          {valid && <AuthByPhoneNumber />}
         </FlexBox>
       )}
       <ToastContainer />
