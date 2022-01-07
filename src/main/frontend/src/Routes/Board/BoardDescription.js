@@ -2,11 +2,11 @@ import React from "react";
 import { Box, Text } from "Components/Universal";
 import theme from "Style/theme";
 
-const BoardDescription = ({ itemId, description = "", viewCnt = 0 }) => {
+const BoardDescription = ({ content = "", viewCnt = 0 }) => {
   return (
     <Box>
       <Text fontSize="16.5px" lineHeight={1.4} whiteSpace="pre-wrap">
-        {description}
+        {content}
       </Text>
       <Box verticalMargin="25px">
         <Text

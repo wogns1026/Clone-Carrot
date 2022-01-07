@@ -4,20 +4,27 @@ import { Box, RegularGrid } from "Components/Universal";
 import SeeMoreContianer from "../SeeMoreContainer";
 import TradeArticle from "./TradeArticle";
 import theme from "Style/theme";
-import { SearchAPI } from "api";
+import { articleApi } from "api";
 import Message from "Components/Loading/Message";
 
-const TradeArticleList = () => {
+const TradeArticleList = ({ size }) => {
   const { id } = useParams();
-  const [state, setState] = useState([]);
-  let { loading, data, error } = SearchAPI(id);
-  useEffect(() => {
-    if (data) setState(data);
-  }, [data]);
+  const [articles, setArticles] = useState();
+  let { loading, data, error, moreFetch } = articleApi.Search({
+    id,
+    size,
+  });
 
-  const LoadMoreData = () => {
-    // 데이터 추가 로드
-  };
+  useEffect(() => {
+    if (articles) moreFetch();
+  }, [id]);
+
+  useEffect(() => {
+    if (data) {
+      if (articles) setArticles([...articles, ...data.content]);
+      else setArticles(data.content);
+    }
+  }, [data]);
 
   return error ? (
     <Message text={error} />
@@ -27,11 +34,11 @@ const TradeArticleList = () => {
         <SeeMoreContianer
           title="중고거래"
           bgColor={theme.colors.white}
-          onClicked={LoadMoreData}
+          onClicked={moreFetch}
         >
           <Box width="100%">
             <RegularGrid gridSize="215px" gridGap="35px">
-              {state.map(({ itemId, ...rest }) => (
+              {articles?.map(({ itemId, ...rest }) => (
                 <TradeArticle key={itemId} itemId={itemId} {...rest} />
               ))}
             </RegularGrid>

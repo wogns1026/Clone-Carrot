@@ -43,6 +43,7 @@ const HotTrades = () => {
         filter={filterOut}
         gridSize="201px"
         gridGap="50px"
+        size={100}
       ></TradeArticleList>
     </ContentContainer>
   );

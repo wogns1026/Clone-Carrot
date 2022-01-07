@@ -1,14 +1,12 @@
 import React from "react";
-import { Box, FlexBox, HorizontalDivider, Text } from "Components/Universal";
 import Review from "./Review";
-import { getReviewData } from "api";
+import { Box, FlexBox, HorizontalDivider, Text } from "Components/Universal";
 
-const ReviewList = ({ boardId }) => {
-  const reviewData = getReviewData();
+const ReviewList = ({ reviewList }) => {
   const rootReviews = () =>
-    reviewData.filter((d) => d.reviewId === d.parentReviewId);
+    reviewList.filter((d) => d.reviewId === d.parentReviewId);
   const childReviews = (rootData) =>
-    reviewData.filter(
+    reviewList.filter(
       (d) =>
         d.parentReviewId !== d.reviewId &&
         d.parentReviewId === rootData.reviewId
@@ -34,7 +32,7 @@ const ReviewList = ({ boardId }) => {
     <Box fullSize borderRadius="10px">
       <Box marginBottom="30px">
         <Text fontSize="17px" fontWeight={600}>
-          {`댓글 ${reviewData.length}`}
+          {`댓글 ${reviewList.length}`}
         </Text>
       </Box>
       {getReviews}

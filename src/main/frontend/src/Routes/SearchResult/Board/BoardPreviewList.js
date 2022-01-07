@@ -5,21 +5,26 @@ import Message from "Components/Loading/Message";
 import SeeMoreContianer from "../SeeMoreContainer";
 import theme from "Style/theme";
 import BoardPreview from "./BoardPreview";
-import { BoardAPI } from "api";
+import { boardApi } from "api";
 import { useParams } from "react-router-dom";
 
 const BoardPreviewList = () => {
   const { id } = useParams();
-  let { loading, data, error } = BoardAPI(id);
-  const [state, setState] = useState([]);
+  const [reviews, setReviews] = useState();
+  const { loading, data, error, moreFetch } = boardApi.Search({
+    size: 6,
+  });
 
   useEffect(() => {
-    if (data) setState(data);
-  }, [data]);
+    if (reviews) moreFetch();
+  }, [id]);
 
-  const LoadMoreData = () => {
-    // 데이터 추가 로드
-  };
+  useEffect(() => {
+    if (data) {
+      if (reviews) setReviews([...reviews, ...data.content]);
+      else setReviews(data.content);
+    }
+  }, [data]);
 
   return loading ? (
     <Loader />
@@ -30,12 +35,12 @@ const BoardPreviewList = () => {
       <SeeMoreContianer
         title="동네정보"
         bgColor={theme.colors.white}
-        onClicked={LoadMoreData}
+        onClicked={moreFetch}
       >
-        {state.map((d, index) => (
+        {reviews?.map((d, index) => (
           <Box key={d.boardId}>
             <BoardPreview {...d} />
-            {state.length - 1 > index && (
+            {reviews?.length - 1 > index && (
               <HorizontalDivider marginBottom="25px" />
             )}
           </Box>

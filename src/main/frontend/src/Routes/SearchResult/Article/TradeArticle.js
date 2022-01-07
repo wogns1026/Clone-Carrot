@@ -15,7 +15,7 @@ const TradeArticle = ({
   image = defaultImg,
   itemTitle,
   cost = 0,
-  location,
+  address,
   viewCnt = 0,
 }) => {
   return (
@@ -32,7 +32,7 @@ const TradeArticle = ({
         <ArticleInfo
           itemTitle={itemTitle}
           cost={`${cost.toLocaleString()}원`}
-          location={location}
+          address={address}
           viewCnt={viewCnt}
         />
       </FlexBox>

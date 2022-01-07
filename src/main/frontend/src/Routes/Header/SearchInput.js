@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FlexBox, Input, ImageButton } from "Components/Universal";
 import search_icon from "images/search_icon.svg";
@@ -6,9 +6,9 @@ import theme from "Style/theme";
 
 const SearchInput = ({ placeholder }) => {
   const navigate = useNavigate();
-
-  const LetSearch = (text) => {
-    navigate(`/search/${text}`);
+  const [input, setInput] = useState();
+  const search = () => {
+    navigate(`/search/${input}`);
   };
   return (
     <FlexBox
@@ -25,10 +25,11 @@ const SearchInput = ({ placeholder }) => {
       <Input
         fullSize
         placeholder={placeholder}
-        onKeyPress={LetSearch}
+        onKeyPress={search}
+        onChange={(e) => setInput(e.target.value)}
         fontSize="16px"
       />
-      <ImageButton src={search_icon} onClick={LetSearch} />
+      <ImageButton src={search_icon} onClick={search} />
     </FlexBox>
   );
 };

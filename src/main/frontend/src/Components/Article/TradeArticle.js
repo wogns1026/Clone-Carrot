@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import defaultImg from "images/logo.svg";
 import {
   Box,
@@ -8,17 +8,31 @@ import {
 } from "Components/Universal";
 import theme from "Style/theme";
 import ArticleInfo from "./ArticleInfo";
+import { userApi } from "api";
+import Loader from "Components/Loading/Loader";
+import Message from "Components/Loading/Message";
 
 const TradeArticle = ({
   itemId,
+  sellerId,
   image = defaultImg,
   itemTitle,
   cost = 0,
-  location,
   viewCnt = 0,
   height = "210px",
 }) => {
-  return (
+  let { loading, data, error } = userApi.GetUser(sellerId);
+  const [address, setAddress] = useState();
+
+  useEffect(() => {
+    if (data) setAddress(data.sellerInfo.address);
+  }, [data]);
+
+  return loading ? (
+    <Loader />
+  ) : error ? (
+    <Message text={error} />
+  ) : (
     <LinkTo to={`/articles/${itemId}`}>
       <FlexBox column interactive>
         <Box height={height} marginBottom="17px">
@@ -32,7 +46,7 @@ const TradeArticle = ({
         <ArticleInfo
           itemTitle={itemTitle}
           cost={`${cost.toLocaleString()}원`}
-          location={location}
+          address={address}
           viewCnt={`관심 ${viewCnt}`}
         />
       </FlexBox>

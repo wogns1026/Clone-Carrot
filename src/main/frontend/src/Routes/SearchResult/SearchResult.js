@@ -12,7 +12,7 @@ const SearchResult = () => {
       width="800px"
       height="100%"
     >
-      <TradeArticleList />
+      <TradeArticleList size={6} />
       <BoardPreviewList />
     </ContentContainer>
   );

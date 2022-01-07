@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useParams } from "react-router-dom";
 import HotTradeSmallList from "./HotTradeSmallList";
 import TradeDescription from "./TradeDescription";
@@ -13,16 +13,12 @@ import {
   HorizontalDivider,
   ImageSwiper,
 } from "Components/Universal";
-import { ArticleAPI } from "api";
+import { articleApi } from "api";
+import theme from "Style/theme";
 
 const TradeDetail = () => {
   const { id } = useParams();
-  let { loading, data, error } = ArticleAPI(id);
-  const [state, setState] = useState([]);
-
-  useEffect(() => {
-    if (data) setState(data);
-  }, [data]);
+  let { loading, data, error } = articleApi.GetArticle(id);
 
   return loading ? (
     <Loader />
@@ -30,18 +26,18 @@ const TradeDetail = () => {
     <Message text={error} />
   ) : (
     <ContentContainer
-      bgColor="white"
+      bgColor={theme.colors.white}
       direction="column"
       width="677px"
       height="100%"
     >
       <Box fullSize marginTop="30px">
-        <ImageSwiper imageList={[state.image]} />
-        <Profile id={state.sellerId} />
+        <ImageSwiper imageList={[data.data.image]} />
+        <Profile id={data.data.sellerId ? data.data.sellerId : 1} />
         <HorizontalDivider marginBottom="38px" />
         <FlexBox column>
-          <TradeDetailInfo {...state} />
-          <TradeDescription {...state} />
+          <TradeDetailInfo {...data.data} />
+          <TradeDescription {...data.data} />
         </FlexBox>
         <HorizontalDivider />
         <HotTradeSmallList />

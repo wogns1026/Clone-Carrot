@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Box, HorizontalDivider } from "Components/Universal";
 import Review from "Routes/Board/Review/Review";
-import { UserAPI } from "api";
+import { userApi } from "api";
 
 const SellerReview = ({ dataArr: buyReviews }) => {
   const [state, setState] = useState([]);
   const [loading, setLoading] = useState(true);
-  const userDatas = buyReviews.map((review) => UserAPI(review.userId));
+  const userDatas = buyReviews.map((review) => userApi.GetUser(review.userId));
 
   useEffect(() => {
     if (

@@ -16,7 +16,7 @@ const HotTradeList = () => {
           중고거래 인기매물
         </Text>
       </Box>
-      <TradeArticleList />
+      <TradeArticleList size={16} />
       <Box marginBottom="185px">
         <Text to="/hot-articles" fontSize="16px" fontWeight={600} underline>
           인기매물 더 보기

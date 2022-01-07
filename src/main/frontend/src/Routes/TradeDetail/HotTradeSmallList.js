@@ -16,7 +16,7 @@ const HotTradeSmallList = () => {
           </Text>
         </FlexBox>
       </Box>
-      <TradeArticleList gridSize="200px" gridGap="30px" />
+      <TradeArticleList gridSize="200px" gridGap="30px" size={6} />
     </>
   );
 };

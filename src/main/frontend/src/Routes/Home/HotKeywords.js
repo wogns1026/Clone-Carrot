@@ -10,10 +10,6 @@ const HotKeywords = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, serError] = useState(null);
 
-  // let { loading, data, error, refetch } = useAxios({
-  //   url: "http://localhost:8080/api/v1/hot-search-terms",
-  // });
-
   useEffect(() => {
     const getData = async () => {
       try {

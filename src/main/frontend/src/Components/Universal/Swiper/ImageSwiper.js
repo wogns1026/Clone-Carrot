@@ -112,7 +112,7 @@ const ImageSwiper = ({ imageList = [defaultImg] }) => {
         width="50px"
         height="100%"
         size="25px"
-        absolute
+        absoluteTop
         onClicked={() => swipe(-1)}
       />
       <ArrowButton
@@ -121,7 +121,7 @@ const ImageSwiper = ({ imageList = [defaultImg] }) => {
         width="50px"
         height="100%"
         size="25px"
-        absolute
+        absoluteTop
         onClicked={() => swipe(1)}
       />
     </Container>

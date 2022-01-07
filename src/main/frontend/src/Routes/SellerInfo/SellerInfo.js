@@ -8,21 +8,17 @@ import SellerManner from "./SellerManner";
 import SellerReview from "./SellerReview";
 import SellerTrade from "./SellerTrade";
 import { useEffect, useState } from "react";
-import { UserAPI } from "api";
+import { userApi } from "api";
 
 const SellerInfo = () => {
   const { id } = useParams();
   const [menu, setMenu] = useState("trade");
   const [state, setState] = useState([]);
-  let { loading, data, error } = UserAPI(id);
+  let { loading, data, error } = userApi.GetUser(id);
 
   useEffect(() => {
     if (data) setState(data);
   }, [data, id]);
-
-  useEffect(() => {
-    console.log(id);
-  }, [id]);
 
   return loading ? (
     <Loader />
