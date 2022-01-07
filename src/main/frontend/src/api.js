@@ -387,56 +387,74 @@ export const getShortCityName = () => ({
   경상남도: "경남",
   제주특별자치도: "제주",
 });
-export const getReviewData = () => [
-  {
-    userId: "1",
-    reviewId: "1",
-    parentReviewId: "1",
-    userName: "미운오리새끼",
-    address: "동구 수정제5동",
-    content: `아이에겐 평생 한번 있는 상인데
-그것을 공유하는건
-그 아이가 커서 당신의 환갑잔치상을 여러사람과 공유한다면 ....
-내자식 내부모에게
-아까운게 아닙니다`,
-  },
-  {
-    userId: "2",
-    reviewId: "2",
-    parentReviewId: "1",
-    userName: "사부",
-    address: "동구 초량제2동",
-    content: `너무 옛날 사고 방식인거같아요;;
-요즘은 세트식으로 예쁘게 만들어진 모형같은 것들을 백일상으로 대여줘해요~~
-코로나라 어쩔 수 없이 집에서 기념으로 사진이라도 남길려고 촬영 소품으로 비싼돈주고 빌려오시는건대 당연히 일정이 비슷한 가정이 있으면 더치페이해서 부담을 나누면 좋죠 ㅡㅡ
-무슨 돈이 아깝다..만다.. 이런소리를 하시는지… 제 눈에는 알뜰한 어머니로 보이네요. 잘 모르시면 훈수 두지않으셨음 좋겠어요 ~~`,
-  },
-  {
-    userId: "3",
-    reviewId: "3",
-    parentReviewId: "3",
-    userName: "하우",
-    address: "중구 영주제1동",
-    content: `좋은생각인거 같습니당`,
-  },
-];
-export const UserAPI = (id) =>
-  useAxios({
-    url: `/seller-info/${id}`,
-  });
-export const SearchAPI = (id) =>
-  useAxios({
-    url: `/search/${id}`,
-  });
-export const HotArticleAPI = () =>
-  useAxios({
-    url: `/hot-articles`,
-  });
-export const ArticleAPI = (id) =>
-  useAxios({
-    url: `/articles/${id}`,
-  });
-export const BoardAPI = (id) =>
-  useAxios({
-    url: `/board?search=${id}`,
-  });
+
+export const boardApi = {
+  // loading, content, pageable, error
+  Search: ({ ...rest }) =>
+    useAxios({
+      url: `/board`,
+      params: { ...rest },
+    }),
+  // loading, content, reviewList, error
+  GetBoard: (id) =>
+    useAxios({
+      url: `/board/dtl/${id}`,
+    }),
+  // loading, success, error
+  RegistBoard: (board) =>
+    useAxios({
+      method: "post",
+      url: `/board`,
+      data: { board },
+    }),
+  // loading, deleteCount, error
+  DeleteBoard: (id) =>
+    useAxios({
+      method: "delete",
+      url: `/board?boardId=${id}`,
+    }),
+};
+
+export const articleApi = {
+  // loading, content, pageable, error
+  GetHotArticles: ({ ...rest }) =>
+    useAxios({
+      url: `/hot-articles`,
+      params: { ...rest },
+    }),
+  // loading, data, error
+  GetArticle: (id) =>
+    useAxios({
+      url: `/articles/${id}`,
+    }),
+  // loading, content, pageable, error
+  Search: ({ id, ...rest }) =>
+    useAxios({
+      url: `/search/${id}`,
+      params: { ...rest },
+    }),
+};
+
+export const reviewApi = {
+  // loading, success, error
+  RegistReview: (review) =>
+    useAxios({
+      method: "post",
+      url: `/review`,
+      data: { review },
+    }),
+  // loading, status, error
+  DeleteReview: (id) =>
+    useAxios({
+      method: "delete",
+      url: `/review?reviewId=${id}`,
+    }),
+};
+
+export const userApi = {
+  // loading, sellItem, sellerInfo, buyReviews, error
+  GetUser: (id) =>
+    useAxios({
+      url: `/seller-info/${id}`,
+    }),
+};
