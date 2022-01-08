@@ -6,7 +6,7 @@ import theme from "Style/theme";
 
 const SearchInput = ({ placeholder }) => {
   const navigate = useNavigate();
-  const [input, setInput] = useState();
+  const [input, setInput] = useState("");
   const search = () => {
     navigate(`/search/${input}`);
   };
@@ -26,7 +26,7 @@ const SearchInput = ({ placeholder }) => {
         fullSize
         placeholder={placeholder}
         onKeyPress={search}
-        onChange={(e) => setInput(e.target.value)}
+        onChange={setInput}
         fontSize="16px"
       />
       <ImageButton src={search_icon} onClick={search} />

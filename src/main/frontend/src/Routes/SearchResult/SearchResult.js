@@ -1,18 +1,17 @@
 import React from "react";
-import ContentContainer from "Components/Content/ContentContainer";
-import TradeArticleList from "./Article/TradeArticleList";
+import SearchArticleList from "./Article/SearchArticleList";
 import BoardPreviewList from "./Board/BoardPreviewList";
 import theme from "Style/theme";
+import { ContentContainer } from "Components/Universal";
 
 const SearchResult = () => {
   return (
     <ContentContainer
       bgColor={theme.colors.lightGrey}
-      direction="column"
-      width="800px"
-      height="100%"
+      column
+      width={theme.size.window.searchResult}
     >
-      <TradeArticleList size={6} />
+      <SearchArticleList size={6} />
       <BoardPreviewList size={6} />
     </ContentContainer>
   );

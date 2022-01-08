@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Box, RegularGrid } from "Components/Universal";
-import SeeMoreContainer from "../SeeMoreContainer";
-import TradeArticle from "./TradeArticle";
-import { articleApi } from "api";
+import { Box, RegularGrid, SeeMoreContainer } from "Components/Universal";
+import Article from "Components/Article/Article";
 import Message from "Components/Loading/Message";
 import Loader from "Components/Loading/Loader";
+import { articleApi } from "api";
 
-const TradeArticleList = ({ size }) => {
+const ArticleList = ({ size }) => {
   const { id } = useParams();
   const [articles, setArticles] = useState();
   let { loading, data, error, morefetch, refetch } = articleApi.Search({
@@ -39,7 +38,7 @@ const TradeArticleList = ({ size }) => {
         <Box width="100%">
           <RegularGrid gridSize="215px" gridGap="35px">
             {articles?.map(({ itemId, ...rest }) => (
-              <TradeArticle key={itemId} itemId={itemId} {...rest} />
+              <Article key={itemId} itemId={itemId} {...rest} />
             ))}
           </RegularGrid>
         </Box>
@@ -47,4 +46,4 @@ const TradeArticleList = ({ size }) => {
     </Box>
   );
 };
-export default TradeArticleList;
+export default ArticleList;

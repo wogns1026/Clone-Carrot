@@ -1,14 +1,14 @@
 import { useParams } from "react-router-dom";
 import Loader from "Components/Loading/Loader";
 import Message from "Components/Loading/Message";
-import ContentContainer from "Components/Content/ContentContainer";
-import MenuButtonList from "Components/Universal/Button/MenuButtonList";
 import SellerProfile from "./SellerProfile";
 import SellerManner from "./SellerManner";
 import SellerReview from "./SellerReview";
-import SellerTrade from "./SellerTrade";
+import SellerArticleList from "./SellerArticleList";
 import { useState } from "react";
 import { userApi } from "api";
+import theme from "Style/theme";
+import { ContentContainer, MenuButtonList } from "Components/Universal";
 
 const SellerInfo = () => {
   const { id } = useParams();
@@ -20,7 +20,7 @@ const SellerInfo = () => {
   ) : error ? (
     <Message text={error} />
   ) : (
-    <ContentContainer direction="column" width="677px" height="100%">
+    <ContentContainer column width={theme.size.window.sellerInfo}>
       {data.sellerInfo && <SellerProfile data={data.sellerInfo} />}
       <MenuButtonList
         currentKey={menu}
@@ -36,7 +36,7 @@ const SellerInfo = () => {
       ) : menu === "manner" ? (
         <SellerManner />
       ) : (
-        data.sellItem && <SellerTrade dataArr={data.sellItem} />
+        data.sellItem && <SellerArticleList dataArr={data.sellItem} />
       )}
     </ContentContainer>
   );

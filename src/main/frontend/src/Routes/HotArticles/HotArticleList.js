@@ -1,35 +1,30 @@
 import React, { useState } from "react";
-import LocationFilter from "Components/Filter/LocationFilter";
-import ContentContainer from "Components/Content/ContentContainer";
-import TradeArticleList from "Components/Article/TradeArticleList";
+import ArticleList from "Components/Article/ArticleList";
+import LocationFilter from "./LocationFilter";
+import { ContentContainer, Text } from "Components/Universal";
 import { getShortCityName } from "api";
-import { Text } from "Components/Universal";
-
-const HotTrades = () => {
+import theme from "Style/theme";
+const HotArticleList = () => {
   const [filter, setFilter] = useState({ city: "", gu: "" });
   const shortCityName = getShortCityName();
 
   const filterOut = (data) => {
     let filteredData = data;
+    console.log(filteredData);
     if (filter.city) {
       filteredData = filteredData.filter((d) =>
-        d.location.includes(shortCityName[filter.city])
+        d.address.includes(shortCityName[filter.city])
       );
       if (filter.gu) {
         filteredData = filteredData.filter((d) =>
-          d.location.includes(filter.gu)
+          d.address.includes(filter.gu)
         );
       }
     }
     return filteredData;
   };
   return (
-    <ContentContainer
-      bgColor="white"
-      direction="column"
-      width="980px"
-      height="100%"
-    >
+    <ContentContainer column width={theme.size.window.hotArticles}>
       <Text
         fontSize="31.5px"
         fontWeight={600}
@@ -39,14 +34,14 @@ const HotTrades = () => {
         중고거래 인기매물
       </Text>
       <LocationFilter updateRequest={setFilter} />
-      <TradeArticleList
+      <ArticleList
         filter={filterOut}
         gridSize="201px"
         gridGap="50px"
         size={100}
-      ></TradeArticleList>
+      ></ArticleList>
     </ContentContainer>
   );
 };
 
-export default HotTrades;
+export default HotArticleList;

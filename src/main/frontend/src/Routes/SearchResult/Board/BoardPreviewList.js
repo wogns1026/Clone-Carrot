@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Box, HorizontalDivider } from "Components/Universal";
+import { Box, HorizontalDivider, SeeMoreContainer } from "Components/Universal";
 import Loader from "Components/Loading/Loader";
 import Message from "Components/Loading/Message";
-import SeeMoreContainer from "../SeeMoreContainer";
 import BoardPreview from "./BoardPreview";
 import { boardApi } from "api";
 import { useParams } from "react-router-dom";

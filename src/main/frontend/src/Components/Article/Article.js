@@ -1,30 +1,39 @@
 import React from "react";
+import defaultImg from "images/logo.svg";
 import {
   Box,
   FlexBox,
   LazyBackgroundImage,
   LinkTo,
 } from "Components/Universal";
-import ArticleInfo from "./ArticleInfo";
-import defaultImg from "images/logo.svg";
 import theme from "Style/theme";
+import ArticleInfo from "./ArticleInfo";
+import { userApi } from "api";
+import Loader from "Components/Loading/Loader";
+import Message from "Components/Loading/Message";
 
-const TradeArticle = ({
-  id,
+const Article = ({
   itemId,
+  sellerId,
   image = defaultImg,
   itemTitle,
   cost = 0,
-  address,
   viewCnt = 0,
+  height = "210px",
 }) => {
-  return (
+  let { loading, data, error } = userApi.GetUser(sellerId);
+
+  return loading ? (
+    <Loader />
+  ) : error ? (
+    <Message text={error} />
+  ) : (
     <LinkTo to={`/articles/${itemId}`}>
       <FlexBox column interactive>
-        <Box height="160px">
+        <Box height={height} marginBottom="17px">
           <LazyBackgroundImage
             borderRadius="10px"
-            src={image}
+            src={defaultImg}
             center
             border={theme.colors.lightDark}
           />
@@ -32,12 +41,12 @@ const TradeArticle = ({
         <ArticleInfo
           itemTitle={itemTitle}
           cost={`${cost.toLocaleString()}원`}
-          address={address}
-          viewCnt={viewCnt}
+          address={data.sellerInfo.address}
+          viewCnt={`관심 ${viewCnt}`}
         />
       </FlexBox>
     </LinkTo>
   );
 };
 
-export default TradeArticle;
+export default Article;

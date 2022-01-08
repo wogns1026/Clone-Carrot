@@ -28,13 +28,13 @@ const SellerProfile = ({
         </FlexBox>
 
         <FlexBox flexAlign="center" color={theme.colors.darkGrey}>
-          <Box marginRight="20px">
-            <Text fontSize="15px">{`매너온도 `}</Text>
-            <Text fontSize="15px" fontWeight={700}>{`${mannerTemper}°C`}</Text>
+          <Box marginRight="20px" fontSize="15px">
+            <Text>{`매너온도 `}</Text>
+            <Text fontWeight={700}>{`${mannerTemper}°C`}</Text>
           </Box>
-          <Box marginRight="20px">
-            <Text fontSize="15px">{`재거래희망률 `}</Text>
-            <Text fontSize="15px" fontWeight={700}>{`${retradeRate}%`}</Text>
+          <Box marginRight="20px" fontSize="15px">
+            <Text>{`재거래희망률 `}</Text>
+            <Text fontWeight={700}>{`${retradeRate}%`}</Text>
           </Box>
         </FlexBox>
       </FlexBox>

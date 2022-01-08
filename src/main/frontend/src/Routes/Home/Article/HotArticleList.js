@@ -1,22 +1,17 @@
 import React from "react";
-import ContentContainer from "Components/Content/ContentContainer";
-import TradeArticleList from "Components/Article/TradeArticleList";
-import { Text, Box } from "Components/Universal";
+import ArticleList from "Components/Article/ArticleList";
+import { Text, Box, ContentContainer } from "Components/Universal";
 import theme from "Style/theme";
 
-const HotTradeList = () => {
+const HotArticleList = () => {
   return (
-    <ContentContainer
-      bgColor={theme.colors.white}
-      direction="column"
-      height="100%"
-    >
+    <ContentContainer width={theme.size.window.home} column>
       <Box marginTop="129px" marginBottom="87px">
         <Text fontSize="40px" fontWeight={600}>
           중고거래 인기매물
         </Text>
       </Box>
-      <TradeArticleList size={16} />
+      <ArticleList size={16} />
       <Box marginBottom="185px">
         <Text to="/hot-articles" fontSize="16px" fontWeight={600} underline>
           인기매물 더 보기
@@ -25,4 +20,4 @@ const HotTradeList = () => {
     </ContentContainer>
   );
 };
-export default HotTradeList;
+export default HotArticleList;

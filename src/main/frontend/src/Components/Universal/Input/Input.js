@@ -32,8 +32,10 @@ export const Input = ({ onKeyPress, onChange, placeholder, ...rest }) => {
   return (
     <TextInput
       placeholder={placeholder}
-      onKeyPress={(e) => e.key === "Enter" && onKeyPress(e.target.value)}
-      onChange={onChange}
+      onKeyPress={(e) =>
+        e.key === "Enter" && e.target.value && onKeyPress(e.target.value)
+      }
+      onChange={(e) => e.target.value && onChange(e.target.value)}
       {...rest}
     />
   );

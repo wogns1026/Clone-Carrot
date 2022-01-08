@@ -1,6 +1,11 @@
-import ContentContainer from "Components/Content/ContentContainer";
 import { contactInfo, address, coperation } from "./FooterData";
-import { FlexBox, Box, Text, HorizontalDivider } from "Components/Universal";
+import {
+  FlexBox,
+  Box,
+  Text,
+  HorizontalDivider,
+  ContentContainer,
+} from "Components/Universal";
 import theme from "Style/theme";
 import Links from "./Links";
 import Contact from "./Contact";
@@ -8,11 +13,7 @@ import Icons from "./Icons";
 
 const Footer = () => {
   return (
-    <ContentContainer
-      bgColor={`${theme.colors.deepDarkgrey}`}
-      direction="column"
-      height="100%"
-    >
+    <ContentContainer bgColor={theme.colors.deepDarkgrey} column>
       <Box width="100%" verticalMargin="85px">
         <Links />
         <HorizontalDivider marginTop="10px" marginBottom="35px" />

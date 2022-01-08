@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Loader from "Components/Loading/Loader";
 import Message from "Components/Loading/Message";
-import ContentContainer from "Components/Content/ContentContainer";
-import { Text, Box, FlexBox } from "Components/Universal";
+import { Text, Box, FlexBox, ContentContainer } from "Components/Universal";
 import { getTopSearchData } from "api";
+import theme from "Style/theme";
 
 const HotKeywords = () => {
   const [topSearchBannerData, setTopSearchBannerData] = useState([]);
@@ -28,26 +28,24 @@ const HotKeywords = () => {
   ) : error ? (
     <Message text={error} />
   ) : (
-    <ContentContainer direction="column" height="160px">
+    <ContentContainer
+      width={theme.size.window.home}
+      column
+      height="160px"
+      marginBottom="18px"
+    >
       <Box width="100%" marginBottom="23px">
-        <Text
-          to={"/top_search_terms"}
-          fontSize="16px"
-          fontWeight={700}
-          underline
-        >
+        <Text to="/top_search_terms" fontSize="16px" fontWeight={700} underline>
           중고거래 인기검색어
         </Text>
       </Box>
-      <Box width="100%" marginLeft="57px" marginBottom="18px">
-        <FlexBox spaceBetween>
-          {topSearchBannerData.map((data, index) => (
-            <Text key={index} to={`/search/${data.text}`} fontSize="16px">
-              {data.text}
-            </Text>
-          ))}
-        </FlexBox>
-      </Box>
+      <FlexBox width="100%" wrap gap="50px">
+        {topSearchBannerData.map((data, index) => (
+          <Text key={index} to={`/search/${data.text}`} fontSize="16px">
+            {data.text}
+          </Text>
+        ))}
+      </FlexBox>
     </ContentContainer>
   );
 };

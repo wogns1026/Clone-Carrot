@@ -3,12 +3,17 @@ import { useParams } from "react-router-dom";
 import BoardDescription from "./BoardDescription";
 import Loader from "Components/Loading/Loader";
 import Message from "Components/Loading/Message";
-import ContentContainer from "Components/Content/ContentContainer";
-import HotTradeSmallList from "Routes/TradeDetail/HotTradeSmallList";
+import HotArticleList from "Routes/ArticleDetail/HotArticleList";
 import Profile from "Components/Profile/Profile";
 import ReviewList from "./Review/ReviewList";
-import { Box, FlexBox, HorizontalDivider } from "Components/Universal";
+import {
+  Box,
+  ContentContainer,
+  FlexBox,
+  HorizontalDivider,
+} from "Components/Universal";
 import { boardApi } from "api";
+import theme from "Style/theme";
 
 const Board = () => {
   const { id } = useParams();
@@ -19,7 +24,7 @@ const Board = () => {
   ) : error ? (
     <Message text={error} />
   ) : (
-    <ContentContainer direction="column" width="677px" height="100%">
+    <ContentContainer column width={theme.size.window.board}>
       <Box fullSize>
         <Profile id={data.content?.userId} />
         <HorizontalDivider marginBottom="50px" />
@@ -27,7 +32,7 @@ const Board = () => {
           <BoardDescription {...data.content} />
           <HorizontalDivider marginBottom="24px" />
           <ReviewList reviewList={data.reviewList} />
-          <HotTradeSmallList />
+          <HotArticleList />
         </FlexBox>
       </Box>
     </ContentContainer>

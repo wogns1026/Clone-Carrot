@@ -1,16 +1,16 @@
 import React from "react";
-import TradeArticle from "Components/Article/TradeArticle";
+import Article from "Components/Article/Article";
 import { Box, RegularGrid } from "Components/Universal";
 
-const SellerTrade = ({ dataArr: sellItem }) => {
+const SellerArticleList = ({ dataArr: sellItem }) => {
   return (
     <Box width="100%" marginTop="40px">
       <RegularGrid gridSize="207px" gridGap="30px">
         {sellItem.map(({ itemId, ...rest }) => (
-          <TradeArticle key={itemId} itemId={itemId} height="207px" {...rest} />
+          <Article key={itemId} itemId={itemId} height="207px" {...rest} />
         ))}
       </RegularGrid>
     </Box>
   );
 };
-export default SellerTrade;
+export default SellerArticleList;

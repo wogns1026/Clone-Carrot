@@ -1,9 +1,9 @@
 import React from "react";
-import TradeArticleList from "Components/Article/TradeArticleList";
+import ArticleList from "Components/Article/ArticleList";
 import { Box, FlexBox, Text } from "Components/Universal";
 import theme from "Style/theme";
 
-const HotTradeSmallList = () => {
+const HotArticleList = () => {
   return (
     <>
       <Box verticalMargin="35px">
@@ -16,8 +16,8 @@ const HotTradeSmallList = () => {
           </Text>
         </FlexBox>
       </Box>
-      <TradeArticleList gridSize="200px" gridGap="30px" size={6} />
+      <ArticleList gridSize="200px" gridGap="30px" size={6} />
     </>
   );
 };
-export default HotTradeSmallList;
+export default HotArticleList;

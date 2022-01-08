@@ -1,12 +1,12 @@
-import Banner from "./Banner";
-import HotKeywords from "./HotKeywords";
-import HotTradeList from "./HotTradeList";
+import Banner from "./Banner/Banner";
+import HotKeywords from "./Keywords/HotKeywords";
+import HotArticleList from "./Article/HotArticleList";
 
 const Home = () => {
   return (
     <>
       <Banner />
-      <HotTradeList />
+      <HotArticleList />
       <HotKeywords />
     </>
   );
