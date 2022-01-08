@@ -3,20 +3,15 @@ import Review from "./Review";
 import { Box, FlexBox, HorizontalDivider, Text } from "Components/Universal";
 
 const ReviewList = ({ reviewList }) => {
-  const rootReviews = () =>
-    reviewList.filter((d) => d.reviewId === d.parentReviewId);
-  const childReviews = (rootData) =>
-    reviewList.filter(
-      (d) =>
-        d.parentReviewId !== d.reviewId &&
-        d.parentReviewId === rootData.reviewId
-    );
+  const rootReviews = reviewList.filter((d) => d.parentReviewId === null);
+  const childReviews = (rootId) =>
+    reviewList.filter((d) => d.parentReviewId === rootId);
 
-  const getReviews = rootReviews().map((rootData) => (
+  const getReviews = rootReviews.map((rootData) => (
     <Box>
       <Review {...rootData} />
       <HorizontalDivider marginTop="20px" marginBottom="20px" />
-      {childReviews(rootData).map((childData) => (
+      {childReviews(rootData.reviewId).map((childData) => (
         <>
           <FlexBox>
             <Text marginRight="12px">ㄴ</Text>

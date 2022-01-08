@@ -7,18 +7,13 @@ import SellerProfile from "./SellerProfile";
 import SellerManner from "./SellerManner";
 import SellerReview from "./SellerReview";
 import SellerTrade from "./SellerTrade";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { userApi } from "api";
 
 const SellerInfo = () => {
   const { id } = useParams();
   const [menu, setMenu] = useState("trade");
-  const [state, setState] = useState([]);
   let { loading, data, error } = userApi.GetUser(id);
-
-  useEffect(() => {
-    if (data) setState(data);
-  }, [data, id]);
 
   return loading ? (
     <Loader />
@@ -26,7 +21,7 @@ const SellerInfo = () => {
     <Message text={error} />
   ) : (
     <ContentContainer direction="column" width="677px" height="100%">
-      {state.sellerInfo && <SellerProfile data={state.sellerInfo} />}
+      {data.sellerInfo && <SellerProfile data={data.sellerInfo} />}
       <MenuButtonList
         currentKey={menu}
         keyList={[
@@ -37,11 +32,11 @@ const SellerInfo = () => {
         onSelected={setMenu}
       />
       {menu === "review" ? (
-        state.buyReviews && <SellerReview dataArr={state.buyReviews} />
+        data.buyReviews && <SellerReview dataArr={data.buyReviews} />
       ) : menu === "manner" ? (
         <SellerManner />
       ) : (
-        state.sellItem && <SellerTrade dataArr={state.sellItem} />
+        data.sellItem && <SellerTrade dataArr={data.sellItem} />
       )}
     </ContentContainer>
   );

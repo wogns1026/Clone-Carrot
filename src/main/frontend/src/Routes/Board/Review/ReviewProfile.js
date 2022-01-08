@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   FlexBox,
   LazyBackgroundImage,
@@ -6,10 +6,19 @@ import {
   Text,
 } from "Components/Universal";
 import theme from "Style/theme";
+import Loader from "Components/Loading/Loader";
+import Message from "Components/Loading/Message";
+import { userApi } from "api";
 
-const ReviewProfile = ({ id, src, name, address }) => {
-  return (
-    <LinkTo to={`/seller-info/${id}`}>
+const ReviewProfile = ({ userId, src }) => {
+  let { loading, data, error } = userApi.GetUser(userId);
+
+  return loading ? (
+    <Loader />
+  ) : error ? (
+    <Message text={error} />
+  ) : (
+    <LinkTo to={`/seller-info/${userId}`}>
       <FlexBox flexAlign="center" gap="10px" marginBottom="10px">
         <LazyBackgroundImage
           src={src}
@@ -20,9 +29,9 @@ const ReviewProfile = ({ id, src, name, address }) => {
           alt=""
         />
         <Text fontSize="15px" fontWeight={700}>
-          {name}
+          {data.sellerInfo.userName}
         </Text>
-        <Text fontSize="13px">{address}</Text>
+        <Text fontSize="13px">{data.sellerInfo.address}</Text>
       </FlexBox>
     </LinkTo>
   );

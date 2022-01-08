@@ -22,11 +22,6 @@ const TradeArticle = ({
   height = "210px",
 }) => {
   let { loading, data, error } = userApi.GetUser(sellerId);
-  const [address, setAddress] = useState();
-
-  useEffect(() => {
-    if (data) setAddress(data.sellerInfo.address);
-  }, [data]);
 
   return loading ? (
     <Loader />
@@ -46,7 +41,7 @@ const TradeArticle = ({
         <ArticleInfo
           itemTitle={itemTitle}
           cost={`${cost.toLocaleString()}원`}
-          address={address}
+          address={data.sellerInfo.address}
           viewCnt={`관심 ${viewCnt}`}
         />
       </FlexBox>
