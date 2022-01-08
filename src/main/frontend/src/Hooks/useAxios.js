@@ -5,6 +5,7 @@ export const useAxios = (opts, axiosInstance = defaultAxios) => {
   opts.baseURL = "http://localhost:8080/api/v1";
   const [page, setPage] = useState(0);
   const [isLastPage, setIsLastPage] = useState(false);
+  const [trigger, setTrigger] = useState(0);
   const [state, setState] = useState({
     loading: true,
     error: null,
@@ -20,15 +21,20 @@ export const useAxios = (opts, axiosInstance = defaultAxios) => {
         if ("last" in data.data) setIsLastPage(data.data.last);
       })
       .catch((error) => setState({ ...state, loading: false, error }));
-  }, [page]);
+  }, [trigger]);
 
-  const moreFetch = () => {
+  const morefetch = () => {
     if (!isLastPage) {
       setState({ ...state, loading: true });
       setPage(page + 1);
+      setTrigger(new Date());
     }
   };
-
+  const refetch = () => {
+    setState({ ...state, loading: true });
+    setPage(0);
+    setTrigger(new Date());
+  };
   if (!opts.url) return;
-  return { ...state, moreFetch };
+  return { ...state, morefetch, refetch };
 };

@@ -13,7 +13,7 @@ const SearchResult = () => {
       height="100%"
     >
       <TradeArticleList size={6} />
-      <BoardPreviewList />
+      <BoardPreviewList size={6} />
     </ContentContainer>
   );
 };

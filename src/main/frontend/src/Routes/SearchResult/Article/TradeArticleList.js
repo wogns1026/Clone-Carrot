@@ -1,22 +1,25 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Box, RegularGrid } from "Components/Universal";
-import SeeMoreContianer from "../SeeMoreContainer";
+import SeeMoreContainer from "../SeeMoreContainer";
 import TradeArticle from "./TradeArticle";
-import theme from "Style/theme";
 import { articleApi } from "api";
 import Message from "Components/Loading/Message";
+import Loader from "Components/Loading/Loader";
 
 const TradeArticleList = ({ size }) => {
   const { id } = useParams();
   const [articles, setArticles] = useState();
-  let { loading, data, error, moreFetch } = articleApi.Search({
+  let { loading, data, error, morefetch, refetch } = articleApi.Search({
     id,
     size,
   });
 
   useEffect(() => {
-    if (articles) moreFetch();
+    if (articles) {
+      setArticles([]);
+      refetch();
+    }
   }, [id]);
 
   useEffect(() => {
@@ -26,26 +29,22 @@ const TradeArticleList = ({ size }) => {
     }
   }, [data]);
 
-  return error ? (
+  return loading ? (
+    <Loader />
+  ) : error ? (
     <Message text={error} />
   ) : (
-    !loading && (
-      <Box fullSize marginTop="32px">
-        <SeeMoreContianer
-          title="중고거래"
-          bgColor={theme.colors.white}
-          onClicked={moreFetch}
-        >
-          <Box width="100%">
-            <RegularGrid gridSize="215px" gridGap="35px">
-              {articles?.map(({ itemId, ...rest }) => (
-                <TradeArticle key={itemId} itemId={itemId} {...rest} />
-              ))}
-            </RegularGrid>
-          </Box>
-        </SeeMoreContianer>
-      </Box>
-    )
+    <Box fullSize marginTop="32px">
+      <SeeMoreContainer title="중고거래" onClicked={morefetch}>
+        <Box width="100%">
+          <RegularGrid gridSize="215px" gridGap="35px">
+            {articles?.map(({ itemId, ...rest }) => (
+              <TradeArticle key={itemId} itemId={itemId} {...rest} />
+            ))}
+          </RegularGrid>
+        </Box>
+      </SeeMoreContainer>
+    </Box>
   );
 };
 export default TradeArticleList;

@@ -2,21 +2,22 @@ import React, { useEffect, useState } from "react";
 import { Box, HorizontalDivider } from "Components/Universal";
 import Loader from "Components/Loading/Loader";
 import Message from "Components/Loading/Message";
-import SeeMoreContianer from "../SeeMoreContainer";
-import theme from "Style/theme";
+import SeeMoreContainer from "../SeeMoreContainer";
 import BoardPreview from "./BoardPreview";
 import { boardApi } from "api";
 import { useParams } from "react-router-dom";
 
-const BoardPreviewList = () => {
+const BoardPreviewList = ({ size }) => {
   const { id } = useParams();
   const [reviews, setReviews] = useState();
-  const { loading, data, error, moreFetch } = boardApi.Search({
-    size: 6,
+  const { loading, data, error, morefetch, refetch } = boardApi.Search({
+    size,
   });
-
   useEffect(() => {
-    if (reviews) moreFetch();
+    if (reviews) {
+      setReviews([]);
+      refetch();
+    }
   }, [id]);
 
   useEffect(() => {
@@ -32,11 +33,7 @@ const BoardPreviewList = () => {
     <Message text={error} />
   ) : (
     <Box fullSize marginTop="20px" marginBottom="60px">
-      <SeeMoreContianer
-        title="동네정보"
-        bgColor={theme.colors.white}
-        onClicked={moreFetch}
-      >
+      <SeeMoreContainer title="동네정보" onClicked={morefetch}>
         {reviews?.map((d, index) => (
           <Box key={d.boardId}>
             <BoardPreview {...d} />
@@ -45,7 +42,7 @@ const BoardPreviewList = () => {
             )}
           </Box>
         ))}
-      </SeeMoreContianer>
+      </SeeMoreContainer>
     </Box>
   );
 };
