@@ -1,13 +1,10 @@
 import React from "react";
 import { FlexBox, Text } from "Components/Universal";
 import theme from "Style/theme";
+import { getTimeGap } from "Utils/time";
 
 const ReviewDescription = ({ description, itemRegTime }) => {
-  const unixTime = Math.floor(
-    new Date().getTime() - new Date(itemRegTime).getTime()
-  );
-  const date = new Date(unixTime);
-  const hour = date.getHours();
+  const timeGap = getTimeGap(itemRegTime);
 
   return (
     <FlexBox column>
@@ -19,7 +16,7 @@ const ReviewDescription = ({ description, itemRegTime }) => {
         color={theme.colors.dark}
         fontWeight={500}
         marginTop="10px"
-      >{`${hour}시간 전`}</Text>
+      >{`${timeGap} 전`}</Text>
     </FlexBox>
   );
 };
