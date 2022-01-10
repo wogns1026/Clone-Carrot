@@ -37,5 +37,16 @@ public class UserController {
         return new ResponseEntity<>(res, HttpStatus.OK);
     }
 
+    @ApiOperation(value = "유저 가입 여부 확인")
+    @GetMapping(value = "/user/{phoneNumber}")
+    public ResponseEntity<Map<String, Object>> getUserInfo(@PathVariable String phoneNumber){
+        User userInfo = userService.getUserInfo(phoneNumber);
+
+        Map<String, Object> res = new HashMap<>();
+        res.put("userInfo", userInfo);
+
+        return new ResponseEntity<>(res, HttpStatus.OK);
+    }
+
 
 }

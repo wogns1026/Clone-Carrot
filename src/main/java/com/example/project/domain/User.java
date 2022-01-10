@@ -21,4 +21,6 @@ public class User {
     private int retradeRate;
 
     private String image;
+
+    private String phoneNumber;
 }
