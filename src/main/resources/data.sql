@@ -11,11 +11,11 @@ VALUES
     (5, '유아동', 1000, '아기들 팩우유 마실때 사용하는 홀더입니다.', 'IMAGE', CURRENT_TIMESTAMP, '우유홀더 우유케이스 우유손잡이', 3, true, 35);
 
 
-INSERT INTO TB_USERS (USER_ID, USER_NAME, ADDRESS, MANNER_TEMPER, RETRADE_RATE, IMAGE)
+INSERT INTO TB_USERS (USER_ID, USER_NAME, ADDRESS, MANNER_TEMPER, RETRADE_RATE, IMAGE, PHONE_NUMBER)
 VALUES
-    (1, '한지훈', '화성시', 34, 5, '프로필 사진'),
-    (2, '이재훈', '수원시', 100, 100, '프로필 사진'),
-    (3, '이소정', '서울시', 4, 0, '프로필 사진');
+    (1, '한지훈', '화성시', 34, 5, '프로필 사진', '01056478122'),
+    (2, '이재훈', '수원시', 100, 100, '프로필 사진', '01045730245'),
+    (3, '이소정', '서울시', 4, 0, '프로필 사진', '01042365896');
 
 INSERT INTO TB_BUY_REVIEWS (REVIEW_ID, USER_ID, SELLER_ID, CONTENT, REG_TIME)
 VALUES
