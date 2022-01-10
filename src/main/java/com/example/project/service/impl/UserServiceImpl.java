@@ -26,6 +26,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public User getUserInfo(String phoneNumber){
+        return userRepository.findByPhoneNumber(phoneNumber);
+    }
+
+    @Override
     public List<BuyReview> getBuyReviews(Long sellerId){
         return buyReviewRepository.findBySellerId(sellerId);
     }

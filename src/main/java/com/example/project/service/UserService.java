@@ -9,6 +9,8 @@ import java.util.List;
 public interface UserService {
     User getUserInfo(Long sellerId);
 
+    User getUserInfo(String phoneNumber);
+
     List<BuyReview> getBuyReviews(Long sellerId);
 
     List<Item> getItemList(Long sellerId);
