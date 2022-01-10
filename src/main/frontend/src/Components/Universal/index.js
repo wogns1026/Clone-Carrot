@@ -23,6 +23,7 @@ export { default as LazyBackgroundImage } from "Components/Universal/Image/LazyB
 export { default as LazyImage } from "Components/Universal/Image/LazyImage";
 
 export { default as Input } from "Components/Universal/Input/Input";
+export { default as TextArea } from "Components/Universal/Input/TextArea";
 export { default as InputWithCheck } from "Components/Universal/Input/InputWithCheck";
 
 export { default as LinkTo } from "Components/Universal/Link/LinkTo";

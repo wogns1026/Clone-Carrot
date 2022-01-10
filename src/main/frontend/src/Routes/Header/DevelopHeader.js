@@ -22,7 +22,7 @@ const DevelopHeader = () => {
       border={theme.colors.lightDark}
       outline={theme.colors.dark}
       gap="10px"
-      wrap
+      flexWrap
     >
       <LinkButton link="/hot-articles" text="인기 매물" />
       <LinkButton link="/articles/1" text="매물 정보" />
@@ -40,8 +40,13 @@ const DevelopHeader = () => {
         text="최초 로그인"
       />
       <LinkButton
-        link="/board-regist"
+        link="/regist/article"
         text="매물 등록"
+        btnColor={theme.colors.blue}
+      />
+      <LinkButton
+        link="/regist/board"
+        text="게시물 등록"
         btnColor={theme.colors.blue}
       />
     </FlexBox>

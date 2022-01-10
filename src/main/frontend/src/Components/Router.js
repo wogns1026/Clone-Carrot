@@ -12,6 +12,7 @@ import { AutoScrollToTop } from "./Universal";
 import SellerInfo from "Routes/SellerInfo/SellerInfo";
 import Signup from "Routes/Welcome/Signup/Signup";
 import Signin from "Routes/Welcome/Signin/Signin";
+import BoardRegist from "Routes/Regist/BoardRegist";
 
 const Router = () => (
   <HashRouter>
@@ -24,6 +25,7 @@ const Router = () => (
         <Route path="/articles/:id" element={<ArticleDetail />} />
         <Route path="/search/:id" element={<SearchResult />} />
         <Route path="/board/:id" element={<Board />} />
+        <Route path="/regist/board" element={<BoardRegist />} />
         <Route path="/seller-info/:id" element={<SellerInfo />} />
         <Route path="/signin" element={<Signin />} />
         <Route path="/signup" element={<Signup />} />

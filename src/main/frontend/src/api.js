@@ -1,4 +1,5 @@
 import { useAxios } from "Hooks/useAxios";
+import axios from "axios";
 
 export const icons = {
   facebook:
@@ -330,12 +331,10 @@ export const boardApi = {
     }),
   // loading, success, error
   RegistBoard: (board) =>
-    useAxios({
-      method: "post",
-      url: `/board`,
-      data: { board },
-    }),
-  // loading, deleteCount, error
+    axios
+      .create({ baseURL: "http://localhost:8080/api/v1" })
+      .post("/board", board),
+
   DeleteBoard: (id) =>
     useAxios({
       method: "delete",
