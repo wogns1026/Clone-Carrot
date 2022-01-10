@@ -360,6 +360,11 @@ export const articleApi = {
       url: `/search/${id}`,
       params: { ...rest },
     }),
+  // loading, success, error
+  RegistArticle: (article) =>
+    axios
+      .create({ baseURL: "http://localhost:8080/api/v1" })
+      .post("/article", article),
 };
 
 export const reviewApi = {

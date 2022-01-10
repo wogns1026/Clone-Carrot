@@ -10,7 +10,7 @@ const HotArticleList = () => {
 
   const filterOut = (data) => {
     let filteredData = data;
-    console.log(filteredData);
+
     if (filter.city) {
       filteredData = filteredData.filter((d) =>
         d.address.includes(shortCityName[filter.city])

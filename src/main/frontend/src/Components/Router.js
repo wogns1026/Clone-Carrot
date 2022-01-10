@@ -13,6 +13,7 @@ import SellerInfo from "Routes/SellerInfo/SellerInfo";
 import Signup from "Routes/Welcome/Signup/Signup";
 import Signin from "Routes/Welcome/Signin/Signin";
 import BoardRegist from "Routes/Regist/BoardRegist";
+import ArticleRegist from "Routes/Regist/ArticleRegist";
 
 const Router = () => (
   <HashRouter>
@@ -26,6 +27,7 @@ const Router = () => (
         <Route path="/search/:id" element={<SearchResult />} />
         <Route path="/board/:id" element={<Board />} />
         <Route path="/regist/board" element={<BoardRegist />} />
+        <Route path="/regist/article" element={<ArticleRegist />} />
         <Route path="/seller-info/:id" element={<SellerInfo />} />
         <Route path="/signin" element={<Signin />} />
         <Route path="/signup" element={<Signup />} />

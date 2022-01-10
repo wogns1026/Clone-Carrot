@@ -2,6 +2,7 @@ import styled from "styled-components";
 import icon from "images/down_arrow_icon.png";
 import { useRef, useState } from "react";
 import useClickDetect from "Hooks/useClickDetect";
+import { LazyImage } from "..";
 
 const DropDownButtonList = styled.div`
   width: 180px;
@@ -12,8 +13,7 @@ const DropDownButtonList = styled.div`
 `;
 
 const DropDownButton = styled.button`
-  width: 100%;
-  height: 100%;
+  ${({ theme }) => theme.common.fullSize};
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 5px;
   cursor: pointer;
@@ -32,23 +32,17 @@ const DropDownButton = styled.button`
 const MenuList = styled.div`
   position: absolute;
   width: 100%;
+  max-height: 300px;
   margin-top: 45px;
   z-index: 10;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  ${({ theme }) => theme.common.verticalScrollBar};
 `;
 
 const Menu = styled.button`
   width: 100%;
   text-decoration: none;
-  &:focus,
-  &:hover {
-    color: white;
-    background-color: ${(props) => props.theme.button.point};
-  }
-`;
-const Icon = styled.img`
-  width: 12px;
-  height: 12px;
+  ${({ theme }) => theme.button.active};
 `;
 
 const DropdownMenu = ({ title, menuList, onSelected, disabled }) => {
@@ -71,7 +65,7 @@ const DropdownMenu = ({ title, menuList, onSelected, disabled }) => {
         onClick={() => setIsMenuOpened((current) => !current)}
       >
         {title}
-        <Icon src={icon} alt="dropdown_img" />
+        <LazyImage size="12px" src={icon} alt="dropdown_img" />
       </DropDownButton>
       {isMenuOpened ? (
         <MenuList>

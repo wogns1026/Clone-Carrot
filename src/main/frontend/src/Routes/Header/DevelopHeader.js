@@ -48,6 +48,11 @@ const DevelopHeader = () => {
         link="/regist/board"
         text="게시물 등록"
         btnColor={theme.colors.blue}
+      />{" "}
+      <LinkButton
+        link="/regist/article"
+        text="매물 등록"
+        btnColor={theme.colors.blue}
       />
     </FlexBox>
   );

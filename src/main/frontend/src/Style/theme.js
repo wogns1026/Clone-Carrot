@@ -90,6 +90,9 @@ const common = {
   left: (value) => `
   left: ${value};
 `,
+  right: (value) => `
+  right: ${value};
+`,
   verticalMargin: (vMargin) => `
   margin-top: ${vMargin};
   margin-bottom: ${vMargin};
@@ -163,6 +166,10 @@ const common = {
   clickIgnore: `
   pointer-events: none;
 `,
+  verticalScrollBar: `
+  overflow: scroll;
+  overflow-x: hidden;
+`,
 };
 const text = {
   ...common,
@@ -184,6 +191,13 @@ const text = {
 const button = {
   ...common,
   point: colors.blue,
+  active: `
+  &:focus,
+  &:hover {
+    color: white;
+    background-color: ${colors.blue};
+  }
+  `,
 };
 const box = {
   ...common,
@@ -212,7 +226,7 @@ const flex = {
   gap: (gap) => `
   gap: ${gap};
 `,
-  wrap: `
+  flexWrap: `
   flex-wrap: wrap;
 `,
 };
@@ -228,9 +242,16 @@ const image = {
 };
 const input = {
   ...common,
+  wrap: `
+  overflow-wrap: break-word;
+`,
+  whiteSpace: (whiteSpace) => `
+  white-space: ${whiteSpace};
+`,
 };
 
 const theme = {
+  common,
   fontSizes,
   colors,
   size,
