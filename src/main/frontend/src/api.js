@@ -336,10 +336,9 @@ export const boardApi = {
       .post("/board", board),
 
   DeleteBoard: (id) =>
-    useAxios({
-      method: "delete",
-      url: `/board?boardId=${id}`,
-    }),
+    axios
+      .create({ baseURL: "http://localhost:8080/api/v1" })
+      .delete(`/board?boardId=${id}`),
 };
 
 export const articleApi = {
@@ -370,17 +369,14 @@ export const articleApi = {
 export const reviewApi = {
   // loading, success, error
   RegistReview: (review) =>
-    useAxios({
-      method: "post",
-      url: `/review`,
-      data: { review },
-    }),
+    axios
+      .create({ baseURL: "http://localhost:8080/api/v1" })
+      .post("/review", review),
   // loading, status, error
   DeleteReview: (id) =>
-    useAxios({
-      method: "delete",
-      url: `/review?reviewId=${id}`,
-    }),
+    axios
+      .create({ baseURL: "http://localhost:8080/api/v1" })
+      .delete(`/review?reviewId=${id}`),
 };
 
 export const userApi = {

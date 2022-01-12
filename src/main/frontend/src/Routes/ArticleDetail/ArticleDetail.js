@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import HotArticleList from "./HotArticleList";
 import ArticleDescription from "./ArticleDescription";
@@ -18,7 +18,8 @@ import theme from "Style/theme";
 
 const ArticleDetail = () => {
   const { id } = useParams();
-  let { loading, data, error } = articleApi.GetArticle(id);
+  let { loading, data, error, refetch } = articleApi.GetArticle(id);
+  useEffect(() => refetch(), [id]);
 
   return loading ? (
     <Loader />

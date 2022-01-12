@@ -5,7 +5,7 @@ import SellerProfile from "./SellerProfile";
 import SellerManner from "./SellerManner";
 import SellerReview from "./SellerReview";
 import SellerArticleList from "./SellerArticleList";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { userApi } from "api";
 import theme from "Style/theme";
 import { ContentContainer, MenuButtonList } from "Components/Universal";
@@ -13,7 +13,9 @@ import { ContentContainer, MenuButtonList } from "Components/Universal";
 const SellerInfo = () => {
   const { id } = useParams();
   const [menu, setMenu] = useState("trade");
-  let { loading, data, error } = userApi.GetUser(id);
+  let { loading, data, error, refetch } = userApi.GetUser(id);
+
+  useEffect(() => refetch(), [id]);
 
   return loading ? (
     <Loader />
