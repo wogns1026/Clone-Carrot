@@ -65,6 +65,7 @@ const ArticleRegist = () => {
           imgBase64={imgBase64}
           upload={upload}
           remove={remove}
+          size="100px"
         />
         <HorizontalDivider />
         <Input
@@ -91,7 +92,6 @@ const ArticleRegist = () => {
         <TextArea
           height="500px"
           fontSize="20px"
-          onKeyPress={setDescription}
           onChange={setDescription}
           placeholder="높이, 길이, 넓이, 무게 등 물품에 대한 자세한 정보를 작성하면 판매확률이 올라가요!"
           flexWrap

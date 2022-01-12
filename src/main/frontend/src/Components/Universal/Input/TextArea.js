@@ -6,6 +6,7 @@ const STYLE = theme.input;
 const TextInput = styled.textarea`
   border: none;
   outline: none;
+  resize: none;
   &::placeholder {
     opacity: 0.5;
   }
@@ -28,17 +29,11 @@ const TextInput = styled.textarea`
   }}
 `;
 
-export const TextArea = ({ onKeyPress, onChange, placeholder, ...rest }) => {
+export const TextArea = ({ onChange, placeholder, ...rest }) => {
   return (
     <TextInput
       placeholder={placeholder}
-      onKeyPress={(e) =>
-        e.key === "Enter" &&
-        e.target.value &&
-        onKeyPress &&
-        onKeyPress(e.target.value)
-      }
-      onChange={(e) => e.target.value && onChange(e.target.value)}
+      onChange={(e) => onChange(e.target.value)}
       {...rest}
     />
   );

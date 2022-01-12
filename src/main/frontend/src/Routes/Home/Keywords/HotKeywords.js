@@ -39,7 +39,7 @@ const HotKeywords = () => {
           중고거래 인기검색어
         </Text>
       </Box>
-      <FlexBox width="100%" wrap gap="50px">
+      <FlexBox width="100%" flexWrap gap="50px">
         {topSearchBannerData.map((data, index) => (
           <Text key={index} to={`/search/${data.text}`} fontSize="16px">
             {data.text}

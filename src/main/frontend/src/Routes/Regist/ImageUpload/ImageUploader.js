@@ -3,7 +3,7 @@ import { Button, FlexBox, Text } from "Components/Universal";
 import theme from "Style/theme";
 import ImagePreview from "./ImagePreview";
 
-const ImageUploader = ({ imgUrl, imgBase64, upload, remove }) => {
+const ImageUploader = ({ imgFile, imgBase64, upload, remove, size }) => {
   return (
     <FlexBox gap="20px">
       <input
@@ -16,7 +16,7 @@ const ImageUploader = ({ imgUrl, imgBase64, upload, remove }) => {
       <Button
         as="label"
         htmlFor="upload"
-        size="100px"
+        size={size}
         border={theme.colors.darkGrey}
         bgColor={theme.colors.grey}
       >

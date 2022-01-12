@@ -1,8 +1,8 @@
 import { useState } from "react";
 
-const useImageUpload = () => {
+const useImageUpload = (initImages) => {
   const [imgUrl, setImgUrl] = useState([]);
-  const [imgFile, setImgFile] = useState([]); //파일
+  const [imgFile, setImgFile] = useState(initImages ? initImages : []); //파일
   const [imgBase64, setImgBase64] = useState([]); // 파일 base64
 
   const upload = (e) => {

@@ -11,17 +11,19 @@ import theme from "Style/theme";
 import ImageUploader from "./ImageUpload/ImageUploader";
 import useImageUpload from "Hooks/useImageUpload";
 import { boardApi } from "api";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const BoardRegist = () => {
-  const [content, setContent] = useState("");
-  const [imgFile, imgBase64, upload, remove] = useImageUpload();
+  const { state } = useLocation();
+  const [content, setContent] = useState(state?.content);
+  const [imgFile, imgBase64, upload, remove] = useImageUpload(state?.image);
   const navigate = useNavigate();
 
   const regist = () => {
     boardApi
       .RegistBoard({
-        userId: 1, // Redux에서 가져오도록 변경 필요
+        boardId: state?.boardId ? state?.boardId : null,
+        userId: 2, // Redux에서 가져오도록 변경 필요
         content,
         image: "Image", // 이미지 배열을 넘겨주도록 변경 필요
         regTime: new Date(),
@@ -56,15 +58,15 @@ const BoardRegist = () => {
           imgBase64={imgBase64}
           upload={upload}
           remove={remove}
+          size="100px"
         />
         <HorizontalDivider />
         <TextArea
           height="500px"
           fontSize="20px"
-          onKeyPress={setContent}
           onChange={setContent}
           placeholder="근처의 이웃에게 질문하거나 이야기를 해보세요"
-          flexWrap
+          value={content}
         />
         <HorizontalDivider />
       </FlexBox>
