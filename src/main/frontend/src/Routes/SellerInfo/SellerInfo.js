@@ -1,36 +1,29 @@
 import { useParams } from "react-router-dom";
 import Loader from "Components/Loading/Loader";
 import Message from "Components/Loading/Message";
-import ContentContainer from "Components/Content/ContentContainer";
-import MenuButtonList from "Components/Universal/Button/MenuButtonList";
 import SellerProfile from "./SellerProfile";
 import SellerManner from "./SellerManner";
 import SellerReview from "./SellerReview";
-import SellerTrade from "./SellerTrade";
+import SellerArticleList from "./SellerArticleList";
 import { useEffect, useState } from "react";
-import { UserAPI } from "api";
+import { userApi } from "api";
+import theme from "Style/theme";
+import { ContentContainer, MenuButtonList } from "Components/Universal";
 
 const SellerInfo = () => {
   const { id } = useParams();
   const [menu, setMenu] = useState("trade");
-  const [state, setState] = useState([]);
-  let { loading, data, error } = UserAPI(id);
+  let { loading, data, error, refetch } = userApi.GetUser(id);
 
-  useEffect(() => {
-    if (data) setState(data);
-  }, [data, id]);
-
-  useEffect(() => {
-    console.log(id);
-  }, [id]);
+  useEffect(() => refetch(), [id]);
 
   return loading ? (
     <Loader />
   ) : error ? (
     <Message text={error} />
   ) : (
-    <ContentContainer direction="column" width="677px" height="100%">
-      {state.sellerInfo && <SellerProfile data={state.sellerInfo} />}
+    <ContentContainer column width={theme.size.window.sellerInfo}>
+      {data.sellerInfo && <SellerProfile data={data.sellerInfo} />}
       <MenuButtonList
         currentKey={menu}
         keyList={[
@@ -41,11 +34,11 @@ const SellerInfo = () => {
         onSelected={setMenu}
       />
       {menu === "review" ? (
-        state.buyReviews && <SellerReview dataArr={state.buyReviews} />
+        data.buyReviews && <SellerReview dataArr={data.buyReviews} />
       ) : menu === "manner" ? (
         <SellerManner />
       ) : (
-        state.sellItem && <SellerTrade dataArr={state.sellItem} />
+        data.sellItem && <SellerArticleList dataArr={data.sellItem} />
       )}
     </ContentContainer>
   );

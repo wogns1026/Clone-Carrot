@@ -17,7 +17,7 @@ const StyledText = styled.span`
       }
     });
     return styles.join("\n");
-  }}
+  }};
 `;
 const Text = ({ to, children, ...rest }) => {
   return to ? (

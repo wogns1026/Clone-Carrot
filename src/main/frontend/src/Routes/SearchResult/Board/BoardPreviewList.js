@@ -1,25 +1,30 @@
 import React, { useEffect, useState } from "react";
-import { Box, HorizontalDivider } from "Components/Universal";
+import { Box, HorizontalDivider, SeeMoreContainer } from "Components/Universal";
 import Loader from "Components/Loading/Loader";
 import Message from "Components/Loading/Message";
-import SeeMoreContianer from "../SeeMoreContainer";
-import theme from "Style/theme";
 import BoardPreview from "./BoardPreview";
-import { BoardAPI } from "api";
+import { boardApi } from "api";
 import { useParams } from "react-router-dom";
 
-const BoardPreviewList = () => {
+const BoardPreviewList = ({ size }) => {
   const { id } = useParams();
-  let { loading, data, error } = BoardAPI(id);
-  const [state, setState] = useState([]);
+  const [reviews, setReviews] = useState();
+  const { loading, data, error, morefetch, refetch } = boardApi.Search({
+    size,
+  });
+  useEffect(() => {
+    if (reviews) {
+      setReviews([]);
+      refetch();
+    }
+  }, [id]);
 
   useEffect(() => {
-    if (data) setState(data);
+    if (data) {
+      if (reviews) setReviews([...reviews, ...data.content]);
+      else setReviews(data.content);
+    }
   }, [data]);
-
-  const LoadMoreData = () => {
-    // 데이터 추가 로드
-  };
 
   return loading ? (
     <Loader />
@@ -27,20 +32,16 @@ const BoardPreviewList = () => {
     <Message text={error} />
   ) : (
     <Box fullSize marginTop="20px" marginBottom="60px">
-      <SeeMoreContianer
-        title="동네정보"
-        bgColor={theme.colors.white}
-        onClicked={LoadMoreData}
-      >
-        {state.map((d, index) => (
+      <SeeMoreContainer title="동네정보" onClicked={morefetch}>
+        {reviews?.map((d, index) => (
           <Box key={d.boardId}>
             <BoardPreview {...d} />
-            {state.length - 1 > index && (
+            {reviews?.length - 1 > index && (
               <HorizontalDivider marginBottom="25px" />
             )}
           </Box>
         ))}
-      </SeeMoreContianer>
+      </SeeMoreContainer>
     </Box>
   );
 };

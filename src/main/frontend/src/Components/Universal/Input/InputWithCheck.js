@@ -33,7 +33,7 @@ const InputWithCheck = ({
         fontSize="16px"
         bgColor="transparent"
         onKeyPress={checkValidation}
-        onChange={(e) => onChange(e.target.value)}
+        onChange={onChange}
         {...rest}
       />
       <WelcomeButton color={buttonColor} onClick={checkValidation}>

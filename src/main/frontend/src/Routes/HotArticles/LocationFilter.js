@@ -15,6 +15,7 @@ const LocationFilter = ({ updateRequest }) => {
   });
   const [isLoading, setIsLoading] = useState(true);
   const [error, serError] = useState(null);
+
   const onCitySelected = (option) => {
     option = option === DEFAULT_CITY ? NONE : option;
     const newData = { ...filterData, city: option, gu: NONE };
@@ -28,9 +29,7 @@ const LocationFilter = ({ updateRequest }) => {
     updateRequest(newData);
   };
 
-  const disableCondition = () => {
-    return filterData.city === NONE;
-  };
+  const disableCondition = filterData.city === NONE;
 
   useEffect(() => {
     const getMenuData = async () => {
@@ -66,7 +65,7 @@ const LocationFilter = ({ updateRequest }) => {
           title={filterData.gu ? `${filterData.gu}` : "동네를 선택하세요"}
           menuList={cityData[filterData.city]}
           onSelected={onGuSelected}
-          disabled={disableCondition()}
+          disabled={disableCondition}
         />
       </FlexBox>
     </Box>

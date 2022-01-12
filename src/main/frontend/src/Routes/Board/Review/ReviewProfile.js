@@ -6,25 +6,33 @@ import {
   Text,
 } from "Components/Universal";
 import theme from "Style/theme";
+import Loader from "Components/Loading/Loader";
+import Message from "Components/Loading/Message";
+import { userApi } from "api";
 
-const ReviewProfile = ({ id, src, name, address }) => {
-  return (
-    <LinkTo to={`/seller-info/${id}`}>
-      <FlexBox flexAlign="center" gap="10px" marginBottom="10px">
+const ReviewProfile = ({ userId, src }) => {
+  let { loading, data, error } = userApi.GetUser(userId);
+
+  return loading ? (
+    <Loader />
+  ) : error ? (
+    <Message text={error} />
+  ) : (
+    <FlexBox flexAlign="center" gap="10px" marginBottom="10px">
+      <LinkTo to={`/seller-info/${userId}`}>
         <LazyBackgroundImage
           src={src}
           size="24px"
           round
           center
           border={theme.colors.lightDark}
-          alt=""
         />
-        <Text fontSize="15px" fontWeight={700}>
-          {name}
-        </Text>
-        <Text fontSize="13px">{address}</Text>
-      </FlexBox>
-    </LinkTo>
+      </LinkTo>
+      <Text to={`/seller-info/${userId}`} fontSize="15px" fontWeight={700}>
+        {data.sellerInfo.userName}
+      </Text>
+      <Text fontSize="13px">{data.sellerInfo.address}</Text>
+    </FlexBox>
   );
 };
 

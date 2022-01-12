@@ -2,11 +2,11 @@ import React from "react";
 import { Box, Text, Button, HorizontalDivider } from "Components/Universal";
 import theme from "Style/theme";
 
-const SeeMoreContianer = ({ title, bgColor, onClicked, children }) => {
+const SeeMoreContainer = ({ title, onClicked, children }) => {
   return (
     <Box
       fullSize
-      bgColor={bgColor}
+      bgColor={theme.colors.white}
       border={theme.colors.grey}
       borderRadius="10px"
     >
@@ -27,4 +27,4 @@ const SeeMoreContianer = ({ title, bgColor, onClicked, children }) => {
     </Box>
   );
 };
-export default SeeMoreContianer;
+export default SeeMoreContainer;

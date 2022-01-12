@@ -1,18 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { FlexBox, LinkTo } from "Components/Universal";
 import ProfileUserinfo from "./ProfileUserInfo";
 import MannerTemper from "./MannerTemper";
 import Loader from "Components/Loading/Loader";
 import Message from "Components/Loading/Message";
-import { UserAPI } from "api";
+import { userApi } from "api";
 
 const Profile = ({ id }) => {
-  let { loading, data, error } = UserAPI(id);
-  const [state, setState] = useState([]);
-
-  useEffect(() => {
-    if (data) setState(data.sellerInfo);
-  }, [data]);
+  let { loading, data, error } = userApi.GetUser(id);
 
   return loading ? (
     <Loader />
@@ -28,11 +23,14 @@ const Profile = ({ id }) => {
         marginBottom="11px"
       >
         <ProfileUserinfo
-          id={state.userId}
-          name={state.userName}
-          address={state.address}
+          id={data.sellerInfo?.userId}
+          name={data.sellerInfo?.userName}
+          address={data.sellerInfo?.address}
         />
-        <MannerTemper id={state.userId} mannerTemper={state.mannerTemper} />
+        <MannerTemper
+          id={data.sellerInfo?.userId}
+          mannerTemper={data.sellerInfo?.mannerTemper}
+        />
       </FlexBox>
     </LinkTo>
   );

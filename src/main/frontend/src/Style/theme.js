@@ -5,7 +5,16 @@ const fontSizes = {
   subtitle: pixelToRem(30),
   paragraph: pixelToRem(18),
 };
-
+const size = {
+  window: {
+    home: "1024px",
+    sellerInfo: "677px",
+    articleDetail: "677px",
+    board: "677px",
+    hotArticles: "980px",
+    searchResult: "800px",
+  },
+};
 const colors = {
   black: "#000000",
   blue: "#1d74e9",
@@ -81,6 +90,9 @@ const common = {
   left: (value) => `
   left: ${value};
 `,
+  right: (value) => `
+  right: ${value};
+`,
   verticalMargin: (vMargin) => `
   margin-top: ${vMargin};
   margin-bottom: ${vMargin};
@@ -154,6 +166,10 @@ const common = {
   clickIgnore: `
   pointer-events: none;
 `,
+  verticalScrollBar: `
+  overflow: scroll;
+  overflow-x: hidden;
+`,
 };
 const text = {
   ...common,
@@ -175,6 +191,13 @@ const text = {
 const button = {
   ...common,
   point: colors.blue,
+  active: `
+  &:focus,
+  &:hover {
+    color: white;
+    background-color: ${colors.blue};
+  }
+  `,
 };
 const box = {
   ...common,
@@ -188,6 +211,9 @@ const flex = {
   column: `
   flex-direction : column;
 `,
+  flexDirection: (dir) => `
+  flex-direction: ${dir};
+`,
   spaceBetween: `
   justify-content: space-between;
 `,
@@ -199,6 +225,9 @@ const flex = {
 `,
   gap: (gap) => `
   gap: ${gap};
+`,
+  flexWrap: `
+  flex-wrap: wrap;
 `,
 };
 const image = {
@@ -213,11 +242,19 @@ const image = {
 };
 const input = {
   ...common,
+  wrap: `
+  overflow-wrap: break-word;
+`,
+  whiteSpace: (whiteSpace) => `
+  white-space: ${whiteSpace};
+`,
 };
 
 const theme = {
+  common,
   fontSizes,
   colors,
+  size,
   flex,
   box,
   button,
