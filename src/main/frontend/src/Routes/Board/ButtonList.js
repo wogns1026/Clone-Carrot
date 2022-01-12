@@ -15,9 +15,10 @@ const UtilButton = ({ text, callback }) => (
   </Button>
 );
 
-export const EditDeleteButtons = ({ modify, remove }) => (
+export const ButtonList = ({ data }) => (
   <FlexBox gap="10px">
-    <UtilButton text="수정" callback={modify} />
-    <UtilButton text="삭제" callback={remove} />
+    {data.map((d, index) => (
+      <UtilButton key={index} text={d.text} callback={d.callback} />
+    ))}
   </FlexBox>
 );

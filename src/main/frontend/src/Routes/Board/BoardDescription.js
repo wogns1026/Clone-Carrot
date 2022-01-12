@@ -2,7 +2,7 @@ import React from "react";
 import { FlexBox, Text } from "Components/Universal";
 import theme from "Style/theme";
 import { getTimeGap } from "Utils/time";
-import { EditDeleteButtons } from "./EditDeleteButtons";
+import { ButtonList } from "./ButtonList";
 
 const BoardDescription = ({
   content = "",
@@ -22,7 +22,12 @@ const BoardDescription = ({
           {`${timeGap} 전 ∙ 조회 ${viewCnt}`}
         </Text>
       </FlexBox>
-      <EditDeleteButtons modify={modify} remove={remove} />
+      <ButtonList
+        data={[
+          { text: "수정", callback: modify },
+          { text: "삭제", callback: remove },
+        ]}
+      />
     </FlexBox>
   );
 };

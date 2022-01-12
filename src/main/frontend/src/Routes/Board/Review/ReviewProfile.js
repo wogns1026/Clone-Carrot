@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import {
   FlexBox,
   LazyBackgroundImage,
@@ -18,22 +18,21 @@ const ReviewProfile = ({ userId, src }) => {
   ) : error ? (
     <Message text={error} />
   ) : (
-    <LinkTo to={`/seller-info/${userId}`}>
-      <FlexBox flexAlign="center" gap="10px" marginBottom="10px">
+    <FlexBox flexAlign="center" gap="10px" marginBottom="10px">
+      <LinkTo to={`/seller-info/${userId}`}>
         <LazyBackgroundImage
           src={src}
           size="24px"
           round
           center
           border={theme.colors.lightDark}
-          alt=""
         />
-        <Text fontSize="15px" fontWeight={700}>
-          {data.sellerInfo.userName}
-        </Text>
-        <Text fontSize="13px">{data.sellerInfo.address}</Text>
-      </FlexBox>
-    </LinkTo>
+      </LinkTo>
+      <Text to={`/seller-info/${userId}`} fontSize="15px" fontWeight={700}>
+        {data.sellerInfo.userName}
+      </Text>
+      <Text fontSize="13px">{data.sellerInfo.address}</Text>
+    </FlexBox>
   );
 };
 

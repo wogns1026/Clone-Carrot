@@ -15,7 +15,6 @@ import {
 } from "Components/Universal";
 import { boardApi } from "api";
 import theme from "Style/theme";
-import ReviewRegist from "Routes/Regist/ReviewRegist";
 
 const Board = () => {
   const { id } = useParams();
@@ -53,15 +52,11 @@ const Board = () => {
             modify={modifyBoard}
             remove={deleteBoard}
           />
-          <Box height="100px" marginTop="10px">
-            <ReviewRegist
-              state={{ boardId: data.content?.boardId, parentReviewId: null }}
-              refetch={refetch}
-            />
-          </Box>
-
-          <HorizontalDivider marginTop="24px" marginBottom="24px" />
-          <ReviewList reviewList={data.reviewList} refetch={refetch} />
+          <ReviewList
+            boardId={data.content?.boardId}
+            reviewList={data.reviewList}
+            refetch={refetch}
+          />
           <HotArticleList />
         </FlexBox>
       </Box>
