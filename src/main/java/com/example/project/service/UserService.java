@@ -15,4 +15,8 @@ public interface UserService {
 
     List<Item> getItemList(Long sellerId);
 
+    void saveUserInfo(User user);
+
+    void deleteUserInfo(Long userId);
+
 }
