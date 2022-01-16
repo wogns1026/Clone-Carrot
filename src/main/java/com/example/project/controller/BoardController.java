@@ -48,6 +48,7 @@ public class BoardController {
         boardService.saveBoard(board);
 
         Map<String, Object> result = new HashMap<>();
+        result.put("boardId", board.getBoardId());
         result.put("success", "success");
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
