@@ -48,5 +48,12 @@ public class UserController {
         return new ResponseEntity<>(res, HttpStatus.OK);
     }
 
+    @ApiOperation(value = "신규 유저 저장(가입)")
+    @PostMapping(value = "/user")
+    public ResponseEntity<?> saveUserInfo(@RequestBody User user){
+        userService.saveUserInfo(user);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
 
 }
