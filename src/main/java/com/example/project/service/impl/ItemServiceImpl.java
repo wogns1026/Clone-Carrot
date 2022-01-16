@@ -6,7 +6,6 @@ import com.example.project.service.ItemService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -28,6 +27,16 @@ public class ItemServiceImpl implements ItemService {
     @Override
     public Item getItemDetail(Long itemId){
         return itemRepository.findByItemId(itemId);
+    }
+
+    @Override
+    public void saveItem(Item item){
+        itemRepository.save(item);
+    }
+
+    @Override
+    public void deleteItem(Long itemId){
+        itemRepository.deleteById(itemId);
     }
 
 }
