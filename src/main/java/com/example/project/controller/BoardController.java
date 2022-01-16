@@ -10,10 +10,17 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.ServletContext;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 @RestController
 @RequestMapping(value = "/api/v1/board")
@@ -22,6 +29,8 @@ import java.util.Map;
 public class BoardController {
 
     private final BoardService boardService;
+
+    private final ServletContext servletContext;
 
     @ApiOperation(value = "게시판(동네 정보) 게시글 전체 조회")
     @GetMapping
@@ -50,6 +59,31 @@ public class BoardController {
         Map<String, Object> result = new HashMap<>();
         result.put("success", "success");
         return new ResponseEntity<>(result, HttpStatus.OK);
+    }
+
+    @ApiOperation(value = "게시판(동네 정보) 게시글 이미지 저장")
+    @PostMapping(value = "/image")
+    public ResponseEntity<?> saveBoardImage(
+            @RequestPart(value = "image", required = false) MultipartFile[] images) throws IOException{
+        for(MultipartFile file : images){
+
+            String originalName = file.getOriginalFilename();
+            String fileName = originalName.substring(originalName.lastIndexOf("\\") + 1);
+
+            String uuid = UUID.randomUUID().toString();
+
+            String saveFileName = "C:\\temp" + File.separator + uuid + "_" + fileName;
+
+            Path savePath = Paths.get(saveFileName);
+
+            try {
+                file.transferTo(savePath);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @ApiOperation(value = "게시판(동네 정보) 게시글 삭제")
