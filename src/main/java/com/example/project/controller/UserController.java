@@ -6,6 +6,7 @@ import com.example.project.domain.User;
 import com.example.project.service.UserService;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
+import org.apache.ibatis.annotations.Delete;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -46,6 +47,20 @@ public class UserController {
         res.put("userInfo", userInfo);
 
         return new ResponseEntity<>(res, HttpStatus.OK);
+    }
+
+    @ApiOperation(value = "신규 유저 저장(가입)")
+    @PostMapping(value = "/user")
+    public ResponseEntity<?> saveUserInfo(@RequestBody User user){
+        userService.saveUserInfo(user);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @ApiOperation(value = "유저 탈퇴")
+    @DeleteMapping(value = "/user")
+    public ResponseEntity<?> deleteUserInfo(@RequestParam Long userId){
+        userService.deleteUserInfo(userId);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
 

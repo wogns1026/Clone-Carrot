@@ -1,6 +1,6 @@
 import React from "react";
 import { Text } from "Components/Universal";
-const ArticleInfo = ({ itemTitle, cost = 0, location, viewCnt = 0 }) => {
+const ArticleInfo = ({ itemTitle, cost = 0, address, viewCnt = 0 }) => {
   return (
     <>
       <Text fontSize="16px" verticalMargin="10px" notOverflow>
@@ -10,7 +10,7 @@ const ArticleInfo = ({ itemTitle, cost = 0, location, viewCnt = 0 }) => {
         {cost}
       </Text>
       <Text fontSize="13px" verticalMargin="10px">
-        {location}
+        {address}
       </Text>
       <Text fontSize="12.5px" marginBottom="10px" opacity={0.6}>
         {viewCnt}

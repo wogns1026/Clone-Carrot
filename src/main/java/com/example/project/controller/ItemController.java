@@ -14,7 +14,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -43,6 +42,24 @@ public class ItemController {
         Map<String, Object> result = new HashMap<>();
         result.put("data", new ItemDto(itemService.getItemDetail(itemId)));
         return new ResponseEntity<>(result, HttpStatus.OK);
+    }
+
+    @ApiOperation(value = "매물 저장")
+    @PostMapping(value = "/item")
+    public ResponseEntity<Map<String, Object>> saveItem(@RequestBody Item item){
+        itemService.saveItem(item);
+
+        Map<String, Object> result = new HashMap<>();
+        result.put("itemId", item.getItemId());
+
+        return new ResponseEntity<>(result, HttpStatus.OK);
+    }
+
+    @ApiOperation(value = "매물 삭제")
+    @DeleteMapping(value = "/item")
+    public ResponseEntity<?> deleteItem(@RequestParam Long itemId){
+        itemService.deleteItem(itemId);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
 }

@@ -1,9 +1,5 @@
 import { useAxios } from "Hooks/useAxios";
-import main1 from "images/main1.png";
-import main2 from "images/main2.png";
-import main3 from "images/main3.png";
-import main4 from "images/main4.png";
-import icon from "images/search_icon.svg";
+import axios from "axios";
 
 export const icons = {
   facebook:
@@ -12,73 +8,6 @@ export const icons = {
     "https://d1unjqcospf8gs.cloudfront.net/assets/home/base/footer/icon-instagram-2f6c88a461597907c114b7ce28eab053fcae791ed26417915fefb6f7c9f95756.svg",
   blog: "https://d1unjqcospf8gs.cloudfront.net/assets/home/base/footer/icon-blog-e1b0d512d1766a6962ec5bbb5b0803d2a6a9c55ad97db5ba9eebb76013caceba.svg",
 };
-
-export const getBannerData = () => [
-  {
-    bgColor: "#FBF7F3",
-    direction: "row",
-    title: `당신 근처의
-당근마켓`,
-    description: `중고 거래부터 동네 정보까지, 이웃과 함께해
-가깝고 따뜻한 당신의 근처를 만들어요.`,
-    imgSrc: main1,
-    btn: [],
-    list: [],
-  },
-  {
-    bgColor: "white",
-    direction: "row-reverse",
-    title: `우리 동네
-중고 직거래 마켓`,
-    description: "동네 주민들과 가깝고 따뜻한 거래를 지금 경험해보세요.",
-    imgSrc: main2,
-    btn: [
-      { title: "인기매물 보기", url: "/top_trade_posts" },
-      { title: "믿을 수 있는 중고거래", url: "/trust" },
-    ],
-    list: [],
-  },
-  {
-    bgColor: "#E6F3E6",
-    direction: "row",
-    title: `이웃과 함께 하는
-동네생활`,
-    description: "우리 동네의 다양한 이야기를 이웃과 함께 나누어요.",
-    imgSrc: main3,
-    btn: [],
-    list: [
-      {
-        title: "우리동네질문",
-        description: `궁금한 게 있을 땐
-이웃에게 물어보세요.`,
-        imgSrc: icon,
-      },
-      {
-        title: "동네분실센터",
-        description: `무언가를 잃어버렸을 때, 
-함께 찾을 수 있어요.`,
-        imgSrc: icon,
-      },
-      {
-        title: "동네모임",
-        description: `관심사가 비슷한 이웃과 
-온오프라인으로 만나요.`,
-        imgSrc: icon,
-      },
-    ],
-  },
-  {
-    bgColor: "white",
-    direction: "row-reverse",
-    title: `내 근처에서 찾는
-동네가게`,
-    description: `우리 동네 가게를 찾고 있나요? 
-동네 주민이 남긴 진짜 후기를 함께 확인해보세요!`,
-    imgSrc: main4,
-    btn: [{ title: "당근마켓 동네가게 찾기", url: "/neighborMarket" }],
-    list: [],
-  },
-];
 
 export const getTopSearchData = () => [
   { text: "자전거" },
@@ -387,56 +316,73 @@ export const getShortCityName = () => ({
   경상남도: "경남",
   제주특별자치도: "제주",
 });
-export const getReviewData = () => [
-  {
-    userId: "1",
-    reviewId: "1",
-    parentReviewId: "1",
-    userName: "미운오리새끼",
-    address: "동구 수정제5동",
-    content: `아이에겐 평생 한번 있는 상인데
-그것을 공유하는건
-그 아이가 커서 당신의 환갑잔치상을 여러사람과 공유한다면 ....
-내자식 내부모에게
-아까운게 아닙니다`,
-  },
-  {
-    userId: "2",
-    reviewId: "2",
-    parentReviewId: "1",
-    userName: "사부",
-    address: "동구 초량제2동",
-    content: `너무 옛날 사고 방식인거같아요;;
-요즘은 세트식으로 예쁘게 만들어진 모형같은 것들을 백일상으로 대여줘해요~~
-코로나라 어쩔 수 없이 집에서 기념으로 사진이라도 남길려고 촬영 소품으로 비싼돈주고 빌려오시는건대 당연히 일정이 비슷한 가정이 있으면 더치페이해서 부담을 나누면 좋죠 ㅡㅡ
-무슨 돈이 아깝다..만다.. 이런소리를 하시는지… 제 눈에는 알뜰한 어머니로 보이네요. 잘 모르시면 훈수 두지않으셨음 좋겠어요 ~~`,
-  },
-  {
-    userId: "3",
-    reviewId: "3",
-    parentReviewId: "3",
-    userName: "하우",
-    address: "중구 영주제1동",
-    content: `좋은생각인거 같습니당`,
-  },
-];
-export const UserAPI = (id) =>
-  useAxios({
-    url: `/seller-info/${id}`,
-  });
-export const SearchAPI = (id) =>
-  useAxios({
-    url: `/search/${id}`,
-  });
-export const HotArticleAPI = () =>
-  useAxios({
-    url: `/hot-articles`,
-  });
-export const ArticleAPI = (id) =>
-  useAxios({
-    url: `/articles/${id}`,
-  });
-export const BoardAPI = (id) =>
-  useAxios({
-    url: `/board?search=${id}`,
-  });
+
+export const boardApi = {
+  // loading, content, pageable, error
+  Search: ({ ...rest }) =>
+    useAxios({
+      url: `/board`,
+      params: { ...rest },
+    }),
+  // loading, content, reviewList, error
+  GetBoard: (id) =>
+    useAxios({
+      url: `/board/dtl/${id}`,
+    }),
+  // loading, success, error
+  RegistBoard: (board) =>
+    axios
+      .create({ baseURL: "http://localhost:8080/api/v1" })
+      .post("/board", board),
+
+  DeleteBoard: (id) =>
+    axios
+      .create({ baseURL: "http://localhost:8080/api/v1" })
+      .delete(`/board?boardId=${id}`),
+};
+
+export const articleApi = {
+  // loading, content, pageable, error
+  GetHotArticles: ({ ...rest }) =>
+    useAxios({
+      url: `/hot-articles`,
+      params: { ...rest },
+    }),
+  // loading, data, error
+  GetArticle: (id) =>
+    useAxios({
+      url: `/articles/${id}`,
+    }),
+  // loading, content, pageable, error
+  Search: ({ id, ...rest }) =>
+    useAxios({
+      url: `/search/${id}`,
+      params: { ...rest },
+    }),
+  // loading, success, error
+  RegistArticle: (article) =>
+    axios
+      .create({ baseURL: "http://localhost:8080/api/v1" })
+      .post("/article", article),
+};
+
+export const reviewApi = {
+  // loading, success, error
+  RegistReview: (review) =>
+    axios
+      .create({ baseURL: "http://localhost:8080/api/v1" })
+      .post("/review", review),
+  // loading, status, error
+  DeleteReview: (id) =>
+    axios
+      .create({ baseURL: "http://localhost:8080/api/v1" })
+      .delete(`/review?reviewId=${id}`),
+};
+
+export const userApi = {
+  // loading, sellItem, sellerInfo, buyReviews, error
+  GetUser: (id) =>
+    useAxios({
+      url: `/seller-info/${id}`,
+    }),
+};

@@ -1,7 +1,7 @@
 import React from "react";
 import { Text, FlexBox } from "Components/Universal";
 import theme from "Style/theme";
-const ArticleInfo = ({ itemTitle, cost = 0, location, viewCnt = 0 }) => {
+const SearchArticleInfo = ({ itemTitle, cost = 0, location, viewCnt = 0 }) => {
   return (
     <FlexBox column>
       <Text fontSize="16px" verticalMargin="10px" notOverflow>
@@ -30,4 +30,4 @@ const ArticleInfo = ({ itemTitle, cost = 0, location, viewCnt = 0 }) => {
   );
 };
 
-export default ArticleInfo;
+export default SearchArticleInfo;

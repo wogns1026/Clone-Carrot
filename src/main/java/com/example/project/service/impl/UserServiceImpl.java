@@ -40,6 +40,15 @@ public class UserServiceImpl implements UserService {
         return itemRepository.findBySellerId(sellerId);
     }
 
+    @Override
+    public void saveUserInfo(User user){
+        userRepository.save(user);
+    }
+
+    @Override
+    public void deleteUserInfo(Long userId){
+        userRepository.deleteById(userId);
+    }
 
 
 }

@@ -1,17 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { FlexBox, Text, LazyImage, LinkTo } from "Components/Universal";
 import Message from "Components/Loading/Message";
 import Loader from "Components/Loading/Loader";
 import theme from "Style/theme";
-import { UserAPI } from "api";
+import { userApi } from "api";
 
 const BoardPreview = ({ boardId, userId, image, content }) => {
-  const [address, setAddress] = useState();
-  const { loading, data, error } = UserAPI(userId);
-
-  useEffect(() => {
-    if (data) setAddress(data.address);
-  }, [data]);
+  const { loading, data, error } = userApi.GetUser(userId);
 
   return loading ? (
     <Loader />
@@ -29,7 +24,7 @@ const BoardPreview = ({ boardId, userId, image, content }) => {
             marginTop="6px"
             color={theme.colors.darkGrey}
           >
-            {address}
+            {data?.sellerInfo?.address}
           </Text>
         </FlexBox>
       </FlexBox>

@@ -28,7 +28,11 @@ public class BoardServiceImpl implements BoardService {
 
     @Override
     public Board getBoardDtl(Long boardId){
-        return boardRepository.findByBoardId(boardId);
+        Board board = boardRepository.findByBoardId(boardId);
+        board.setViewCnt(board.getViewCnt() + 1);
+        saveBoard(board);
+
+        return board;
     }
 
     @Override
