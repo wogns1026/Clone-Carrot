@@ -23,4 +23,8 @@ public class Board {
 
     private LocalDateTime regTime;
 
+    public void setViewCnt(int viewCnt){
+        this.viewCnt = viewCnt;
+    }
+
 }
