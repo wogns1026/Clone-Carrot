@@ -18,4 +18,7 @@ public interface ItemService {
     /** 매물 저장 */
     void saveItem(Item item);
 
+    /** 매물 삭제 */
+    void deleteItem(Long itemId);
+
 }

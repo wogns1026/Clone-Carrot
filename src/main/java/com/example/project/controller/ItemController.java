@@ -55,4 +55,11 @@ public class ItemController {
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
+    @ApiOperation(value = "매물 삭제")
+    @DeleteMapping(value = "/item")
+    public ResponseEntity<?> deleteItem(@RequestParam Long itemId){
+        itemService.deleteItem(itemId);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
 }
