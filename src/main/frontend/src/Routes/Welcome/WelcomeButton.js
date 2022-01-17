@@ -1,5 +1,5 @@
 import { Text, Button } from "Components/Universal";
-import theme from "Style/theme";
+import theme from "styles/theme";
 
 const WelcomeButton = ({ children, ...rest }) => (
   <Button

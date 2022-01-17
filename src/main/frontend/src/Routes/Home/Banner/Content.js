@@ -1,5 +1,5 @@
 import { Box, Button, FlexBox, LazyImage, Text } from "Components/Universal";
-import theme from "Style/theme";
+import theme from "styles/theme";
 
 const Title = ({ title }) => {
   return (

@@ -9,39 +9,33 @@ import {
   Text,
   TextArea,
 } from "Components/Universal";
-import theme from "Style/theme";
+import theme from "styles/theme";
 import ImageUploader from "./ImageUpload/ImageUploader";
-import useImageUpload from "Hooks/useImageUpload";
-import { useNavigate } from "react-router-dom";
-import { articleApi } from "api";
+import useImageUpload from "hooks/useImageUpload";
+import { useLocation } from "react-router-dom";
 import { categoryData } from "./categoryData";
+import { useRegistArticle } from "Routes/Article/hooks/useRegistArticle";
 
 const ArticleRegist = () => {
-  const [title, setTitle] = useState("");
-  const [price, setPrice] = useState(0);
-  const [category, setCategory] = useState("");
-  const [description, setDescription] = useState("");
+  const { state } = useLocation();
+  const [itemTitle, setItemTitle] = useState(state?.itemTitle);
+  const [cost, setCost] = useState(state?.cost);
+  const [category, setCategory] = useState(state?.category);
+  const [description, setDescription] = useState(state?.description);
   const [imgFile, imgBase64, upload, remove] = useImageUpload();
-  const navigate = useNavigate();
+  const { regist } = useRegistArticle();
 
-  const regist = () => {
-    articleApi
-      .RegistArticle({
-        userId: 1, // Redux에서 가져오도록 변경 필요
-        itemTitle: title,
-        category,
-        price,
-        description,
-        image: "Image", // 이미지 배열을 넘겨주도록 변경 필요
-        regTime: new Date(),
-      })
-      .then((data) => {
-        if (data?.data?.success === "success") navigate(`/article/${1}`);
-        // 등록된 게시물로 리다이렉트
-        // response 객체가 board id를 받을 수 있도록 개선 필요함
-      })
-      .catch((error) => console.log(error));
+  const data = {
+    userId: 1, // Redux에서 가져오도록 변경 필요
+    itemTitle,
+    category,
+    cost,
+    description,
+    image: "Image", // 이미지 배열을 넘겨주도록 변경 필요
+    regTime: new Date(),
   };
+
+  const handleRegist = () => regist(data);
 
   return (
     <ContentContainer column width={theme.size.window.board}>
@@ -54,7 +48,7 @@ const ArticleRegist = () => {
             bgColor={theme.colors.carrot}
             fontSize="15px"
             fontWeight={700}
-            onClick={regist}
+            onClick={handleRegist}
           >
             완료
           </Button>
@@ -70,9 +64,10 @@ const ArticleRegist = () => {
         <HorizontalDivider />
         <Input
           fontSize="20px"
-          onKeyPress={setTitle}
-          onChange={setTitle}
+          onKeyPress={setItemTitle}
+          onChange={setItemTitle}
           placeholder="제목"
+          value={itemTitle}
         />
         <HorizontalDivider />
         <DropdownMenu
@@ -84,9 +79,10 @@ const ArticleRegist = () => {
         <HorizontalDivider />
         <Input
           fontSize="20px"
-          onKeyPress={setPrice}
-          onChange={setPrice}
+          onKeyPress={setCost}
+          onChange={setCost}
           placeholder="&#8361; 가격 (선택사항)"
+          value={cost}
         />
         <HorizontalDivider />
         <TextArea
@@ -95,6 +91,7 @@ const ArticleRegist = () => {
           onChange={setDescription}
           placeholder="높이, 길이, 넓이, 무게 등 물품에 대한 자세한 정보를 작성하면 판매확률이 올라가요!"
           flexWrap
+          value={description}
         />
         <HorizontalDivider />
       </FlexBox>

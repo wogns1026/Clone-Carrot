@@ -1,6 +1,6 @@
 import React from "react";
 import { Text, FlexBox, ProgressBar } from "Components/Universal";
-import theme from "Style/theme";
+import theme from "styles/theme";
 import MannerFace from "./MannerFace";
 
 const MannerTemper = ({ id, mannerTemper }) => {

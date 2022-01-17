@@ -1,4 +1,4 @@
-import theme from "Style/theme";
+import theme from "styles/theme";
 import styled from "styled-components";
 
 const STYLE = theme.input;
@@ -35,7 +35,7 @@ export const Input = ({ onKeyPress, onChange, placeholder, ...rest }) => {
       onKeyPress={(e) =>
         e.key === "Enter" && e.target.value && onKeyPress(e.target.value)
       }
-      onChange={(e) => e.target.value && onChange(e.target.value)}
+      onChange={(e) => onChange(e.target.value)}
       {...rest}
     />
   );

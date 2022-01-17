@@ -6,7 +6,7 @@ import {
   HorizontalDivider,
   ContentContainer,
 } from "Components/Universal";
-import theme from "Style/theme";
+import theme from "styles/theme";
 import Links from "./Links";
 import Contact from "./Contact";
 import Icons from "./Icons";

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import theme from "Style/theme";
+import theme from "styles/theme";
 
 const STYLE = theme.image;
 

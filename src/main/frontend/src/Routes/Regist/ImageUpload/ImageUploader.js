@@ -1,6 +1,6 @@
 import React from "react";
 import { Button, FlexBox, Text } from "Components/Universal";
-import theme from "Style/theme";
+import theme from "styles/theme";
 import ImagePreview from "./ImagePreview";
 
 const ImageUploader = ({ imgFile, imgBase64, upload, remove, size }) => {

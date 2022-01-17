@@ -1,6 +1,6 @@
 import React from "react";
 import { Text, FlexBox } from "Components/Universal";
-import theme from "Style/theme";
+import theme from "styles/theme";
 const SearchArticleInfo = ({ itemTitle, cost = 0, location, viewCnt = 0 }) => {
   return (
     <FlexBox column>

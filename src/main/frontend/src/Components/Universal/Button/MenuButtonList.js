@@ -1,5 +1,5 @@
 import { FlexBox, Text, Box, Button } from "Components/Universal";
-import theme from "Style/theme";
+import theme from "styles/theme";
 
 const MenuButtonList = ({ currentKey, keyList, onSelected, ...rest }) => {
   //* keyList = [{ key: "trade", text: "판매 물품" }, ...]

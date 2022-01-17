@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import Loader from "Components/Loading/Loader";
 import Message from "Components/Loading/Message";
 import { Text, Box, FlexBox, ContentContainer } from "Components/Universal";
-import { getTopSearchData } from "api";
-import theme from "Style/theme";
+import { getTopSearchData } from "redux/data/keywordData";
+import theme from "styles/theme";
 
 const HotKeywords = () => {
   const [topSearchBannerData, setTopSearchBannerData] = useState([]);

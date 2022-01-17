@@ -1,7 +1,7 @@
 import logo from "images/logo.svg";
 import { linkInfo } from "./FooterData";
 import { FlexBox, Text, LazyImage } from "Components/Universal";
-import theme from "Style/theme";
+import theme from "styles/theme";
 
 const Links = () => (
   <FlexBox>

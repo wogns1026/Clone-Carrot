@@ -1,7 +1,7 @@
 import React from "react";
-import ArticleList from "Components/Article/ArticleList";
+import ArticleList from "Routes/Article/Contents/ArticleList";
 import { Text, Box, ContentContainer } from "Components/Universal";
-import theme from "Style/theme";
+import theme from "styles/theme";
 
 const HotArticleList = () => {
   return (

@@ -5,7 +5,7 @@ import Home from "Routes/Home/Home";
 import Header from "Routes/Header/Header";
 import Footer from "Routes/Footer/Footer";
 import HotArticleList from "Routes/HotArticles/HotArticleList";
-import ArticleDetail from "Routes/ArticleDetail/ArticleDetail";
+import ArticleDetail from "Routes/Article/ArticleDetail/ArticleDetail";
 import SearchResult from "Routes/SearchResult/SearchResult";
 import Board from "Routes/Board/Board";
 import { AutoScrollToTop } from "./Universal";
@@ -14,6 +14,7 @@ import Signup from "Routes/Welcome/Signup/Signup";
 import Signin from "Routes/Welcome/Signin/Signin";
 import BoardRegist from "Routes/Regist/BoardRegist";
 import ArticleRegist from "Routes/Regist/ArticleRegist";
+import { ToastContainer } from "react-toastify";
 
 const Router = () => (
   <HashRouter>

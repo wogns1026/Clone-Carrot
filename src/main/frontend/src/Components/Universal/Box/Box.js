@@ -1,4 +1,4 @@
-import theme from "Style/theme";
+import theme from "styles/theme";
 import styled from "styled-components";
 
 const STYLE = theme.box;

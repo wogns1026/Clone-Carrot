@@ -1,6 +1,6 @@
 import { FlexBox, Input } from "Components/Universal";
 import WelcomeButton from "Routes/Welcome/WelcomeButton";
-import theme from "Style/theme";
+import theme from "styles/theme";
 
 const InputWithCheck = ({
   callback,
