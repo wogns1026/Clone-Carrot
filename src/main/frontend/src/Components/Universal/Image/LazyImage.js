@@ -1,5 +1,5 @@
 import React from "react";
-import { useLazyImageObserver } from "Hooks/useLazyImageObserver";
+import { useLazyImageObserver } from "hooks/useLazyImageObserver";
 import { Image } from "./Image";
 
 const LazyImage = React.memo(({ src, alt = "image", ...rest }) => {

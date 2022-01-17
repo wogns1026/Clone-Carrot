@@ -1,7 +1,7 @@
 import React from "react";
 import defaultImg from "images/logo.svg";
 import { LazyBackgroundImage } from "Components/Universal";
-import theme from "Style/theme";
+import theme from "styles/theme";
 
 const MannerFace = ({ id, mannerTemper }) => {
   return (

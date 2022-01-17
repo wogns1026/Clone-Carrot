@@ -1,17 +1,14 @@
 import React from "react";
 import { FlexBox, Text, LazyImage, LinkTo } from "Components/Universal";
-import Message from "Components/Loading/Message";
 import Loader from "Components/Loading/Loader";
-import theme from "Style/theme";
-import { userApi } from "api";
+import theme from "styles/theme";
+import { useFetchSellerInfoById } from "Components/Profile/hooks/useFetchSellerInfoById";
 
 const BoardPreview = ({ boardId, userId, image, content }) => {
-  const { loading, data, error } = userApi.GetUser(userId);
+  const { loading, sellerInfo } = useFetchSellerInfoById(userId);
 
   return loading ? (
     <Loader />
-  ) : error ? (
-    <Message text={error} />
   ) : (
     <LinkTo to={`/board/${boardId}`}>
       <FlexBox fullSize marginBottom="25px" interactive>
@@ -24,7 +21,7 @@ const BoardPreview = ({ boardId, userId, image, content }) => {
             marginTop="6px"
             color={theme.colors.darkGrey}
           >
-            {data?.sellerInfo?.address}
+            {sellerInfo.address}
           </Text>
         </FlexBox>
       </FlexBox>

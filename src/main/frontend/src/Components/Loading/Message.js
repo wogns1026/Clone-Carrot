@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, FlexBox, Text } from "Components/Universal";
-import theme from "Style/theme";
+import theme from "styles/theme";
 
 const Message = ({ text, color = theme.colors.red }) => (
   <Box fullSize>

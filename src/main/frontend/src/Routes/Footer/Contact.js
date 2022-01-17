@@ -1,5 +1,5 @@
 import { FlexBox, Box, Text } from "Components/Universal";
-import theme from "Style/theme";
+import theme from "styles/theme";
 
 const Contact = ({ info }) => (
   <FlexBox gap="10px" flexWrap>

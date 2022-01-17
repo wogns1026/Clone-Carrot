@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Text, Button, HorizontalDivider } from "Components/Universal";
-import theme from "Style/theme";
+import theme from "styles/theme";
 
 const SeeMoreContainer = ({ title, onClicked, children }) => {
   return (

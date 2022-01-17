@@ -1,44 +1,39 @@
-import { useParams } from "react-router-dom";
+import { useState } from "react";
 import Loader from "Components/Loading/Loader";
-import Message from "Components/Loading/Message";
-import SellerProfile from "./SellerProfile";
-import SellerManner from "./SellerManner";
-import SellerReview from "./SellerReview";
-import SellerArticleList from "./SellerArticleList";
-import { useEffect, useState } from "react";
-import { userApi } from "api";
-import theme from "Style/theme";
+import SellerProfile from "./Profile/SellerProfile";
+import SellerManner from "./Manner/SellerManner";
+import SellerReview from "./Review/SellerReview";
+import SellerArticleList from "./Article/SellerArticleList";
 import { ContentContainer, MenuButtonList } from "Components/Universal";
+import { useFetchSellerInfoOfReview } from "./hooks/useFetchSellerInfoOfReview";
+import theme from "styles/theme";
 
 const SellerInfo = () => {
-  const { id } = useParams();
   const [menu, setMenu] = useState("trade");
-  let { loading, data, error, refetch } = userApi.GetUser(id);
+  const { loading, sellItem, sellerInfo, buyReviewsWithSellerInfo } =
+    useFetchSellerInfoOfReview();
 
-  useEffect(() => refetch(), [id]);
-
+  const keyList = [
+    { key: "trade", text: "판매 물품" },
+    { key: "review", text: "거래 후기" },
+    { key: "manner", text: "매너 칭찬" },
+  ];
   return loading ? (
     <Loader />
-  ) : error ? (
-    <Message text={error} />
   ) : (
     <ContentContainer column width={theme.size.window.sellerInfo}>
-      {data.sellerInfo && <SellerProfile data={data.sellerInfo} />}
+      <SellerProfile sellerInfo={sellerInfo} />
       <MenuButtonList
         currentKey={menu}
-        keyList={[
-          { key: "trade", text: "판매 물품" },
-          { key: "review", text: "거래 후기" },
-          { key: "manner", text: "매너 칭찬" },
-        ]}
+        keyList={keyList}
         onSelected={setMenu}
       />
       {menu === "review" ? (
-        data.buyReviews && <SellerReview dataArr={data.buyReviews} />
+        <SellerReview buyReviews={buyReviewsWithSellerInfo} />
       ) : menu === "manner" ? (
         <SellerManner />
       ) : (
-        data.sellItem && <SellerArticleList dataArr={data.sellItem} />
+        <SellerArticleList sellItem={sellItem} />
       )}
     </ContentContainer>
   );

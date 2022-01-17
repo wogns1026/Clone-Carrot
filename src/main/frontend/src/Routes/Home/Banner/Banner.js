@@ -5,7 +5,7 @@ import {
   ContentContainer,
   LazyBackgroundImage,
 } from "Components/Universal";
-import theme from "Style/theme";
+import theme from "styles/theme";
 import { bannerData } from "./bannerData";
 
 const Banner = () => {

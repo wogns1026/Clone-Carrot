@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useAutoDashInput } from "Hooks/useAutoDashInput";
+import { useAutoDashInput } from "hooks/useAutoDashInput";
 import { Box, FlexBox, InputWithCheck } from "Components/Universal";
 import { authByPhone, renderRecaptcha } from "Firebase/Auth/phone";
 import { ToastContainer, toast } from "react-toastify";

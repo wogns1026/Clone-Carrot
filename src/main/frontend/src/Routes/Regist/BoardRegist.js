@@ -7,34 +7,28 @@ import {
   Text,
   TextArea,
 } from "Components/Universal";
-import theme from "Style/theme";
+import theme from "styles/theme";
 import ImageUploader from "./ImageUpload/ImageUploader";
-import useImageUpload from "Hooks/useImageUpload";
-import { boardApi } from "api";
-import { useLocation, useNavigate } from "react-router-dom";
+import useImageUpload from "hooks/useImageUpload";
+import { useLocation } from "react-router-dom";
+import { useRegistBoard } from "Routes/Board/hooks/useRegistBoard";
 
 const BoardRegist = () => {
   const { state } = useLocation();
+  const { regist } = useRegistBoard();
   const [content, setContent] = useState(state?.content);
   const [imgFile, imgBase64, upload, remove] = useImageUpload(state?.image);
-  const navigate = useNavigate();
 
-  const regist = () => {
-    boardApi
-      .RegistBoard({
-        boardId: state?.boardId ? state?.boardId : null,
-        userId: 2, // Redux에서 가져오도록 변경 필요
-        content,
-        image: "Image", // 이미지 배열을 넘겨주도록 변경 필요
-        regTime: new Date(),
-      })
-      .then((data) => {
-        if (data?.data?.success === "success") navigate(`/board/${1}`);
-        // 등록된 게시물로 리다이렉트
-        // response 객체가 board id를 받을 수 있도록 개선 필요함
-      })
-      .catch((error) => console.log(error));
+  const data = {
+    boardId: state?.boardId ? state?.boardId : null,
+    userId: 2, // Redux에서 가져오도록 변경 필요
+    image: "Image", // 이미지 배열을 넘겨주도록 변경 필요
+    ...state,
+    content: content,
+    regTime: new Date(),
   };
+
+  const handleRegist = () => regist(data);
 
   return (
     <ContentContainer column width={theme.size.window.board}>
@@ -47,7 +41,7 @@ const BoardRegist = () => {
             bgColor={theme.colors.carrot}
             fontSize="15px"
             fontWeight={700}
-            onClick={regist}
+            onClick={handleRegist}
           >
             완료
           </Button>

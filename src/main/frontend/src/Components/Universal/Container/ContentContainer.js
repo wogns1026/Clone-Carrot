@@ -1,5 +1,5 @@
 import { FlexBox } from "Components/Universal";
-import theme from "Style/theme";
+import theme from "styles/theme";
 
 const ContentContainer = ({
   height = "100%",

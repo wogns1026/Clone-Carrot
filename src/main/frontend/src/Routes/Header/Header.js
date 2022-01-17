@@ -6,7 +6,7 @@ import {
   ImageButton,
   ContentContainer,
 } from "Components/Universal";
-import theme from "Style/theme";
+import theme from "styles/theme";
 import SearchInput from "./SearchInput";
 import DevelopHeader from "./DevelopHeader";
 

@@ -3,16 +3,13 @@ import { FlexBox, LinkTo } from "Components/Universal";
 import ProfileUserinfo from "./ProfileUserInfo";
 import MannerTemper from "./MannerTemper";
 import Loader from "Components/Loading/Loader";
-import Message from "Components/Loading/Message";
-import { userApi } from "api";
+import { useFetchSellerInfoById } from "./hooks/useFetchSellerInfoById";
 
 const Profile = ({ id }) => {
-  let { loading, data, error } = userApi.GetUser(id);
+  const { loading, sellerInfo } = useFetchSellerInfoById(id);
 
   return loading ? (
     <Loader />
-  ) : error ? (
-    <Message text={error} />
   ) : (
     <LinkTo to={`/seller-info/${id}`}>
       <FlexBox
@@ -23,13 +20,13 @@ const Profile = ({ id }) => {
         marginBottom="11px"
       >
         <ProfileUserinfo
-          id={data.sellerInfo?.userId}
-          name={data.sellerInfo?.userName}
-          address={data.sellerInfo?.address}
+          id={sellerInfo.userId}
+          name={sellerInfo.userName}
+          address={sellerInfo.address}
         />
         <MannerTemper
-          id={data.sellerInfo?.userId}
-          mannerTemper={data.sellerInfo?.mannerTemper}
+          id={sellerInfo.userId}
+          mannerTemper={sellerInfo.mannerTemper}
         />
       </FlexBox>
     </LinkTo>

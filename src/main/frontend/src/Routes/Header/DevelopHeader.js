@@ -1,5 +1,5 @@
 import { FlexBox, Button, Text } from "Components/Universal";
-import theme from "Style/theme";
+import theme from "styles/theme";
 
 const DevelopHeader = () => {
   const LinkButton = ({ link, text, btnColor = theme.colors.carrot }) => (

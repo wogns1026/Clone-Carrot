@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, FlexBox, DotButton } from "Components/Universal";
-import theme from "Style/theme";
+import theme from "styles/theme";
 
 const DotSwiperButtonList = ({ curIndex, listSize, onClicked }) => {
   const range = [...Array(listSize)].map((v, i) => i);

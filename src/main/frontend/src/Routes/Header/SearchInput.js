@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FlexBox, Input, ImageButton } from "Components/Universal";
 import search_icon from "images/search_icon.svg";
-import theme from "Style/theme";
+import theme from "styles/theme";
 
 const SearchInput = ({ placeholder }) => {
   const navigate = useNavigate();

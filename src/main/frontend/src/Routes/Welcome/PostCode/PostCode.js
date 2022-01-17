@@ -1,6 +1,6 @@
 import React from "react";
 import DaumPostCode from "react-daum-postcode";
-import theme from "Style/theme";
+import theme from "styles/theme";
 
 const PostCode = ({ callback }) => {
   const width = "100%";

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import icon from "images/down_arrow_icon.png";
 import { useRef, useState } from "react";
-import useClickDetect from "Hooks/useClickDetect";
+import useClickDetect from "hooks/useClickDetect";
 import { LazyImage } from "..";
 
 const DropDownButtonList = styled.div`
