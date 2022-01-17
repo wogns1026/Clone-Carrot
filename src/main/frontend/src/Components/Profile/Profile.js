@@ -8,7 +8,7 @@ import { useFetchSellerInfoById } from "./hooks/useFetchSellerInfoById";
 const Profile = ({ id }) => {
   const { loading, sellerInfo } = useFetchSellerInfoById(id);
 
-  return loading ? (
+  return !id || loading ? (
     <Loader />
   ) : (
     <LinkTo to={`/seller-info/${id}`}>

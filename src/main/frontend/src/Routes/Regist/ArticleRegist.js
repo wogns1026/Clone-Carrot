@@ -13,8 +13,8 @@ import theme from "styles/theme";
 import ImageUploader from "./ImageUpload/ImageUploader";
 import useImageUpload from "hooks/useImageUpload";
 import { useLocation } from "react-router-dom";
-import { categoryData } from "./categoryData";
 import { useRegistArticle } from "Routes/Article/hooks/useRegistArticle";
+import { categoryData } from "redux/data/categoryData";
 
 const ArticleRegist = () => {
   const { state } = useLocation();
@@ -26,13 +26,15 @@ const ArticleRegist = () => {
   const { regist } = useRegistArticle();
 
   const data = {
-    userId: 1, // Redux에서 가져오도록 변경 필요
+    sellerId: 1, // Redux에서 가져오도록 변경 필요
     itemTitle,
     category,
     cost,
     description,
     image: "Image", // 이미지 배열을 넘겨주도록 변경 필요
-    regTime: new Date(),
+    itemRegTime: new Date(),
+    status: true,
+    viewCnt: 0,
   };
 
   const handleRegist = () => regist(data);

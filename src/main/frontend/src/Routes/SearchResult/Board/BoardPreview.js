@@ -1,8 +1,8 @@
 import React from "react";
 import { FlexBox, Text, LazyImage, LinkTo } from "Components/Universal";
+import { useFetchSellerInfoById } from "./hooks/useFetchSellerInfoById";
 import Loader from "Components/Loading/Loader";
 import theme from "styles/theme";
-import { useFetchSellerInfoById } from "Components/Profile/hooks/useFetchSellerInfoById";
 
 const BoardPreview = ({ boardId, userId, image, content }) => {
   const { loading, sellerInfo } = useFetchSellerInfoById(userId);

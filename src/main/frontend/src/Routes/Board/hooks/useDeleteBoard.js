@@ -9,7 +9,7 @@ export const useDeleteBoard = () => {
   const { id } = useParams();
 
   const deleteBoard = () => {
-    id &&
+    if (window.confirm("정말로 삭제하겠습니까?")) {
       dispatch(deleteBoardById(id))
         .unwrap()
         .then((res) => {
@@ -17,6 +17,7 @@ export const useDeleteBoard = () => {
           toast.success("게시물 삭제 성공");
         })
         .catch((err) => toast.error("게시물 삭제 실패"));
+    }
   };
 
   return { deleteBoard };

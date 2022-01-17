@@ -51,9 +51,9 @@ export const registBoard = createAsyncThunk(
       .post(`/board`, newBoardData)
       .then((res) => {
         if (!res.data.success) {
-          return rejectWithValue("No Board Data");
+          return rejectWithValue("Can't Regist Board");
         }
-        return res.data.success;
+        return res.data.boardId;
       })
       .catch((error) => rejectWithValue(error.res.data));
   }
@@ -67,7 +67,7 @@ export const deleteBoardById = createAsyncThunk(
       .delete(`/board?boardId=${boardId}`)
       .then((res) => {
         if (!res.data.deleteCount) {
-          return rejectWithValue("게시물 삭제 실패");
+          return rejectWithValue("Can't Delete Article");
         }
         return res.data.deleteCount;
       })
@@ -131,10 +131,6 @@ const board = createSlice({
           state.error = action.error;
           state.currentRequestId = undefined;
         }
-      })
-      .addCase(fetchBoardById.fulfilled, (state, action) => {
-        state.oneThing.boardId = action.payload.boardId;
-        state.boards.push(action.payload);
       });
   },
 });

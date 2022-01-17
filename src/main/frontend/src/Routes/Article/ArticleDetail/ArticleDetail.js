@@ -25,7 +25,7 @@ const ArticleDetail = () => {
         <Profile id={article.sellerId} />
         <HorizontalDivider marginBottom="38px" />
         <FlexBox column>
-          <ArticleDescription {...article} />
+          <ArticleDescription data={article} />
         </FlexBox>
         <HorizontalDivider />
         <HotArticleList />

@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { fetchSellerInfoById } from "redux/modules/sellerInfo";
 
-export const useFetchSellerInfoById = (userId) => {
+export const useFetchSellerInfo = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -12,13 +12,10 @@ export const useFetchSellerInfoById = (userId) => {
   const [sellerInfo, setSellerInfo] = useState("");
   const [buyReviews, setBuyReviews] = useState("");
 
-  useEffect(() => fetch(), [userId, id]);
+  useEffect(() => fetch(), [id]);
 
   const fetch = () => {
-    if (!userId && !id) return;
-    const sellerId = userId ? userId : id;
-
-    dispatch(fetchSellerInfoById(sellerId))
+    dispatch(fetchSellerInfoById(id))
       .unwrap()
       .then(({ buyReviews, sellItem, sellerInfo }) => {
         setBuyReviews(buyReviews);

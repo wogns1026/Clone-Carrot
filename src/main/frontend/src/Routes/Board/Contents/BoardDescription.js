@@ -11,6 +11,9 @@ const BoardDescription = ({ data }) => {
   const { moveToModifyPage } = useModifyBoard();
   const { deleteBoard } = useDeleteBoard();
 
+  const handleModify = () => {
+    moveToModifyPage(data);
+  };
   const handleDelete = () => {
     const { reviewId, boardId, parentReviewId } = data;
     deleteBoard(reviewId, boardId, parentReviewId);
@@ -27,7 +30,7 @@ const BoardDescription = ({ data }) => {
         </Text>
         <ButtonList
           data={[
-            { text: "수정", callback: moveToModifyPage },
+            { text: "수정", callback: handleModify },
             { text: "삭제", callback: handleDelete },
           ]}
         />

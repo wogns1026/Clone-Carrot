@@ -8,7 +8,7 @@ import axios from "axios";
 const baseURL = "http://localhost:8080/api/v1";
 
 export const searchArticleByKeyword = createAsyncThunk(
-  "search/articleByKeyword",
+  "search/searchArticleByKeyword",
   async (keyword, { rejectWithValue }) => {
     return axios
       .create({ baseURL })
@@ -17,6 +17,7 @@ export const searchArticleByKeyword = createAsyncThunk(
         if (!res.data.content) {
           return rejectWithValue("No Board Data");
         }
+        console.log(res.data);
         return res.data.content;
       })
       .catch((error) => rejectWithValue(error.res.data));
