@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { FlexBox, InputWithCheck } from "Components/Universal";
+import { FlexBox } from "Components/Universal";
 import { confirmAuthCode } from "Firebase/Auth/phone";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
+import InputWithCheck from "../InputWithCheck";
 
 const SendAuthCode = ({ callback }) => {
   const [valid, setValid] = useState(false);
@@ -24,19 +24,16 @@ const SendAuthCode = ({ callback }) => {
   };
 
   return (
-    <>
-      <FlexBox column center gap="20px">
-        <InputWithCheck
-          placeholder="인증번호 입력"
-          initText="확인"
-          validText="확인 완료"
-          onChange={setInput}
-          callback={send}
-          validation={valid}
-        />
-      </FlexBox>
-      <ToastContainer />
-    </>
+    <FlexBox column center gap="20px">
+      <InputWithCheck
+        placeholder="인증번호 입력"
+        initText="확인"
+        validText="확인 완료"
+        onChange={setInput}
+        callback={send}
+        validation={valid}
+      />
+    </FlexBox>
   );
 };
 export default SendAuthCode;

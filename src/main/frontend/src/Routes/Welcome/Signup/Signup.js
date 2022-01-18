@@ -1,48 +1,52 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import WelcomeContainer from "../WelcomeContainer";
 import WelcomeTitle from "../WelcomeTitle";
-import AuthByPhoneNumber from "../Auth/AuthByPhoneNumber";
-import { FlexBox, InputWithCheck } from "Components/Universal";
-import { ToastContainer, toast } from "react-toastify";
+import { FlexBox } from "Components/Universal";
 import "react-toastify/dist/ReactToastify.css";
 import PostCode from "../PostCode/PostCode";
+import { useSignup } from "../hooks/useSignup";
+import InputWithCheck from "../InputWithCheck";
+import WelcomeButton from "../WelcomeButton";
+import theme from "styles/theme";
+import { useInputUserNameHandler } from "../hooks/useInputUserNameHandler";
+import { useLocation } from "react-router-dom";
 
 const Signup = () => {
-  const [postCode, setPostCode] = useState("");
-  const [username, setUsername] = useState("");
-  const [valid, setValid] = useState(false);
+  const {
+    state: { phoneNumber },
+  } = useLocation();
+  const [address, setAddress] = useState("");
+  const { userName, setUserName, valid, submitUserName } =
+    useInputUserNameHandler();
+  const { modify } = useSignup();
 
-  const submit = () => {
-    if (username && username.length >= 2 && username.length <= 8) {
-      setValid(true);
-    } else {
-      toast.warning("사용할 수 없는 닉네임 입니다.");
-    }
-  };
-
-  useEffect(() => {
-    setValid(false);
-  }, [username]);
+  const handleModifyUser = () => modify({ address, userName, phoneNumber });
 
   return (
     <WelcomeContainer>
-      <PostCode callback={setPostCode} />
-      {postCode && (
+      <PostCode callback={setAddress} />
+      {address && (
         <FlexBox column center gap="20px">
           <WelcomeTitle />
           <InputWithCheck
-            value={username}
+            value={userName}
             placeholder="닉네임(2~8자)"
-            callback={submit}
-            onChange={setUsername}
+            callback={submitUserName}
+            onChange={setUserName}
             validation={valid}
             initText="중복확인"
             validText="사용가능"
           />
-          {valid && <AuthByPhoneNumber />}
+          {valid && (
+            <WelcomeButton
+              color={theme.colors.carrot}
+              onClick={handleModifyUser}
+            >
+              등록하기
+            </WelcomeButton>
+          )}
         </FlexBox>
       )}
-      <ToastContainer />
     </WelcomeContainer>
   );
 };

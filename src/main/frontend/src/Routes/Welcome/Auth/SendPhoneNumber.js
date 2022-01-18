@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import { useAutoDashInput } from "hooks/useAutoDashInput";
-import { Box, FlexBox, InputWithCheck } from "Components/Universal";
+import { Box, FlexBox } from "Components/Universal";
 import { authByPhone, renderRecaptcha } from "Firebase/Auth/phone";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
 import { regDashPhone } from "reg";
+import InputWithCheck from "../InputWithCheck";
 
 const SendPhoneNumber = ({ valid, setValid }) => {
   const [input, setInput] = useAutoDashInput();
@@ -20,7 +20,7 @@ const SendPhoneNumber = ({ valid, setValid }) => {
 
   const send = () => {
     if (regDashPhone.test(input)) {
-      authByPhone(`+82 ${input}`, setValid);
+      authByPhone(`+1 ${input}`, setValid);
     } else toast.warning("전화번호를 다시 입력해주세요");
   };
 
@@ -37,7 +37,6 @@ const SendPhoneNumber = ({ valid, setValid }) => {
           validation={valid}
         />
       </FlexBox>
-      <ToastContainer />
       <Box id="sign-in-button" />
     </>
   );

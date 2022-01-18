@@ -6,6 +6,7 @@ import boardReducer from "./modules/board";
 import reviewReducer from "./modules/review";
 import articleReducer from "./modules/article";
 import searchReducer from "./modules/search";
+import userReducer from "./modules/user";
 
 const rootReducer = {
   board: boardReducer,
@@ -13,6 +14,7 @@ const rootReducer = {
   sellerInfo: sellerInfoReducer,
   article: articleReducer,
   search: searchReducer,
+  user: userReducer,
 };
 
 const preloadedState = {
