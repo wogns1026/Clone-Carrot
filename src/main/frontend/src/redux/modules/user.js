@@ -83,6 +83,10 @@ const user = createSlice({
         state.info = { ...state.info, ...action.payload };
       });
   },
+  defaultReducer: (state, action) => {
+    console.log("머고");
+    return state;
+  },
 });
 
 // 전체 데이터 호출

@@ -161,7 +161,8 @@ export const filteredArticleSelector = createSelector(
 export const articleOneThingIdSelector = (state) =>
   state.article.oneThing.itemId;
 export const articleByIdSelector = createSelector(
-  [articleSelector, articleOneThingIdSelector],
+  articleSelector,
+  articleOneThingIdSelector,
   (articles, itemId) => articles.find((item) => item.itemId === itemId)
 );
 export default article.reducer;
