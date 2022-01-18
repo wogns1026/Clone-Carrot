@@ -8,6 +8,7 @@ import com.example.project.repository.ItemRepository;
 import com.example.project.repository.UserRepository;
 import com.example.project.service.UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -26,8 +27,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User getUserInfo(String phoneNumber){
-        return userRepository.findByPhoneNumber(phoneNumber);
+    public User getUserInfo(String phoneNumber) throws UsernameNotFoundException {
+        return userRepository.findByPhoneNumber(phoneNumber)
+                .orElseThrow(() -> new UsernameNotFoundException("사용자를 찾을 수 없습니다."));
     }
 
     @Override
