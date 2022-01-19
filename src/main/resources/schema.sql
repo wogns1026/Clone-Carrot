@@ -9,7 +9,7 @@ CREATE TABLE TB_USERS (
     ADDRESS         VARCHAR(20),
     MANNER_TEMPER   INT,
     RETRADE_RATE    INT,
-    IMAGE           VARCHAR(20),
+    IMAGE           VARCHAR(100),
     PHONE_NUMBER    VARCHAR(20)
 );
 
@@ -22,7 +22,7 @@ CREATE TABLE TB_ITEMS (
     STATUS          BOOLEAN,
     DESCRIPTION     VARCHAR(1000),
     VIEW_CNT        INT,
-    IMAGE           VARCHAR(20),
+    IMAGE           VARCHAR(100),
     ITEM_REG_TIME   DATETIME
 );
 
@@ -38,7 +38,7 @@ CREATE TABLE TB_BOARD(
     BOARD_ID        LONG NOT NULL AUTO_INCREMENT PRIMARY KEY,
     USER_ID         LONG,
     CONTENT         VARCHAR(1000),
-    IMAGE           VARCHAR(20),
+    IMAGE           VARCHAR(100),
     VIEW_CNT        INT,
     REG_TIME        DATETIME
 );

@@ -27,4 +27,8 @@ public class Board {
         this.viewCnt = viewCnt;
     }
 
+    public void setImage(String image){
+        this.image = image;
+    }
+
 }
