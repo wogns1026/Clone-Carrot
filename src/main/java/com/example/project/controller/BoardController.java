@@ -54,7 +54,7 @@ public class BoardController {
     @ApiOperation(value = "게시판(동네 정보) 게시글 저장")
     @PostMapping
     public ResponseEntity<Map<String, Object>> saveBoard(
-            @RequestPart(value = "board") Board board,
+            @RequestPart(value = "data") Board board,
             @RequestPart(value = "image", required = false) MultipartFile image) throws IOException{
 
         String originalName = image.getOriginalFilename();
