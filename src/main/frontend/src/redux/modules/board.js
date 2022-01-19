@@ -45,10 +45,28 @@ export const fetchBoardById = createAsyncThunk(
 
 export const registBoard = createAsyncThunk(
   "board/registBoard",
-  async (newBoardData, { rejectWithValue }) => {
+  async ({ data, imgFile }, { rejectWithValue }) => {
+    let formData = new FormData();
+    console.log(data, imgFile);
+    formData.append(
+      "data",
+      new Blob([JSON.stringify(data)], { type: "application/json" })
+    );
+
+    formData.append("image", imgFile);
+    for (var pair of formData.entries()) {
+      console.log(pair[0] + ", " + pair[1]);
+    }
     return axios
-      .create({ baseURL })
-      .post(`/board`, newBoardData)
+      .create({
+        baseURL,
+        headers: {
+          // "content-type": "application/json;charset=UTF-8",
+          "content-type": "multipart/form-data;application/json;charset=UTF-8",
+          // accept: "application/json",
+        },
+      })
+      .post(`/board`, formData)
       .then((res) => {
         if (!res.data.success) {
           return rejectWithValue("Can't Regist Board");

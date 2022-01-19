@@ -6,9 +6,10 @@ export const useRegistBoard = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const regist = (boardData) => {
-    if (boardData) {
-      dispatch(registBoard(boardData))
+  const regist = (data, imgFile) => {
+    if (data && imgFile) {
+      console.log(data, imgFile);
+      dispatch(registBoard({ data, imgFile }))
         .unwrap()
         .then((boardId) => {
           if (boardId) navigate(`/board/${boardId}`);

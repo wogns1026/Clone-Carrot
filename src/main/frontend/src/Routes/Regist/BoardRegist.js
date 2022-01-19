@@ -22,47 +22,57 @@ const BoardRegist = () => {
   const data = {
     boardId: state?.boardId ? state?.boardId : null,
     userId: 2, // Redux에서 가져오도록 변경 필요
-    image: "Image", // 이미지 배열을 넘겨주도록 변경 필요
+    image: imgFile, // 이미지 배열을 넘겨주도록 변경 필요
     ...state,
     content: content,
     regTime: new Date(),
   };
 
-  const handleRegist = () => regist(data);
+  const handleRegist = () => regist(data, imgFile);
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    regist(data, imgFile);
+  };
 
   return (
     <ContentContainer column width={theme.size.window.board}>
       <FlexBox fullSize column gap="20px">
-        <FlexBox fullSize spaceBetween marginTop="20px">
-          <Text fontSize="40px">동네정보 글쓰기</Text>
-          <Button
-            width="100px"
-            borderRadius="20px"
-            bgColor={theme.colors.carrot}
-            fontSize="15px"
-            fontWeight={700}
-            onClick={handleRegist}
-          >
-            완료
-          </Button>
-        </FlexBox>
-        <HorizontalDivider />
-        <ImageUploader
-          imgFile={imgFile}
-          imgBase64={imgBase64}
-          upload={upload}
-          remove={remove}
-          size="100px"
-        />
-        <HorizontalDivider />
-        <TextArea
-          height="500px"
-          fontSize="20px"
-          onChange={setContent}
-          placeholder="근처의 이웃에게 질문하거나 이야기를 해보세요"
-          value={content}
-        />
-        <HorizontalDivider />
+        <form
+          enctype="multipart/form-data"
+          id="form"
+          onSubmit={handleFormSubmit}
+        >
+          <FlexBox fullSize spaceBetween marginTop="20px">
+            <Text fontSize="40px">동네정보 글쓰기</Text>
+            <Button
+              width="100px"
+              borderRadius="20px"
+              bgColor={theme.colors.carrot}
+              fontSize="15px"
+              fontWeight={700}
+              // onClick={handleRegist}
+            >
+              완료
+            </Button>
+          </FlexBox>
+          <HorizontalDivider />
+          <ImageUploader
+            imgFile={imgFile}
+            imgBase64={imgBase64}
+            upload={upload}
+            remove={remove}
+            size="100px"
+          />
+          <HorizontalDivider />
+          <TextArea
+            height="500px"
+            fontSize="20px"
+            onChange={setContent}
+            placeholder="근처의 이웃에게 질문하거나 이야기를 해보세요"
+            value={content}
+          />
+          <HorizontalDivider />
+        </form>
       </FlexBox>
     </ContentContainer>
   );
