@@ -57,22 +57,24 @@ public class BoardController {
             @RequestPart(value = "data") Board board,
             @RequestPart(value = "image", required = false) MultipartFile image) throws IOException{
 
-        String originalName = image.getOriginalFilename();
-        String fileName = originalName.substring(originalName.lastIndexOf("\\") + 1);
+        if (image != null){
+            String originalName = image.getOriginalFilename();
+            String fileName = originalName.substring(originalName.lastIndexOf("\\") + 1);
 
-        String uuid = UUID.randomUUID().toString();
+            String uuid = UUID.randomUUID().toString();
 
-        String saveFileName = "C:\\temp" + File.separator + uuid + "_" + fileName;
+            String saveFileName = "C:\\temp" + File.separator + uuid + "_" + fileName;
 
-        Path savePath = Paths.get(saveFileName);
+            Path savePath = Paths.get(saveFileName);
 
-        try {
-            image.transferTo(savePath);
-        } catch (IOException e) {
-            e.printStackTrace();
+            try {
+                image.transferTo(savePath);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            board.setImage(saveFileName);
         }
 
-        board.setImage(saveFileName);
         boardService.saveBoard(board);
 
         Map<String, Object> result = new HashMap<>();
