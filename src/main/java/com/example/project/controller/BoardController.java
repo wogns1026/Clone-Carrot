@@ -53,7 +53,26 @@ public class BoardController {
 
     @ApiOperation(value = "게시판(동네 정보) 게시글 저장")
     @PostMapping
-    public ResponseEntity<Map<String, Object>> saveBoard(@RequestBody Board board){
+    public ResponseEntity<Map<String, Object>> saveBoard(
+            @RequestPart(value = "board") Board board,
+            @RequestPart(value = "image", required = false) MultipartFile image) throws IOException{
+
+        String originalName = image.getOriginalFilename();
+        String fileName = originalName.substring(originalName.lastIndexOf("\\") + 1);
+
+        String uuid = UUID.randomUUID().toString();
+
+        String saveFileName = "C:\\temp" + File.separator + uuid + "_" + fileName;
+
+        Path savePath = Paths.get(saveFileName);
+
+        try {
+            image.transferTo(savePath);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        board.setImage(saveFileName);
         boardService.saveBoard(board);
 
         Map<String, Object> result = new HashMap<>();
