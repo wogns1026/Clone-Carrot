@@ -9,10 +9,10 @@ const baseURL = "http://localhost:8080/api/v1";
 
 export const fetchSellerInfoById = createAsyncThunk(
   "sellerInfo/fetchSellerInfoById",
-  async (userId, { rejectWithValue }) => {
+  async (id, { rejectWithValue }) => {
     return axios
       .create({ baseURL })
-      .get(`/seller-info/${userId}`)
+      .get(`/seller-info/${id}`)
       .then((res) => {
         if (!res.data) {
           return rejectWithValue("No Board Data");

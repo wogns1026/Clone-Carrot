@@ -10,9 +10,8 @@ export const useRegistBoard = () => {
     if (boardData) {
       dispatch(registBoard(boardData))
         .unwrap()
-        .then((res) => {
-          //* res 결과로 boardId를 받아오도록 수정
-          if (res === "success") navigate(`/board/${1}`);
+        .then((boardId) => {
+          if (boardId) navigate(`/board/${boardId}`);
         });
     }
   };

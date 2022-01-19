@@ -15,7 +15,7 @@ export const fetchArticle = createAsyncThunk(
       .get(`/hot-articles`)
       .then((res) => {
         if (!res.data) {
-          return thunkAPI.rejectWithValue("No Board Data");
+          return thunkAPI.rejectWithValue("No Article Data");
         }
         return res.data;
       })
@@ -35,7 +35,7 @@ export const fetchArticleById = createAsyncThunk(
       .get(`/articles/${articleId}`)
       .then((res) => {
         if (!res.data.data) {
-          return rejectWithValue("No Board Data");
+          return rejectWithValue("No Article Data");
         }
         return res.data.data;
       })
@@ -48,12 +48,12 @@ export const registArticle = createAsyncThunk(
   async (newArticleData, { rejectWithValue }) => {
     return axios
       .create({ baseURL })
-      .post(`/articles`, newArticleData)
+      .post(`/item`, newArticleData)
       .then((res) => {
-        if (!res.data.success) {
-          return rejectWithValue("No Board Data");
+        if (!res.data.itemId) {
+          return rejectWithValue("Can't Regist Article");
         }
-        return res.data.success;
+        return res.data.itemId;
       })
       .catch((error) => rejectWithValue(error.res.data));
   }
@@ -61,15 +61,15 @@ export const registArticle = createAsyncThunk(
 
 export const deleteArticleById = createAsyncThunk(
   "article/deleteArticleById",
-  async (articleId, { rejectWithValue }) => {
+  async (itemId, { rejectWithValue }) => {
     return axios
       .create({ baseURL })
-      .delete(`/articles?articleId=${articleId}`)
+      .delete(`/item?itemId=${itemId}`)
       .then((res) => {
-        if (!res.data.deleteCount) {
-          return rejectWithValue("No Board Data");
+        if (!res) {
+          return rejectWithValue("Can't Delete Article");
         }
-        return res.data.deleteCount;
+        return res;
       })
       .catch((error) => rejectWithValue(error.res.data));
   }
@@ -134,38 +134,6 @@ const article = createSlice({
           state.error = action.error;
           state.currentRequestId = undefined;
         }
-      })
-      .addCase(fetchArticleById.pending, (state, action) => {
-        if (
-          state.oneThing.loading === "idle" ||
-          state.oneThing.loading === "idle"
-        ) {
-          state.oneThing.loading = "pending";
-          state.oneThing.currentRequestId = action.meta.requestId;
-        }
-      })
-      .addCase(fetchArticleById.fulfilled, (state, action) => {
-        const { requestId } = action.meta;
-        if (
-          state.oneThing.loading === "pending" &&
-          state.oneThing.currentRequestId === requestId
-        ) {
-          state.oneThing.loading = "idle";
-          state.oneThing.itemId = action.payload.itemId;
-          state.articles.push(action.payload);
-          state.oneThing.currentRequestId = undefined;
-        }
-      })
-      .addCase(fetchArticleById.rejected, (state, action) => {
-        const { requestId } = action.meta;
-        if (
-          state.oneThing.loading === "pending" &&
-          state.oneThing.currentRequestId === requestId
-        ) {
-          state.oneThing.loading = "idle";
-          state.error = action.error;
-          state.oneThing.currentRequestId = undefined;
-        }
       });
   },
 });
@@ -193,7 +161,8 @@ export const filteredArticleSelector = createSelector(
 export const articleOneThingIdSelector = (state) =>
   state.article.oneThing.itemId;
 export const articleByIdSelector = createSelector(
-  [articleSelector, articleOneThingIdSelector],
+  articleSelector,
+  articleOneThingIdSelector,
   (articles, itemId) => articles.find((item) => item.itemId === itemId)
 );
 export default article.reducer;

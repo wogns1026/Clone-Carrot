@@ -10,8 +10,8 @@ export const useRegistArticle = () => {
     if (articleData) {
       dispatch(registArticle(articleData))
         .unwrap()
-        .then((res) => {
-          if (res === "success") navigate(`/article/${1}`);
+        .then((itemId) => {
+          if (itemId) navigate(`/articles/${itemId}`);
         });
     }
   };
