@@ -16,7 +16,7 @@ public class Image {
 
     private String category;
 
-    private String fileName;
+    private String imagePath;
 
     public void setFlagId(Long flagId) {
         this.flagId = flagId;
@@ -26,7 +26,7 @@ public class Image {
         this.category = category;
     }
 
-    public void setFileName(String fileName) {
-        this.fileName = fileName;
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
     }
 }

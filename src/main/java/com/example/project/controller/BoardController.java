@@ -45,10 +45,12 @@ public class BoardController {
     public ResponseEntity<Map<String, Object>> getBoardDtl(@PathVariable Long boardId){
         Board boardDtl = boardService.getBoardDtl(boardId);
         List<Review> reviewList = boardService.getBoardReviews(boardId);
+        List<Image> imageList = boardService.getImagePath(boardId, "board");
 
         Map<String, Object> result = new HashMap<>();
         result.put("content", boardDtl);
         result.put("reviewList", reviewList);
+        result.put("imagePath", imageList);
 
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
@@ -76,13 +78,13 @@ public class BoardController {
 
             String uuid = UUID.randomUUID().toString();
 
-            String saveFileName = "C:\\temp" + File.separator + uuid + "_" + fileName;
-            Path savePath = Paths.get(saveFileName);
+            String saveImagePath = "C:\\temp" + File.separator + uuid + "_" + fileName;
+            Path savePath = Paths.get(saveImagePath);
 
             Image image = new Image();
             image.setCategory("board");
             image.setFlagId(boardId);
-            image.setFileName(saveFileName);
+            image.setImagePath(saveImagePath);
             imageRepository.save(image);
 
             try {
