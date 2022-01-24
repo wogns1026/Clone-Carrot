@@ -4,6 +4,7 @@ import lombok.Getter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Getter
@@ -17,18 +18,12 @@ public class Board {
 
     private String content;
 
-    private String image;
-
     private int viewCnt;
 
     private LocalDateTime regTime;
 
     public void setViewCnt(int viewCnt){
         this.viewCnt = viewCnt;
-    }
-
-    public void setImage(String image){
-        this.image = image;
     }
 
 }
