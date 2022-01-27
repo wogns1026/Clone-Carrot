@@ -7,16 +7,18 @@ export const useDeleteArticle = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { id } = useParams();
-  const deleteBoard = () => {
-    id &&
+
+  const deleteArticle = () => {
+    if (window.confirm("정말로 삭제하겠습니까?")) {
       dispatch(deleteArticleById(id))
         .unwrap()
         .then((res) => {
-          if (res.data.deleteCount) navigate(`/`);
-          toast.success("매물 등록 성공");
+          if (res) navigate(`/`);
+          toast.success("매물 삭제 성공");
         })
-        .catch((err) => toast.error("매물 등록 실패"));
+        .catch((err) => toast.error("매물 삭제 실패"));
+    }
   };
 
-  return { deleteBoard };
+  return { deleteArticle };
 };

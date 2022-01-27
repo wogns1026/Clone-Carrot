@@ -1,18 +1,22 @@
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { registBoard } from "redux/modules/board";
+import { registBoard, registBoardImage } from "redux/modules/board";
 
 export const useRegistBoard = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const regist = (boardData) => {
+  const regist = (boardData, image) => {
     if (boardData) {
       dispatch(registBoard(boardData))
         .unwrap()
-        .then((res) => {
-          //* res 결과로 boardId를 받아오도록 수정
-          if (res === "success") navigate(`/board/${1}`);
+        .then((boardId) => {
+          dispatch(registBoardImage({ boardId, image }))
+            .unwrap()
+            .then((res) => {
+              console.log("이미지 등록 성공");
+            });
+          if (boardId) navigate(`/board/${boardId}`);
         });
     }
   };

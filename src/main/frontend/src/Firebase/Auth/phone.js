@@ -55,9 +55,10 @@ export const confirmAuthCode = (authCode, callback) => {
       signInWithCredential(auth, credential).catch((error) =>
         AuthErrorHandler(error.code)
       );
+      const phoneNumber = result.user.phoneNumber;
       callback({
         authSuccess: true,
-        id: result.user.phoneNumber,
+        id: phoneNumber,
         authType: "phone",
       });
     })

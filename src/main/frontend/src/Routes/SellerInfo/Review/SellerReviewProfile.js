@@ -6,9 +6,15 @@ import {
   Text,
 } from "Components/Universal";
 import theme from "styles/theme";
+import Loader from "Components/Loading/Loader";
+import { useFetchSellerInfoById } from "Components/Profile/hooks/useFetchSellerInfoById";
 
-const SellerReviewProfile = ({ userId, image, userName, address }) => {
-  return (
+const SellerReviewProfile = ({ userId, image }) => {
+  const { loading, sellerInfo } = useFetchSellerInfoById(userId);
+
+  return loading ? (
+    <Loader />
+  ) : (
     <FlexBox flexAlign="center" gap="10px" marginBottom="10px">
       <LinkTo to={`/seller-info/${userId}`}>
         <LazyBackgroundImage
@@ -20,9 +26,9 @@ const SellerReviewProfile = ({ userId, image, userName, address }) => {
         />
       </LinkTo>
       <Text to={`/seller-info/${userId}`} fontSize="15px" fontWeight={700}>
-        {userName}
+        {sellerInfo.userName}
       </Text>
-      <Text fontSize="13px">{address}</Text>
+      <Text fontSize="13px">{sellerInfo.address}</Text>
     </FlexBox>
   );
 };

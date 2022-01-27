@@ -22,13 +22,13 @@ const BoardRegist = () => {
   const data = {
     boardId: state?.boardId ? state?.boardId : null,
     userId: 2, // Redux에서 가져오도록 변경 필요
-    image: "Image", // 이미지 배열을 넘겨주도록 변경 필요
+    // image: "Image", // 이미지 배열을 넘겨주도록 변경 필요
     ...state,
     content: content,
     regTime: new Date(),
   };
 
-  const handleRegist = () => regist(data);
+  const handleRegist = () => regist(data, imgFile);
 
   return (
     <ContentContainer column width={theme.size.window.board}>

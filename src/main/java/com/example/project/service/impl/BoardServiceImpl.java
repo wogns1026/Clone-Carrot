@@ -1,8 +1,10 @@
 package com.example.project.service.impl;
 
 import com.example.project.domain.Board;
+import com.example.project.domain.Image;
 import com.example.project.domain.Review;
 import com.example.project.repository.BoardRepository;
+import com.example.project.repository.ImageRepository;
 import com.example.project.repository.ReviewRepository;
 import com.example.project.service.BoardService;
 import lombok.RequiredArgsConstructor;
@@ -20,6 +22,7 @@ public class BoardServiceImpl implements BoardService {
 
     private final BoardRepository boardRepository;
     private final ReviewRepository reviewRepository;
+    private final ImageRepository imageRepository;
 
     @Override
     public Page<Board> getBoard(Pageable pageable){
@@ -53,6 +56,12 @@ public class BoardServiceImpl implements BoardService {
     public void deleteBoard(Long boardId) {
         boardRepository.deleteById(boardId);
         reviewRepository.deleteByBoardId(boardId);
+        imageRepository.deleteByFlagIdAndCategory(boardId, "board");
+    }
+
+    @Override
+    public List<Image> getImagePath(Long boardId, String category) {
+        return imageRepository.findByFlagIdAndCategory(boardId, category);
     }
 
 }

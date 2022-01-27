@@ -7,7 +7,13 @@ const useImageUpload = (initImages) => {
 
   const upload = (e) => {
     const files = e.target.files;
-    setImgFile((cur) => [...cur, ...files]);
+    const img = e.target.files[0];
+    const formData = new FormData();
+    formData.append("file", img);
+
+    setImgFile(formData);
+
+    //setImgFile((cur) => [...cur, ...files]);
     Array.from(files).forEach((file) => {
       let reader = new FileReader();
       reader.readAsDataURL(file); // 버퍼에 저장

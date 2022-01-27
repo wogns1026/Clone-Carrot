@@ -4,6 +4,7 @@ import lombok.Getter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Getter
@@ -16,8 +17,6 @@ public class Board {
     private Long userId;
 
     private String content;
-
-    private String image;
 
     private int viewCnt;
 

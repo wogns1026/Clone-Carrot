@@ -1,24 +1,30 @@
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import { fetchSellerInfoById } from "redux/modules/sellerInfo";
+import { fetchSellerInfoById, sellersSelector } from "redux/modules/sellerInfo";
 
-export const useFetchSellerInfoById = (userId) => {
+export const useFetchSellerInfoById = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const sellers = useSelector(sellersSelector);
   const [loading, setLoading] = useState(true);
   const [sellItem, setSellItem] = useState("");
   const [sellerInfo, setSellerInfo] = useState("");
   const [buyReviews, setBuyReviews] = useState("");
 
-  useEffect(() => fetch(), [userId, id]);
+  useEffect(() => {
+    if (sellers) {
+      setSellItem(sellers.find((info) => info.sellerInfo.userId === id));
+    }
+  }, [sellers]);
+
+  useEffect(() => fetch(), [id]);
 
   const fetch = () => {
-    if (!userId && !id) return;
-    const sellerId = userId ? userId : id;
+    if (!id) return;
 
-    dispatch(fetchSellerInfoById(sellerId))
+    dispatch(fetchSellerInfoById(id))
       .unwrap()
       .then(({ buyReviews, sellItem, sellerInfo }) => {
         setBuyReviews(buyReviews);

@@ -5,13 +5,12 @@ import SellerManner from "./Manner/SellerManner";
 import SellerReview from "./Review/SellerReview";
 import SellerArticleList from "./Article/SellerArticleList";
 import { ContentContainer, MenuButtonList } from "Components/Universal";
-import { useFetchSellerInfoOfReview } from "./hooks/useFetchSellerInfoOfReview";
 import theme from "styles/theme";
+import { useFetchSellerInfo } from "Components/Profile/hooks/useFetchSellerInfo";
 
 const SellerInfo = () => {
   const [menu, setMenu] = useState("trade");
-  const { loading, sellItem, sellerInfo, buyReviewsWithSellerInfo } =
-    useFetchSellerInfoOfReview();
+  const { loading, sellItem, sellerInfo, buyReviews } = useFetchSellerInfo();
 
   const keyList = [
     { key: "trade", text: "판매 물품" },
@@ -29,7 +28,7 @@ const SellerInfo = () => {
         onSelected={setMenu}
       />
       {menu === "review" ? (
-        <SellerReview buyReviews={buyReviewsWithSellerInfo} />
+        <SellerReview buyReviews={buyReviews} />
       ) : menu === "manner" ? (
         <SellerManner />
       ) : (

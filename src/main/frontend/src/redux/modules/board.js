@@ -46,14 +46,34 @@ export const fetchBoardById = createAsyncThunk(
 export const registBoard = createAsyncThunk(
   "board/registBoard",
   async (newBoardData, { rejectWithValue }) => {
+    console.log(newBoardData);
     return axios
       .create({ baseURL })
       .post(`/board`, newBoardData)
       .then((res) => {
-        if (!res.data.success) {
-          return rejectWithValue("No Board Data");
+        if (!res.data) {
+          return rejectWithValue("Can't Regist Board");
         }
-        return res.data.success;
+        return res.data.boardId;
+      })
+      .catch((error) => rejectWithValue(error.res.data));
+  }
+);
+
+export const registBoardImage = createAsyncThunk(
+  "board/registBoardImage",
+  async ({ boardId, image }, { rejectWithValue }) => {
+    console.log(boardId, image);
+    return axios
+      .create({ baseURL })
+      .post(`/board/image/${boardId}`, image, {
+        headers: { "Content-Type": `multipart/form-data` },
+      })
+      .then((res) => {
+        if (!res) {
+          return rejectWithValue("Can't Regist Board Image");
+        }
+        return res;
       })
       .catch((error) => rejectWithValue(error.res.data));
   }
@@ -67,7 +87,7 @@ export const deleteBoardById = createAsyncThunk(
       .delete(`/board?boardId=${boardId}`)
       .then((res) => {
         if (!res.data.deleteCount) {
-          return rejectWithValue("게시물 삭제 실패");
+          return rejectWithValue("Can't Delete Article");
         }
         return res.data.deleteCount;
       })
@@ -131,10 +151,6 @@ const board = createSlice({
           state.error = action.error;
           state.currentRequestId = undefined;
         }
-      })
-      .addCase(fetchBoardById.fulfilled, (state, action) => {
-        state.oneThing.boardId = action.payload.boardId;
-        state.boards.push(action.payload);
       });
   },
 });

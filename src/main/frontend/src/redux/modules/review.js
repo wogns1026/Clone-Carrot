@@ -10,6 +10,9 @@ export const fetchReviewByBoardId = createAsyncThunk(
       .create({ baseURL })
       .get(`/board/dtl/${boardId}`)
       .then((res) => {
+        if (!res.data.reviewList) {
+          return rejectWithValue("No Review Data");
+        }
         const reviews = res.data.reviewList;
         reviews.forEach((review) => (review.regTime = `${review.regTime}`));
 
