@@ -46,14 +46,34 @@ export const fetchBoardById = createAsyncThunk(
 export const registBoard = createAsyncThunk(
   "board/registBoard",
   async (newBoardData, { rejectWithValue }) => {
+    console.log(newBoardData);
     return axios
       .create({ baseURL })
       .post(`/board`, newBoardData)
       .then((res) => {
-        if (!res.data.success) {
+        if (!res.data) {
           return rejectWithValue("Can't Regist Board");
         }
         return res.data.boardId;
+      })
+      .catch((error) => rejectWithValue(error.res.data));
+  }
+);
+
+export const registBoardImage = createAsyncThunk(
+  "board/registBoardImage",
+  async ({ boardId, image }, { rejectWithValue }) => {
+    console.log(boardId, image);
+    return axios
+      .create({ baseURL })
+      .post(`/board/image/${boardId}`, image, {
+        headers: { "Content-Type": `multipart/form-data` },
+      })
+      .then((res) => {
+        if (!res) {
+          return rejectWithValue("Can't Regist Board Image");
+        }
+        return res;
       })
       .catch((error) => rejectWithValue(error.res.data));
   }
