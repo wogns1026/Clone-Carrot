@@ -24,12 +24,12 @@ VALUES
     (3, 1, 2, '깔끔한 거래 좋았습니다!', CURRENT_TIMESTAMP ),
     (4, 3, 1, 'VERY GOOD!', CURRENT_TIMESTAMP );
 
-INSERT INTO TB_BOARD(BOARD_ID, USER_ID, CONTENT, IMAGE, VIEW_CNT, REG_TIME)
+INSERT INTO TB_BOARD(BOARD_ID, USER_ID, CONTENT, VIEW_CNT, REG_TIME)
 VALUES
-    (1, 2, '우리 동네 망포 땡이네 곱창 ㄱ~~~~~~', null, 3, CURRENT_TIMESTAMP ),
-    (2, 1, '동탄이 최고제~', null, 1, CURRENT_TIMESTAMP ),
-    (3, 2, '망포 땡이네 줄 많아서 결국 못감', null, 2, CURRENT_TIMESTAMP ),
-    (4, 3, '소정이 어디 살지?', null, 5, CURRENT_TIMESTAMP );
+    (1, 2, '우리 동네 망포 땡이네 곱창 ㄱ~~~~~~', 3, CURRENT_TIMESTAMP ),
+    (2, 1, '동탄이 최고제~', 1, CURRENT_TIMESTAMP ),
+    (3, 2, '망포 땡이네 줄 많아서 결국 못감', 2, CURRENT_TIMESTAMP ),
+    (4, 3, '소정이 어디 살지?', 5, CURRENT_TIMESTAMP );
 
 INSERT INTO TB_REVIEWS(REVIEW_ID, BOARD_ID, CONTENT, USER_ID, REG_TIME, PARENT_REVIEW_ID)
 VALUES
