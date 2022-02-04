@@ -1,4 +1,10 @@
 spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: "https://www.googleapis.com/service_accounts/v1/jwk/securetoken%40system.gserviceaccount.com"
+
   datasource:
     # h2 연동
     driver-class-name: org.h2.Driver

@@ -1,6 +1,5 @@
 package com.example.project.controller;
 
-import com.example.project.config.JwtAuthenticationProvider;
 import com.example.project.domain.BuyReview;
 import com.example.project.domain.Item;
 import com.example.project.domain.User;
@@ -28,7 +27,6 @@ public class UserController {
     private final UserService userService;
 
     private UserRepository userRepository;
-    private JwtAuthenticationProvider jwtAuthenticationProvider;
 
     @ApiOperation(value = "판매자 정보 상세 조회")
     @GetMapping(value = "/seller-info/{sellerId}")
@@ -70,23 +68,23 @@ public class UserController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @ApiOperation(value = "로그인")
-    @PostMapping(value = "/login")
-    public User login(@RequestBody User user, HttpServletResponse response){
-        User member = userRepository.findByPhoneNumber(user.getPhoneNumber())
-                .orElseThrow(()->new IllegalArgumentException("가입되지 않은 회원입니다."));
-
-        String token = jwtAuthenticationProvider.createToken(member.getUsername(), member.getRoles());
-        response.setHeader("X-AUTH-TOKEN", token);
-
-        Cookie cookie = new Cookie("X-AUTH-TOKEN", token);
-        cookie.setPath("/");
-        cookie.setHttpOnly(true);
-        cookie.setSecure(true);
-        response.addCookie(cookie);
-
-        return member;
-    }
+//    @ApiOperation(value = "로그인")
+//    @PostMapping(value = "/login")
+//    public User login(@RequestBody User user, HttpServletResponse response){
+//        User member = userRepository.findByPhoneNumber(user.getPhoneNumber())
+//                .orElseThrow(()->new IllegalArgumentException("가입되지 않은 회원입니다."));
+//
+//        String token = jwtAuthenticationProvider.createToken(member.getUsername(), member.getRoles());
+//        response.setHeader("X-AUTH-TOKEN", token);
+//
+//        Cookie cookie = new Cookie("X-AUTH-TOKEN", token);
+//        cookie.setPath("/");
+//        cookie.setHttpOnly(true);
+//        cookie.setSecure(true);
+//        response.addCookie(cookie);
+//
+//        return member;
+//    }
 
     @ApiOperation(value = "로그아웃")
     @PostMapping(value = "/logout")
