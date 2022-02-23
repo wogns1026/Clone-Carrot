@@ -29,7 +29,7 @@ const BoardRegist = () => {
   };
 
   const handleRegist = () => regist(data, imgFile);
-
+  const handleImageUpload = (e) => upload(e.target.files);
   return (
     <ContentContainer column width={theme.size.window.board}>
       <FlexBox fullSize column gap="20px">
@@ -50,7 +50,7 @@ const BoardRegist = () => {
         <ImageUploader
           imgFile={imgFile}
           imgBase64={imgBase64}
-          upload={upload}
+          upload={handleImageUpload}
           remove={remove}
           size="100px"
         />

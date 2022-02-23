@@ -15,19 +15,18 @@ import theme from "styles/theme";
 import { useFetchBoardById } from "./hooks/useFetchBoardById";
 
 const Board = () => {
-  const { loading, board } = useFetchBoardById();
-
+  const { loading, reviewList, imagePath, content } = useFetchBoardById();
   return loading ? (
     <Loader />
   ) : (
     <ContentContainer column width={theme.size.window.board}>
       <Box fullSize>
-        <ImageSwiper imageList={board.image} />
-        <Profile id={board.userId} />
+        <ImageSwiper imageList={imagePath} />
+        <Profile id={content.userId} />
         <HorizontalDivider marginBottom="24px" />
         <FlexBox column>
-          <BoardDescription data={board} />
-          <ReviewList boardId={board.boardId} />
+          <BoardDescription data={content} />
+          <ReviewList boardId={content.boardId} reviewList={reviewList} />
           <HotArticleList />
         </FlexBox>
       </Box>

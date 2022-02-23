@@ -13,17 +13,7 @@ export const fetchReviewByBoardId = createAsyncThunk(
         if (!res.data.reviewList) {
           return rejectWithValue("No Review Data");
         }
-        const reviews = res.data.reviewList;
-        reviews.forEach((review) => (review.regTime = `${review.regTime}`));
-
-        const rootReviews = reviews.filter((d) => d.parentReviewId === null);
-        const result = rootReviews.map((review) => {
-          const childReviews = reviews.filter(
-            (d) => d.parentReviewId === review.reviewId
-          );
-          return { ...review, childReviews };
-        });
-        return result;
+        return res.data.reviewList;
       })
       .catch((err) => rejectWithValue(err.res.data));
   }

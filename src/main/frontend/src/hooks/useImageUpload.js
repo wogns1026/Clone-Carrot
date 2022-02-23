@@ -5,11 +5,14 @@ const useImageUpload = (initImages) => {
   const [imgFile, setImgFile] = useState(initImages ? initImages : []); //파일
   const [imgBase64, setImgBase64] = useState([]); // 파일 base64
 
-  const upload = (e) => {
-    const files = e.target.files;
-    const img = e.target.files[0];
+  const upload = (files) => {
+    const img = files[0];
+    console.log(files);
+    console.log(img);
     const formData = new FormData();
-    formData.append("file", img);
+    console.log(formData);
+    formData.append("image", img);
+    console.log(formData.getAll("image"));
 
     setImgFile(formData);
 

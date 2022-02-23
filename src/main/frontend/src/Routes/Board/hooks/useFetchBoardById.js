@@ -7,21 +7,27 @@ export const useFetchBoardById = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [board, setBoard] = useState();
+  const [reviewList, setReviewList] = useState();
+  const [imagePath, setImagePath] = useState();
+  const [content, setContent] = useState();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => fetch(), [id]);
-  useEffect(() => board && setLoading(false), [board]);
+  useEffect(() => content && setLoading(false), [content]);
 
   const fetch = () => {
     dispatch(fetchBoardById(id))
       .unwrap()
-      .then((res) => setBoard(res))
+      .then((res) => {
+        setReviewList(res.reviewList);
+        setImagePath(res.imagePath);
+        setContent(res.content);
+      })
       .catch(() => {
         navigate(`/`);
         alert("해당 페이지를 찾을 수 없습니다.");
       });
   };
 
-  return { loading, board, fetch };
+  return { loading, reviewList, imagePath, content, fetch };
 };

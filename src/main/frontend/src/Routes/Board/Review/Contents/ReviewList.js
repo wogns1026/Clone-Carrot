@@ -3,10 +3,12 @@ import { Box, HorizontalDivider, Text } from "Components/Universal";
 import ReviewRegist from "Routes/Regist/ReviewRegist";
 import Loader from "Components/Loading/Loader";
 import { useFetchReviewByBoardId } from "../hooks/useFetchReviewByBoardId";
+import { useCreateReviewTree } from "../hooks/useCreateReviewTree";
 import Review from "./Review";
 
 const ReviewList = ({ boardId }) => {
   const { loading, reviews } = useFetchReviewByBoardId(boardId);
+  const [reviewTree, reviewCount] = useCreateReviewTree(reviews);
   const defaultData = { boardId };
   return loading ? (
     <Loader />
@@ -19,10 +21,10 @@ const ReviewList = ({ boardId }) => {
       <Box fullSize borderRadius="10px">
         <Box marginBottom="30px">
           <Text fontSize="17px" fontWeight={600}>
-            {`댓글 ${reviews.length}`}
+            {`댓글 ${reviewCount}`}
           </Text>
         </Box>
-        {reviews.map((review) => (
+        {reviewTree.map((review) => (
           <Box key={review.reviewId}>
             <Review data={review} />
           </Box>
