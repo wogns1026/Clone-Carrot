@@ -4,6 +4,7 @@ import theme from "styles/theme";
 import ImagePreview from "./ImagePreview";
 
 const ImageUploader = ({ imgFile, imgBase64, upload, remove, size }) => {
+  console.log(imgBase64);
   return (
     <FlexBox gap="20px">
       <input
@@ -27,7 +28,11 @@ const ImageUploader = ({ imgFile, imgBase64, upload, remove, size }) => {
 
       <FlexBox fullSize>
         {imgBase64?.map((img) => (
-          <ImagePreview src={img} remove={remove} />
+          <ImagePreview
+            key={`${img.name}_${img.lastModified}`}
+            src={img}
+            remove={remove}
+          />
         ))}
       </FlexBox>
     </FlexBox>

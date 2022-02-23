@@ -34,10 +34,10 @@ export const fetchBoardById = createAsyncThunk(
       .create({ baseURL })
       .get(`/board/dtl/${boardId}`)
       .then((res) => {
-        if (!res.data.content) {
+        if (!res.data) {
           return rejectWithValue("No Board Data");
         }
-        return res.data.content;
+        return res.data;
       })
       .catch((error) => rejectWithValue(error.res.data));
   }
@@ -46,7 +46,6 @@ export const fetchBoardById = createAsyncThunk(
 export const registBoard = createAsyncThunk(
   "board/registBoard",
   async (newBoardData, { rejectWithValue }) => {
-    console.log(newBoardData);
     return axios
       .create({ baseURL })
       .post(`/board`, newBoardData)
@@ -63,7 +62,7 @@ export const registBoard = createAsyncThunk(
 export const registBoardImage = createAsyncThunk(
   "board/registBoardImage",
   async ({ boardId, image }, { rejectWithValue }) => {
-    console.log(boardId, image);
+    console.log(image);
     return axios
       .create({ baseURL })
       .post(`/board/image/${boardId}`, image, {
